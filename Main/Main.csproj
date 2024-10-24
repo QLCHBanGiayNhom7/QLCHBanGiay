@@ -62,6 +62,25 @@
     <Compile Include="GUI\frmKhuyenMai.Designer.cs">
       <DependentUpon>frmKhuyenMai.cs</DependentUpon>
     </Compile>
+<Compile Include="GUI\frmKhachHang.cs">
+      <SubType>Form</SubType>
+</Compile>
+<Compile Include="GUI\frmKhachHang.Designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+</Compile>
+<EmbeddedResource Include="GUI\frmKhachHang.resx">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+</EmbeddedResource>
+
+<Compile Include="GUI\frmKho.cs">
+      <SubType>Form</SubType>
+</Compile>
+<Compile Include="GUI\frmKho.Designer.cs">
+      <DependentUpon>frmKho.cs</DependentUpon>
+</Compile>
+<EmbeddedResource Include="GUI\frmKho.resx">
+      <DependentUpon>frmKho.cs</DependentUpon>
+</EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmKhuyenMai.resx">
