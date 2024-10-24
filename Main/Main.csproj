@@ -83,14 +83,6 @@
     <EmbeddedResource Include="GUI\frmBaoCaoThongKe.resx">
       <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GUI\frmKhachHang.resx">
-      <DependentUpon>frmKhachHang.cs</DependentUpon>
-    </EmbeddedResource>
-      <DependentUpon>frmKhachHang.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="GUI\frmBaoCaoThongKe.resx">
-      <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
