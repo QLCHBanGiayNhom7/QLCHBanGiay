@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +56,12 @@
     <Compile Include="DAO\DangNhapDAO.cs" />
     <Compile Include="DTO\DangNhapDTO.cs" />
     <Compile Include="DTO\KhuyenMaiDTO.cs" />
+    <Compile Include="GUI\frmBaoCaoThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmBaoCaoThongKe.Designer.cs">
+      <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,44 +74,66 @@
     <Compile Include="GUI\frmKhuyenMai.Designer.cs">
       <DependentUpon>frmKhuyenMai.cs</DependentUpon>
     </Compile>
-<Compile Include="GUI\frmKhachHang.cs">
+    <Compile Include="GUI\frmKhachHang.cs">
       <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmKhachHang.Designer.cs">
+    </Compile>
+    <Compile Include="GUI\frmKhachHang.Designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmKhachHang.resx">
+    </Compile>
+    <EmbeddedResource Include="GUI\frmBaoCaoThongKe.resx">
+      <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDangNhap.resx">
+      <DependentUpon>frmDangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
-</EmbeddedResource>
-
-<Compile Include="GUI\frmKho.cs">
+    </EmbeddedResource>
+    <Compile Include="GUI\frmKho.cs">
       <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmKho.Designer.cs">
+    </Compile>
+    <Compile Include="GUI\frmKho.Designer.cs">
       <DependentUpon>frmKho.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmKho.resx">
+    </Compile>
+    <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
-</EmbeddedResource>
-<Compile Include="GUI\frmQLNhanVien.cs">
-  <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmQLNhanVien.Designer.cs">
-  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmQLNhanVien.resx">
-  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
-</EmbeddedResource>
-<Compile Include="GUI\frmQLNhaCungCap.cs">
-  <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
-  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
-  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
-</EmbeddedResource>
-
+    </EmbeddedResource>
+    <Compile Include="GUI\frmQLHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLHoaDon.Designer.cs">
+      <DependentUpon>frmQLHoaDon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmDoiTraHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmDoiTraHang.designer.cs">
+      <DependentUpon>frmDoiTraHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmQLNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLNhanVien.Designer.cs">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\frmQLHoaDon.resx">
+      <DependentUpon>frmQLHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmDoiTraHang.resx">
+      <DependentUpon>frmDoiTraHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmQLNhanVien.resx">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="GUI\frmQLNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmKhuyenMai.resx">
@@ -107,13 +141,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,6 +162,48 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thoat.png" />
+  </ItemGroup>
+    <ItemGroup>
+    <None Include="Resources\Logo Project AM.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Mesa de trabajo 1 copia%404x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo-K-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cửa-hàng-giày-sneaker-chính-hàng-uy-tín-nhất-dến-king-shoes-authenti-hcm-6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\red-jordan-shoes-08whk07f1ssfxuiw.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pink-pair-shoes-with-pink-background_36682-714.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallpapersden.com_neon-jordan-retro-shoe_wl.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cartoon-shoe-0aofc0y4qf7nsesq.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\20405989-shoes-cool-wallpaper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\0cb9f88a59191752626863c492e99ec7.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trainer-yeezy-sneaker-boost.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
