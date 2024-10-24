@@ -1,4 +1,5 @@
-﻿using Main.GUI;
+using GUI;
+using Main.GUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Main
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmBaoCaoThongKe());
+            Application.Run(new frmDangNhap());
         }
     }
 }
