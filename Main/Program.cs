@@ -1,4 +1,4 @@
-﻿using GUI;
+using GUI;
 using Main.GUI;
 using System;
 using System.Collections.Generic;
