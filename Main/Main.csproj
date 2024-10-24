@@ -81,6 +81,25 @@
 <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
 </EmbeddedResource>
+<Compile Include="GUI\frmQLNhanVien.cs">
+  <SubType>Form</SubType>
+</Compile>
+<Compile Include="GUI\frmQLNhanVien.Designer.cs">
+  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+</Compile>
+<EmbeddedResource Include="GUI\frmQLNhanVien.resx">
+  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+</EmbeddedResource>
+<Compile Include="GUI\frmQLNhaCungCap.cs">
+  <SubType>Form</SubType>
+</Compile>
+<Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
+  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+</Compile>
+<EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
+  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+</EmbeddedResource>
+
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmKhuyenMai.resx">
