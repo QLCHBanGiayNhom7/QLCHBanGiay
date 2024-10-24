@@ -56,6 +56,12 @@
     <Compile Include="DAO\DangNhapDAO.cs" />
     <Compile Include="DTO\DangNhapDTO.cs" />
     <Compile Include="DTO\KhuyenMaiDTO.cs" />
+    <Compile Include="GUI\frmBaoCaoThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmBaoCaoThongKe.Designer.cs">
+      <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
