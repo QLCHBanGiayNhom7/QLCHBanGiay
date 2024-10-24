@@ -50,6 +50,12 @@
     <Compile Include="DAO\DangNhapDAO.cs" />
     <Compile Include="DTO\DangNhapDTO.cs" />
     <Compile Include="DTO\KhuyenMaiDTO.cs" />
+    <Compile Include="GUI\frmBaoCaoThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmBaoCaoThongKe.Designer.cs">
+      <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,44 +68,45 @@
     <Compile Include="GUI\frmKhuyenMai.Designer.cs">
       <DependentUpon>frmKhuyenMai.cs</DependentUpon>
     </Compile>
-<Compile Include="GUI\frmKhachHang.cs">
+    <Compile Include="GUI\frmKhachHang.cs">
       <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmKhachHang.Designer.cs">
+    </Compile>
+    <Compile Include="GUI\frmKhachHang.Designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmKhachHang.resx">
+    </Compile>
+    <EmbeddedResource Include="GUI\frmBaoCaoThongKe.resx">
+      <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
-</EmbeddedResource>
-
-<Compile Include="GUI\frmKho.cs">
+    </EmbeddedResource>
+    <Compile Include="GUI\frmKho.cs">
       <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmKho.Designer.cs">
+    </Compile>
+    <Compile Include="GUI\frmKho.Designer.cs">
       <DependentUpon>frmKho.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmKho.resx">
+    </Compile>
+    <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
-</EmbeddedResource>
-<Compile Include="GUI\frmQLNhanVien.cs">
-  <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmQLNhanVien.Designer.cs">
-  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmQLNhanVien.resx">
-  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
-</EmbeddedResource>
-<Compile Include="GUI\frmQLNhaCungCap.cs">
-  <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
-  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
-  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
-</EmbeddedResource>
-
+    </EmbeddedResource>
+    <Compile Include="GUI\frmQLNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLNhanVien.Designer.cs">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\frmQLNhanVien.resx">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="GUI\frmQLNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmKhuyenMai.resx">
