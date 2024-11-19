@@ -98,6 +98,12 @@
     <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="GUI\frmQLHoaDon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLHoaDon.Designer.cs">
+      <DependentUpon>frmQLHoaDon.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmDoiTraHang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     <Compile Include="GUI\frmQLNhanVien.Designer.cs">
       <DependentUpon>frmQLNhanVien.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\frmQLHoaDon.resx">
+      <DependentUpon>frmQLHoaDon.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmDoiTraHang.resx">
       <DependentUpon>frmDoiTraHang.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +144,11 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -155,6 +169,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\thoat.png" />
+  </ItemGroup>
+    <ItemGroup>
     <None Include="Resources\Logo Project AM.png" />
   </ItemGroup>
   <ItemGroup>

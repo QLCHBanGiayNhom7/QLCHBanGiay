@@ -1,4 +1,3 @@
-﻿
 using Main.GUI;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace Main
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmKhuyenMai());
+            Application.Run(new frmDangNhap());
         }
     }
 }
