@@ -380,7 +380,8 @@
             this.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Top;
             this.txtTrangThai.Enabled = false;
             this.txtTrangThai.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTrangThai.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtTrangThai.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTrangThai.ForeColor = System.Drawing.Color.Black;
             this.txtTrangThai.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTrangThai.Location = new System.Drawing.Point(1055, 134);
             this.txtTrangThai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -418,11 +419,11 @@
             this.tableLayoutPanel3.Controls.Add(this.btnLuu, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnThem, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnXoa, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnXuatExcel, 2, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnThongKe, 3, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnTaiLai, 7, 0);
             this.tableLayoutPanel3.Controls.Add(this.btnThoat, 8, 0);
-            this.tableLayoutPanel3.Controls.Add(this.btnHuy, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnXuatExcel, 6, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnThongKe, 5, 0);
+            this.tableLayoutPanel3.Controls.Add(this.btnHuy, 4, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 183);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -529,7 +530,7 @@
             this.btnXuatExcel.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnXuatExcel.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuatExcel.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(627, 3);
+            this.btnXuatExcel.Location = new System.Drawing.Point(939, 3);
             this.btnXuatExcel.Name = "btnXuatExcel";
             this.btnXuatExcel.Size = new System.Drawing.Size(150, 48);
             this.btnXuatExcel.TabIndex = 2;
@@ -607,13 +608,14 @@
             this.btnHuy.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnHuy.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnHuy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnHuy.Enabled = false;
             this.btnHuy.FillColor = System.Drawing.Color.LightPink;
             this.btnHuy.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.ForeColor = System.Drawing.Color.Black;
             this.btnHuy.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnHuy.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(939, 3);
+            this.btnHuy.Location = new System.Drawing.Point(627, 3);
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.Size = new System.Drawing.Size(150, 48);
             this.btnHuy.TabIndex = 33;
@@ -703,7 +705,7 @@
             this.dgvKhuyenMai.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleVioletRed;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 12F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PaleVioletRed;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;

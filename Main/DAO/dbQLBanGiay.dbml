@@ -46,16 +46,6 @@
       <Association Name="SanPham_DoiTraHang" Member="SanPham1" ThisKey="SanPham" OtherKey="MaSP" Type="SanPham" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.DonDatHangNCC" Member="DonDatHangNCCs">
-    <Type Name="DonDatHangNCC">
-      <Column Name="MaDDH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="NgayLapDDH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
-      <Column Name="MaNCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="DonDatHangNCC_ChiTietDonDatHang" Member="ChiTietDonDatHangs" ThisKey="MaDDH" OtherKey="MaDDH" Type="ChiTietDonDatHang" />
-      <Association Name="NhaCungCap_DonDatHangNCC" Member="NhaCungCap" ThisKey="MaNCC" OtherKey="MaNCC" Type="NhaCungCap" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.HoaDon" Member="HoaDons">
     <Type Name="HoaDon">
       <Column Name="MaHD" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -132,6 +122,17 @@
       <Column Name="DieuKienPhu" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Column Name="TrangThai" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
       <Association Name="KhuyenMai_HoaDon" Member="HoaDons" ThisKey="MaKM" OtherKey="MaKM" Type="HoaDon" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DonDatHangNCC" Member="DonDatHangNCCs">
+    <Type Name="DonDatHangNCC">
+      <Column Name="MaDDH" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NgayLapDDH" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="TongTien" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="MaNCC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TrangThai" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="DonDatHangNCC_ChiTietDonDatHang" Member="ChiTietDonDatHangs" ThisKey="MaDDH" OtherKey="MaDDH" Type="ChiTietDonDatHang" />
+      <Association Name="NhaCungCap_DonDatHangNCC" Member="NhaCungCap" ThisKey="MaNCC" OtherKey="MaNCC" Type="NhaCungCap" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>
