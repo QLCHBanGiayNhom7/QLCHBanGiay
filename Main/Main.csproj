@@ -33,8 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net472\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,10 +52,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\ChiTietHoaDonBUS.cs" />
     <Compile Include="BUS\DangNhapDAO.cs" />
+    <Compile Include="BUS\HoaDonBUS.cs" />
+    <Compile Include="BUS\KhachHangBUS.cs" />
+    <Compile Include="BUS\KhoBUS.cs" />
+    <Compile Include="BUS\SanPhamBUS.cs" />
+    <Compile Include="DAO\ChiTietHoaDonDAO.cs" />
     <Compile Include="DAO\DangNhapDAO.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
+    <Compile Include="DAO\KhachHangDAO.cs" />
+    <Compile Include="DAO\KhoDAO.cs" />
+    <Compile Include="DAO\SanPhamDAO.cs" />
+    <Compile Include="DTO\ChiTietHoaDonDTO.cs" />
     <Compile Include="DTO\DangNhapDTO.cs" />
+    <Compile Include="DTO\HoaDonDTO.cs" />
+    <Compile Include="DTO\KhachHangDTO.cs" />
+    <Compile Include="DTO\KhoDTO.cs" />
     <Compile Include="DTO\KhuyenMaiDTO.cs" />
+    <Compile Include="DTO\SanPhamDTO.cs" />
     <Compile Include="GUI\frmDangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,48 +83,64 @@
     <Compile Include="GUI\frmKhuyenMai.Designer.cs">
       <DependentUpon>frmKhuyenMai.cs</DependentUpon>
     </Compile>
-<Compile Include="GUI\frmKhachHang.cs">
+    <Compile Include="GUI\frmKhachHang.cs">
       <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmKhachHang.Designer.cs">
+    </Compile>
+    <Compile Include="GUI\frmKhachHang.Designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmKhachHang.resx">
+    </Compile>
+    <EmbeddedResource Include="GUI\frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
-</EmbeddedResource>
-
-<Compile Include="GUI\frmKho.cs">
+    </EmbeddedResource>
+    <Compile Include="GUI\frmKho.cs">
       <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmKho.Designer.cs">
+    </Compile>
+    <Compile Include="GUI\frmKho.Designer.cs">
       <DependentUpon>frmKho.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmKho.resx">
+    </Compile>
+    <EmbeddedResource Include="GUI\frmKho.resx">
       <DependentUpon>frmKho.cs</DependentUpon>
-</EmbeddedResource>
-<Compile Include="GUI\frmQLNhanVien.cs">
-  <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmQLNhanVien.Designer.cs">
-  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmQLNhanVien.resx">
-  <DependentUpon>frmQLNhanVien.cs</DependentUpon>
-</EmbeddedResource>
-<Compile Include="GUI\frmQLNhaCungCap.cs">
-  <SubType>Form</SubType>
-</Compile>
-<Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
-  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
-</Compile>
-<EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
-  <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
-</EmbeddedResource>
-
+    </EmbeddedResource>
+    <Compile Include="GUI\frmPhieuDoiTraHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmPhieuDoiTraHang.Designer.cs">
+      <DependentUpon>frmPhieuDoiTraHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\frmQLNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLNhanVien.Designer.cs">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\frmPhieuDoiTraHang.resx">
+      <DependentUpon>frmPhieuDoiTraHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmQLNhanVien.resx">
+      <DependentUpon>frmQLNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="GUI\frmQLNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmQLNhaCungCap.Designer.cs">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="GUI\frmQLNhaCungCap.resx">
+      <DependentUpon>frmQLNhaCungCap.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="GUI\frmTaoPhieuDoiTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmTaoPhieuDoiTra.Designer.cs">
+      <DependentUpon>frmTaoPhieuDoiTra.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GUI\frmKhuyenMai.resx">
       <DependentUpon>frmKhuyenMai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmTaoPhieuDoiTra.resx">
+      <DependentUpon>frmTaoPhieuDoiTra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -113,7 +150,9 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -126,6 +165,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2b013ec2443b0c36fba506d0a83e819f.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
