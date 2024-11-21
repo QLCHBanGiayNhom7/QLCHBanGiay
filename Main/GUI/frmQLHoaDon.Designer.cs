@@ -30,6 +30,7 @@
         {
             this.label7 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtPicker_QLHD = new System.Windows.Forms.DateTimePicker();
             this.dgvQLHoaDon = new System.Windows.Forms.DataGridView();
             this.txt_NVPT = new System.Windows.Forms.TextBox();
             this.txt_TongTien = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dtPicker_QLHD = new System.Windows.Forms.DateTimePicker();
             this.btn_Search = new System.Windows.Forms.Button();
             this.btn_Add = new System.Windows.Forms.Button();
             this.btn_Edit = new System.Windows.Forms.Button();
@@ -58,6 +58,8 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Reload = new System.Windows.Forms.Button();
             this.btn_Thoat = new System.Windows.Forms.Button();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvQLHoaDon)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -76,6 +78,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.guna2HtmlLabel2);
+            this.groupBox1.Controls.Add(this.guna2HtmlLabel1);
             this.groupBox1.Controls.Add(this.dtPicker_QLHD);
             this.groupBox1.Controls.Add(this.dgvQLHoaDon);
             this.groupBox1.Controls.Add(this.txt_NVPT);
@@ -98,6 +102,16 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin hoá đơn";
+            // 
+            // dtPicker_QLHD
+            // 
+            this.dtPicker_QLHD.CalendarFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtPicker_QLHD.CalendarForeColor = System.Drawing.Color.CornflowerBlue;
+            this.dtPicker_QLHD.Location = new System.Drawing.Point(759, 37);
+            this.dtPicker_QLHD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtPicker_QLHD.Name = "dtPicker_QLHD";
+            this.dtPicker_QLHD.Size = new System.Drawing.Size(265, 22);
+            this.dtPicker_QLHD.TabIndex = 16;
             // 
             // dgvQLHoaDon
             // 
@@ -325,16 +339,6 @@
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // dtPicker_QLHD
-            // 
-            this.dtPicker_QLHD.CalendarFont = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtPicker_QLHD.CalendarForeColor = System.Drawing.Color.CornflowerBlue;
-            this.dtPicker_QLHD.Location = new System.Drawing.Point(759, 37);
-            this.dtPicker_QLHD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtPicker_QLHD.Name = "dtPicker_QLHD";
-            this.dtPicker_QLHD.Size = new System.Drawing.Size(265, 22);
-            this.dtPicker_QLHD.TabIndex = 16;
-            // 
             // btn_Search
             // 
             this.btn_Search.Image = global::Main.Properties.Resources.timkiem;
@@ -418,6 +422,24 @@
             this.btn_Thoat.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_Thoat.UseVisualStyleBackColor = true;
             // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(723, 126);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(96, 17);
+            this.guna2HtmlLabel1.TabIndex = 17;
+            this.guna2HtmlLabel1.Text = "guna2HtmlLabel1";
+            // 
+            // guna2HtmlLabel2
+            // 
+            this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(784, 184);
+            this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(96, 17);
+            this.guna2HtmlLabel2.TabIndex = 18;
+            this.guna2HtmlLabel2.Text = "guna2HtmlLabel2";
+            // 
             // frmQLHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -479,5 +501,7 @@
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button btn_Reload;
         private System.Windows.Forms.Button btn_Thoat;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel2;
+        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
     }
 }
