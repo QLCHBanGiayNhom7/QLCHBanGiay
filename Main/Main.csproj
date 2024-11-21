@@ -104,6 +104,7 @@
       <DependentUpon>dbQLBanGiay.dbml</DependentUpon>
     </Compile>
     <Compile Include="DAO\KhuyenMaiDAO.cs" />
+    <Compile Include="DAO\NhaCungCapDAO.cs" />
     <Compile Include="DBC\SQLConnect.cs" />
     <Compile Include="DTO\DangNhapDTO.cs" />
     <Compile Include="DTO\KhuyenMaiDTO.cs" />
