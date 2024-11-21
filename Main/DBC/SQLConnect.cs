@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Main.BUS
+namespace Main.DBC
 {
-    internal class DangNhapDAO
+    internal class SQLConnect
     {
     }
 }
