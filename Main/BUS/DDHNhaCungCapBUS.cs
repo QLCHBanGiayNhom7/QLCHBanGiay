@@ -36,6 +36,10 @@ namespace Main.BUS
         {
             return don.GetMaDonDatHangList();
         }
+        public int AddDonDatHang(int maNCC)
+        {
+            return don.AddDonDatHang(maNCC);
+        }
 
     }
 }

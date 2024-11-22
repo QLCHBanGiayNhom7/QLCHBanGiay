@@ -1,4 +1,4 @@
-﻿namespace Main.GUI
+namespace Main.GUI
 {
     partial class frmKhuyenMai
     {
@@ -56,10 +56,10 @@
             this.btnLuu = new Guna.UI2.WinForms.Guna2Button();
             this.btnThem = new Guna.UI2.WinForms.Guna2Button();
             this.btnXoa = new Guna.UI2.WinForms.Guna2Button();
-            this.btnXuatExcel = new Guna.UI2.WinForms.Guna2Button();
-            this.btnThongKe = new Guna.UI2.WinForms.Guna2Button();
             this.btnTaiLai = new Guna.UI2.WinForms.Guna2Button();
             this.btnThoat = new Guna.UI2.WinForms.Guna2Button();
+            this.btnXuatExcel = new Guna.UI2.WinForms.Guna2Button();
+            this.btnThongKe = new Guna.UI2.WinForms.Guna2Button();
             this.btnHuy = new Guna.UI2.WinForms.Guna2Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
@@ -516,48 +516,6 @@
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // btnXuatExcel
-            // 
-            this.btnXuatExcel.BorderRadius = 15;
-            this.btnXuatExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnXuatExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnXuatExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnXuatExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnXuatExcel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnXuatExcel.FillColor = System.Drawing.Color.LightPink;
-            this.btnXuatExcel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatExcel.ForeColor = System.Drawing.Color.Black;
-            this.btnXuatExcel.HoverState.FillColor = System.Drawing.Color.Black;
-            this.btnXuatExcel.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatExcel.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(939, 3);
-            this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(150, 48);
-            this.btnXuatExcel.TabIndex = 2;
-            this.btnXuatExcel.Text = "Xuất excel";
-            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
-            // 
-            // btnThongKe
-            // 
-            this.btnThongKe.BorderRadius = 15;
-            this.btnThongKe.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnThongKe.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnThongKe.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnThongKe.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnThongKe.FillColor = System.Drawing.Color.LightPink;
-            this.btnThongKe.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKe.ForeColor = System.Drawing.Color.Black;
-            this.btnThongKe.HoverState.FillColor = System.Drawing.Color.Black;
-            this.btnThongKe.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThongKe.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnThongKe.Location = new System.Drawing.Point(783, 3);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Size = new System.Drawing.Size(150, 48);
-            this.btnThongKe.TabIndex = 3;
-            this.btnThongKe.Text = "Thống kê";
-            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
-            // 
             // btnTaiLai
             // 
             this.btnTaiLai.BorderRadius = 15;
@@ -599,6 +557,48 @@
             this.btnThoat.TabIndex = 4;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnXuatExcel
+            // 
+            this.btnXuatExcel.BorderRadius = 15;
+            this.btnXuatExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXuatExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXuatExcel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnXuatExcel.FillColor = System.Drawing.Color.LightPink;
+            this.btnXuatExcel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatExcel.ForeColor = System.Drawing.Color.Black;
+            this.btnXuatExcel.HoverState.FillColor = System.Drawing.Color.Black;
+            this.btnXuatExcel.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatExcel.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnXuatExcel.Location = new System.Drawing.Point(939, 3);
+            this.btnXuatExcel.Name = "btnXuatExcel";
+            this.btnXuatExcel.Size = new System.Drawing.Size(150, 48);
+            this.btnXuatExcel.TabIndex = 2;
+            this.btnXuatExcel.Text = "Xuất excel";
+            this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            // 
+            // btnThongKe
+            // 
+            this.btnThongKe.BorderRadius = 15;
+            this.btnThongKe.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnThongKe.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnThongKe.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnThongKe.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnThongKe.FillColor = System.Drawing.Color.LightPink;
+            this.btnThongKe.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.ForeColor = System.Drawing.Color.Black;
+            this.btnThongKe.HoverState.FillColor = System.Drawing.Color.Black;
+            this.btnThongKe.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThongKe.HoverState.ForeColor = System.Drawing.Color.White;
+            this.btnThongKe.Location = new System.Drawing.Point(783, 3);
+            this.btnThongKe.Name = "btnThongKe";
+            this.btnThongKe.Size = new System.Drawing.Size(150, 48);
+            this.btnThongKe.TabIndex = 3;
+            this.btnThongKe.Text = "Thống kê";
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnHuy
             // 
@@ -705,7 +705,7 @@
             this.dgvKhuyenMai.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleVioletRed;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PaleVioletRed;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
