@@ -101,5 +101,28 @@ namespace Main.DAO
             }
         }
 
+        public int AddDonDatHang(int maNCC)
+        {
+            try
+            {
+                DonDatHangNCC newOrder = new DonDatHangNCC
+                {
+                    NgayLapDDH = DateTime.Now, 
+                    MaNCC = maNCC,              
+                    TongTien = 0,              
+                    TrangThai = "Đang lên đơn"
+                };
+
+                dbQLBanGiayDataContext.DonDatHangNCCs.InsertOnSubmit(newOrder);
+                dbQLBanGiayDataContext.SubmitChanges();
+
+                return newOrder.MaDDH;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi thêm đơn đặt hàng: {ex.Message}");
+                return -1;
+            }
+        }
     }
 }

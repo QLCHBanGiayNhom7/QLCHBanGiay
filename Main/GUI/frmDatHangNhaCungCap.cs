@@ -1,4 +1,5 @@
 ﻿using Main.BUS;
+using Main.DAO;
 using Sunny.UI;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace Main.GUI
     public partial class frmDatHangNhaCungCap : UIPage
     {
         DDHNhaCungCapBUS don;
+        bool themddh, suaddh = false;
+        bool themct, suact = false;
         public frmDatHangNhaCungCap()
         {
             InitializeComponent();
@@ -72,6 +75,7 @@ namespace Main.GUI
 
         private void LoadDataDDH()
         {
+            loadMaDatHang();
             dgvDonDatHang.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             dgvDonDatHang.DefaultCellStyle.SelectionForeColor = Color.Black;
             dgvDonDatHang.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
@@ -99,13 +103,13 @@ namespace Main.GUI
         private void LoadStaEditDDH()
         {
             btnLuuDH.Enabled = btnHuyDH.Enabled = btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = false;
+            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = btnLoc.Enabled = false;
         }
         private void LoadStaViewDDH()
         {
             btnLuuDH.Enabled = btnHuyDH.Enabled = false;
             btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = true;
+            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = btnLoc.Enabled = true;
         }
 
         private void LoadComponentDisDDH()
@@ -144,6 +148,9 @@ namespace Main.GUI
             if (dgvChiTiet.Columns.Count > 0)
             {
                 dgvChiTiet.Columns["MaDDH"].HeaderText = "Mã Đơn Đặt Hàng";
+
+                dgvChiTiet.Columns["MaDDH"].Visible = false;
+
                 dgvChiTiet.Columns["MaSP"].HeaderText = "Mã Sản Phẩm";
                 dgvChiTiet.Columns["SoLuong"].HeaderText = "Số Lượng";
                 dgvChiTiet.Columns["DonGia"].HeaderText = "Đơn Giá";
@@ -196,11 +203,11 @@ namespace Main.GUI
                 cbMaDatHang.SelectedValue = Convert.ToInt32(selectedRow.Cells["MaDDH"].Value);
                 cbNhaCungCap.SelectedValue = Convert.ToInt32(selectedRow.Cells["MaNCC"].Value);
                 dtpNgayDatHang.Value = Convert.ToDateTime(selectedRow.Cells["NgayLapDDH"].Value);
-                cbTrangThai.SelectedValue = selectedRow.Cells["TrangThai"].Value?.ToString() ?? "";
+                cbTrangThai.Text = selectedRow.Cells["TrangThai"].Value?.ToString() ?? "";
                 txtTongTien.Text = selectedRow.Cells["TongTien"].Value?.ToString() ?? "";
 
 
-                int maDDH = Convert.ToInt32(cbMaDatHang.Text);
+                int maDDH = Convert.ToInt32(selectedRow.Cells["MaDDH"].Value);
                 LoadDataCTDDH(maDDH);
             }
         }
@@ -222,7 +229,10 @@ namespace Main.GUI
 
         private void btnThemDH_Click(object sender, EventArgs e)
         {
-
+            themddh = true;
+            MessageBox.Show("Vui lòng chọn nhà cung cấp để đặt hàng!", "Thông báo", MessageBoxButtons.OK);
+            cbNhaCungCap.Enabled = true;
+            LoadStaEditDDH();
         }
 
         private void dgvChiTiet_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
@@ -237,6 +247,151 @@ namespace Main.GUI
                 else
                 {
                     dgvChiTiet.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
+
+        private void btnXoaDH_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSuaDH_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private DataTable dtChiTiet;
+        private void loadGioHang()
+        {
+            dtChiTiet = new DataTable();
+            //dtChiTiet.Columns.Add("MaDDH", typeof(int));
+            dtChiTiet.Columns.Add("MaSP", typeof(int));
+            dtChiTiet.Columns.Add("SoLuong", typeof(int));
+            dtChiTiet.Columns.Add("DonGia", typeof(decimal));
+            dtChiTiet.Columns.Add("ThanhTien", typeof(decimal));
+
+            dgvChiTiet.DataSource = dtChiTiet;
+
+            //dgvChiTiet.Columns["MaDDH"].HeaderText = "Mã Đơn Đặt Hàng";
+            dgvChiTiet.Columns["MaSP"].HeaderText = "Mã Sản Phẩm";
+            dgvChiTiet.Columns["SoLuong"].HeaderText = "Số Lượng";
+            dgvChiTiet.Columns["DonGia"].HeaderText = "Đơn Giá";
+            dgvChiTiet.Columns["ThanhTien"].HeaderText = "Thành Tiền";
+        }
+
+        private void btnThemCT_Click(object sender, EventArgs e)
+        {
+            if (dtChiTiet == null)
+            {
+                loadGioHang();
+            }
+
+            if (themct)
+            {
+                if (string.IsNullOrEmpty(txtDonGia.Text))
+                {
+                    MessageBox.Show("Vui lòng nhập đơn giá!", "Thông báo", MessageBoxButtons.OK);
+                    return;
+                }
+
+                try
+                {
+                    int maDDH = Convert.ToInt32(cbMaDatHang.SelectedValue);
+                    int maSP = Convert.ToInt32(cbSanPham.SelectedValue);
+                    int soLuongThem = (int) numbericSoLuong.Value;
+                    decimal donGia = Convert.ToDecimal(txtDonGia.Text);
+
+                    if (soLuongThem <= 0)
+                    {
+                        MessageBox.Show("Số lượng phải lớn hơn 0!", "Thông báo", MessageBoxButtons.OK);
+                        return;
+                    }
+
+                    // Kiểm tra sản phẩm đã tồn tại
+                    DataRow[] existingRows = dtChiTiet.Select($"MaSP = {maSP}");
+                    if (existingRows.Length > 0)
+                    {
+                        // Cập nhật số lượng nếu sản phẩm đã tồn tại
+                        DataRow existingRow = existingRows[0];
+                        int soLuongCu = Convert.ToInt32(existingRow["SoLuong"]);
+                        int soLuongMoi = soLuongCu + soLuongThem;
+                        existingRow["SoLuong"] = soLuongMoi;
+                        existingRow["ThanhTien"] = soLuongMoi * donGia;
+                    }
+                    else
+                    {
+                        // Thêm sản phẩm mới
+                        DataRow newRow = dtChiTiet.NewRow();
+                        //newRow["MaDDH"] = maDDH;
+                        newRow["MaSP"] = maSP;
+                        newRow["SoLuong"] = soLuongThem;
+                        newRow["DonGia"] = donGia;
+                        newRow["ThanhTien"] = soLuongThem * donGia;
+                        dtChiTiet.Rows.Add(newRow);
+                    }
+
+                    // Tính tổng tiền
+                    decimal tongTien = dtChiTiet.AsEnumerable()
+                        .Sum(row => Convert.ToDecimal(row["ThanhTien"]));
+                    txtTongTien.Text = tongTien.ToString();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi: {ex.Message}", "Thông báo", MessageBoxButtons.OK);
+                }
+            }
+        }
+
+        private void dgvDonDatHang_CurrentCellChanged(object sender, EventArgs e)
+        {
+            //if (dgvDonDatHang.CurrentRow != null)
+            //{
+            //    DataGridViewRow selectedRow = dgvDonDatHang.CurrentRow;
+            //    cbMaDatHang.SelectedValue = Convert.ToInt32(selectedRow.Cells["MaDDH"].Value);
+            //    cbNhaCungCap.SelectedValue = Convert.ToInt32(selectedRow.Cells["MaNCC"].Value);
+            //    dtpNgayDatHang.Value = Convert.ToDateTime(selectedRow.Cells["NgayLapDDH"].Value);
+            //    cbTrangThai.SelectedValue = selectedRow.Cells["TrangThai"].Value?.ToString() ?? "";
+            //    txtTongTien.Text = selectedRow.Cells["TongTien"].Value?.ToString() ?? "";
+            //    int maDDH = Convert.ToInt32(selectedRow.Cells["MaDDH"].Value);
+            //    LoadDataCTDDH(maDDH);
+            //}
+        }
+
+        private void btnLuuDH_Click(object sender, EventArgs e)
+        {
+            if (themddh)
+            {
+                DialogResult kq = MessageBox.Show("Bạn có chắc chắn đặt hàng từ nhà cung cấp " + cbNhaCungCap.Text + " không?", "Thông báo", MessageBoxButtons.OKCancel);
+                if (kq == DialogResult.OK)
+                {
+                    int mancc = Convert.ToInt32(cbNhaCungCap.SelectedValue.ToString());
+                    int result = don.AddDonDatHang(mancc);
+                    if (result > 0)
+                    {
+                        MessageBox.Show("Đã thêm đơn đặt hàng thành công. Vui lòng chọn sản phẩm cần đặt hàng!", "Thông báo", MessageBoxButtons.OK);
+                        LoadDataDDH();
+                        themddh = false;
+                        themct = true;
+                        LoadComponentDisDDH();
+
+                        if (dgvDonDatHang.Rows.Count > 0)
+                        {
+                            int lastIndex = dgvDonDatHang.Rows.Count - 1;
+                            dgvDonDatHang.Rows[lastIndex].Selected = true;
+                            dgvDonDatHang.CurrentCell = dgvDonDatHang.Rows[lastIndex].Cells[0];
+                            dgvDonDatHang.FirstDisplayedScrollingRowIndex = lastIndex;
+                        }
+
+                        btnLuuDH.Enabled = btnHuyDH.Enabled = btnTaiLai.Enabled = btnTim.Enabled = btnXoaCT.Enabled = btnSuaCT.Enabled = false;
+                        btnLuuCT.Enabled = btnHuyCT.Enabled = true;
+                        txtDonGia.Text = txtTongTien.Text = "";
+                        numbericSoLuong.Value = 1;
+
+                        cbSanPham.Enabled = txtDonGia.Enabled = numbericSoLuong.Enabled = true;
+
+                        dgvDonDatHang.Enabled = false;
+                    }
                 }
             }
         }
