@@ -1,4 +1,4 @@
-﻿namespace Main.GUI
+namespace Main.GUI
 {
     partial class frmKhuyenMai
     {
