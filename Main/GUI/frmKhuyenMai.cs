@@ -240,7 +240,6 @@ namespace Main.GUI
                     {
                         var worksheet = package.Workbook.Worksheets.Add("Khuyến Mãi");
 
-                        // Add headers
                         string[] headers = {
                     "Mã KM",
                     "Tên Chương Trình",
@@ -260,7 +259,6 @@ namespace Main.GUI
                             worksheet.Cells[1, i + 1].Style.Fill.BackgroundColor.SetColor(Color.LightGray);
                         }
 
-                        // Add data
                         var khuyenMaiList = khuyenMaiBUS.GetKhuyenMai();
                         for (int row = 0; row < khuyenMaiList.Count; row++)
                         {

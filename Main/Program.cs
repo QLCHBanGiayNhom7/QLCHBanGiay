@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Main.GUI;
 
 namespace Main
 {
@@ -25,7 +26,8 @@ namespace Main
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTrangChu("a","a"));
+
+            Application.Run(new frmTrangChu("a", "a"));
         }
     }
 }
