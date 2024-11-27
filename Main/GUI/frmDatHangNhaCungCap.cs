@@ -162,12 +162,12 @@ namespace Main.GUI
         private void LoadStaEditCTDDH()
         {
             btnLuuCT.Enabled = btnHuyCT.Enabled = true;
-            btnThemCT.Enabled = btnXoaCT.Enabled = btnSuaCT.Enabled = false;
+            btnThemCT.Enabled = btnXoaCT.Enabled  = false;
         }
         private void LoadStaViewCTDDH()
         {
             btnLuuCT.Enabled = btnHuyCT.Enabled = false;
-            btnThemCT.Enabled = btnXoaCT.Enabled = btnSuaCT.Enabled = true;
+            btnThemCT.Enabled = btnXoaCT.Enabled  = true;
         }
 
         private void LoadComponentDisCTDDH()
@@ -289,6 +289,7 @@ namespace Main.GUI
 
             if (themct)
             {
+                btnThemCT.Enabled = btnXoaCT.Enabled = true;
                 if (string.IsNullOrEmpty(txtDonGia.Text))
                 {
                     MessageBox.Show("Vui lòng nhập đơn giá!", "Thông báo", MessageBoxButtons.OK);
@@ -343,6 +344,47 @@ namespace Main.GUI
             }
         }
 
+        private void btnXoaCT_Click(object sender, EventArgs e)
+        {
+            if (dgvChiTiet.CurrentRow != null)
+            {
+                try
+                {
+                    // Lấy chỉ số dòng đang chọn
+                    int selectedIndex = dgvChiTiet.CurrentRow.Index;
+
+                    // Lấy mã sản phẩm từ dòng được chọn
+                    int maSP = Convert.ToInt32(dgvChiTiet.Rows[selectedIndex].Cells["MaSP"].Value);
+
+                    // Tìm dòng tương ứng trong DataTable và xóa
+                    DataRow[] rowsToDelete = dtChiTiet.Select($"MaSP = {maSP}");
+                    if (rowsToDelete.Length > 0)
+                    {
+                        dtChiTiet.Rows.Remove(rowsToDelete[0]);
+                    }
+
+                    // Tính lại tổng tiền
+                    decimal tongTien = dtChiTiet.AsEnumerable()
+                        .Sum(row => Convert.ToDecimal(row["ThanhTien"]));
+                    txtTongTien.Text = tongTien.ToString();
+
+                    MessageBox.Show("Xóa sản phẩm thành công!", "Thông báo", MessageBoxButtons.OK);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Lỗi khi xóa: {ex.Message}", "Thông báo", MessageBoxButtons.OK);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn sản phẩm để xóa!", "Thông báo", MessageBoxButtons.OK);
+            }
+        }
+
+        private void btnSuaCT_Click(object sender, EventArgs e)
+        {
+                    }
+
         private void dgvDonDatHang_CurrentCellChanged(object sender, EventArgs e)
         {
             //if (dgvDonDatHang.CurrentRow != null)
@@ -374,6 +416,7 @@ namespace Main.GUI
                         themddh = false;
                         themct = true;
                         LoadComponentDisDDH();
+                        btnThemCT.Enabled = true;
 
                         if (dgvDonDatHang.Rows.Count > 0)
                         {
@@ -383,7 +426,7 @@ namespace Main.GUI
                             dgvDonDatHang.FirstDisplayedScrollingRowIndex = lastIndex;
                         }
 
-                        btnLuuDH.Enabled = btnHuyDH.Enabled = btnTaiLai.Enabled = btnTim.Enabled = btnXoaCT.Enabled = btnSuaCT.Enabled = false;
+                        btnLuuDH.Enabled = btnHuyDH.Enabled = btnTaiLai.Enabled = btnTim.Enabled = btnXoaCT.Enabled =  false;
                         btnLuuCT.Enabled = btnHuyCT.Enabled = true;
                         txtDonGia.Text = txtTongTien.Text = "";
                         numbericSoLuong.Value = 1;
