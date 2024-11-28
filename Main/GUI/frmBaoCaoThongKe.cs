@@ -16,5 +16,20 @@ namespace Main.GUI
         {
             InitializeComponent();
         }
+        private void dgvBaoCaoThongKe_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex % 2 != 0)
+                {
+                    dgvBaoCaoThongKe.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightPink;
+                    dgvBaoCaoThongKe.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                }
+                else
+                {
+                    dgvBaoCaoThongKe.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
+            }
+        }
     }
 }
