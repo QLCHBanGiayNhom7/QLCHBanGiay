@@ -290,7 +290,6 @@ namespace Main.DAO
                                 NgayLapDDH = ddh.NgayLapDDH,
                                 TongTien = ddh.TongTien,
                                 MaNCC = ncc.MaNCC,
-                                TenNCC = ncc.TenNCC,
                                 TrangThai = ddh.TrangThai
                             };
 
