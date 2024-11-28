@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Main.BUS;
 using Main.DTO;
+using Sunny.UI;
 
 namespace Main.GUI
 {
-    public partial class frmPhieuDoiTraHang : Form
+    public partial class frmPhieuDoiTraHang : UIPage
     {
         public frmPhieuDoiTraHang()
         {

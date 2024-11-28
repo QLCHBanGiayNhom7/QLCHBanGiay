@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using Main.BUS;
 using Main.DAO;
 using Main.DTO;
+using Sunny.UI;
 
 namespace Main.GUI
 {
-    public partial class frmQLNhanVien : Form
+    public partial class frmQLNhanVien : UIPage
     {
         private NhanVienBUS nhanVienBUS;
         public frmQLNhanVien()
