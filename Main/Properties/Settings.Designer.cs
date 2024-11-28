@@ -12,7 +12,7 @@ namespace Main.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.10.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,10 +26,11 @@ namespace Main.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ACER\\FUANG;Initial Catalog=db_qlshopBanGiay;Integrated Security=True")]
-        public string db_qlshopBanGiayConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A0G3GBK\\SQLEXPRESS;Initial Catalog=db_qlShopBanGiay;Integrate" +
+            "d Security=True;Encrypt=False;TrustServerCertificate=True")]
+        public string db_qlShopBanGiayConnectionString1 {
             get {
-                return ((string)(this["db_qlshopBanGiayConnectionString"]));
+                return ((string)(this["db_qlShopBanGiayConnectionString1"]));
             }
         }
     }
