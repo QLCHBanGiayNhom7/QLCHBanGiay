@@ -26,6 +26,17 @@ namespace Main.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-A0G3GBK\\SQLEXPRESS;Initial Catalog=db_qlShopBanGiay;Integrate" +
+            "d Security=True;Encrypt=False;TrustServerCertificate=True")]
+        public string db_qlShopBanGiayConnectionString1 {
+            get {
+                return ((string)(this["db_qlShopBanGiayConnectionString1"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ACER\\FUANG;Initial Catalog=db_qlshopBanGiay;Integrated Security=True")]
         public string db_qlshopBanGiayConnectionString {
             get {

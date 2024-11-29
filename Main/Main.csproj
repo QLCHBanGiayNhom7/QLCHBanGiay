@@ -171,6 +171,8 @@
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\KhoBUS.cs" />
     <Compile Include="BUS\KhuyenMaiBUS.cs" />
+    <Compile Include="BUS\NhaCungCapBUS.cs" />
+    <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
     <Compile Include="DAO\ChiTietHoaDonDAO.cs" />
     <Compile Include="DAO\DangNhapDAO.cs" />
@@ -185,6 +187,7 @@
     <Compile Include="DAO\KhoDAO.cs" />
     <Compile Include="DAO\KhuyenMaiDAO.cs" />
     <Compile Include="DAO\NhaCungCapDAO.cs" />
+    <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
     <Compile Include="DBC\SQLConnect.cs" />
     <Compile Include="DTO\ChiTietHoaDonDTO.cs" />
@@ -224,9 +227,6 @@
     <Compile Include="GUI\frmKhachHang.Designer.cs">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </Compile>
-    <None Include="DAO\dbQLBanGiay.dbml.layout">
-      <DependentUpon>dbQLBanGiay.dbml</DependentUpon>
-    </None>
     <EmbeddedResource Include="GUI\frmBaoCaoThongKe.resx">
       <DependentUpon>frmBaoCaoThongKe.cs</DependentUpon>
     </EmbeddedResource>
@@ -332,6 +332,9 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>dbQLBanGiay.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="DAO\dbQLBanGiay.dbml.layout">
+      <DependentUpon>dbQLBanGiay.dbml</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

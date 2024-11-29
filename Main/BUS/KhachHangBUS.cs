@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Main.DAO;
 using Main.DTO;
-
+using Main.DAO;
 namespace Main.BUS
 {
-    internal class KhachHangBUS
+   public class KhachHangBUS
     {
-        private KhachHangDAO khachHangDAO = new KhachHangDAO();
-
-        public KhachHangDTO GetKhachHangByMaKH(string maKH)
+        KhachHangDAO khDAO;
+        public KhachHangBUS()
         {
-            return khachHangDAO.GetKhachHangByMaKH(maKH);
+            khDAO = new KhachHangDAO(); 
         }
+        public List<KhachHangDTO> GetKhachHang()
+        {
+            return khDAO.GetAllKhachHang();
+        }
+        public bool AddKhachHang(KhachHangDTO khachHangDTO)
+        {
+            return khDAO.AddKhachHang(khachHangDTO);
+        }
+        public bool UpdateKhachHang(KhachHangDTO khachHangDTO)
+        {
+            return khDAO.UpdateKhachHang(khachHangDTO);
+        }
+        public bool DeleteKhachHang(int maKH)
+        {
+            return khDAO.DeleteKhachHang(maKH);
+        }
+
     }
 }
