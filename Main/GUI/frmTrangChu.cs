@@ -63,7 +63,7 @@ namespace Main.GUI
                 root = Aside.CreateNode("GIAO DỊCH KHÁCH HÀNG", 61451, 24, pageIndex);
                 Aside.CreateChildNode(root, AddPage(new frmKhachHang(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmQLHoaDon(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmPhieuDoiTraHang(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmPhieuDoiTraHang(), ++pageIndex));
 
                 pageIndex = 4000;
                 //root = Aside.CreateNode("SẢN PHẨM", 61451, 24, pageIndex);

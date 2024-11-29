@@ -13,7 +13,7 @@ using Sunny.UI;
 
 namespace Main.GUI
 {
-    public partial class frmPhieuDoiTraHang : Form
+    public partial class frmPhieuDoiTraHang : UIPage
     {
         public frmPhieuDoiTraHang()
         {
@@ -22,6 +22,13 @@ namespace Main.GUI
 
         private void LoadHoaDonToDataGridView()
         {
+            dgvHoaDon.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
+            dgvHoaDon.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvHoaDon.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+            dgvHoaDon.ColumnHeadersDefaultCellStyle.BackColor = Color.PaleVioletRed;
+            dgvHoaDon.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.PaleVioletRed;
+
+
             HoaDonBUS hoaDonBUS = new HoaDonBUS();
             List<HoaDonDTO> hoaDonList = hoaDonBUS.GetAllHoaDon();
 
