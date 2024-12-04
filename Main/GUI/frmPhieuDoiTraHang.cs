@@ -117,5 +117,21 @@ namespace Main.GUI
                 MessageBox.Show("Vui lòng chọn một hóa đơn để đổi trả.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void guna2GradientButton2_Click_1(object sender, EventArgs e)
+        {
+            if (dgvHoaDon.SelectedRows.Count > 0)
+            {
+                string maHD = dgvHoaDon.SelectedRows[0].Cells["MaHD"].Value.ToString();
+
+                // Mở form Đổi Trả Hàng và truyền mã hóa đơn
+                frmTaoPhieuDoiTra frmDoiTra = new frmTaoPhieuDoiTra(maHD);
+                frmDoiTra.ShowDialog(); // Mở form Đổi Trả Hàng
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một hóa đơn để đổi trả.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

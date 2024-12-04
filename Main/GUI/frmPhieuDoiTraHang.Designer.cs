@@ -111,6 +111,7 @@
             this.guna2GradientButton2.Size = new System.Drawing.Size(73, 31);
             this.guna2GradientButton2.TabIndex = 61;
             this.guna2GradientButton2.Text = "Đổi trả";
+            this.guna2GradientButton2.Click += new System.EventHandler(this.guna2GradientButton2_Click_1);
             // 
             // _DateTimePicker
             // 
@@ -155,6 +156,7 @@
             this.btnSearch.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnSearch.Size = new System.Drawing.Size(35, 33);
             this.btnSearch.TabIndex = 39;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchMaHD
             // 
