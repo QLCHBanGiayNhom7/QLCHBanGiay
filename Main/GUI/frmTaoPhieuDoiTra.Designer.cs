@@ -80,9 +80,10 @@ namespace Main.GUI
             this.btnTraHang.FillColor = System.Drawing.Color.Black;
             this.btnTraHang.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnTraHang.ForeColor = System.Drawing.Color.White;
-            this.btnTraHang.Location = new System.Drawing.Point(938, 592);
+            this.btnTraHang.Location = new System.Drawing.Point(1407, 911);
+            this.btnTraHang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTraHang.Name = "btnTraHang";
-            this.btnTraHang.Size = new System.Drawing.Size(96, 35);
+            this.btnTraHang.Size = new System.Drawing.Size(144, 54);
             this.btnTraHang.TabIndex = 54;
             this.btnTraHang.Text = "Trả hàng";
             this.btnTraHang.Click += new System.EventHandler(this.btnTraHang_Click);
@@ -91,13 +92,12 @@ namespace Main.GUI
             // 
             this.guna2ShadowPanel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(241)))), ((int)(((byte)(247)))));
-            this.guna2ShadowPanel1.Location = new System.Drawing.Point(11, 11);
-            this.guna2ShadowPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ShadowPanel1.Location = new System.Drawing.Point(16, 17);
             this.guna2ShadowPanel1.Name = "guna2ShadowPanel1";
             this.guna2ShadowPanel1.Radius = 15;
             this.guna2ShadowPanel1.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel1.ShadowShift = 1;
-            this.guna2ShadowPanel1.Size = new System.Drawing.Size(555, 270);
+            this.guna2ShadowPanel1.Size = new System.Drawing.Size(832, 415);
             this.guna2ShadowPanel1.TabIndex = 3;
             // 
             // dgvSanPham
@@ -122,10 +122,12 @@ namespace Main.GUI
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSanPham.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvSanPham.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvSanPham.Location = new System.Drawing.Point(25, 24);
+            this.dgvSanPham.Location = new System.Drawing.Point(38, 37);
+            this.dgvSanPham.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.RowHeadersVisible = false;
-            this.dgvSanPham.Size = new System.Drawing.Size(524, 245);
+            this.dgvSanPham.RowHeadersWidth = 62;
+            this.dgvSanPham.Size = new System.Drawing.Size(786, 377);
             this.dgvSanPham.TabIndex = 0;
             this.dgvSanPham.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSanPham.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -156,13 +158,12 @@ namespace Main.GUI
             this.guna2ShadowPanel2.Controls.Add(this.btnSearch);
             this.guna2ShadowPanel2.Controls.Add(this.txtSearchMaSP);
             this.guna2ShadowPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(241)))), ((int)(((byte)(247)))));
-            this.guna2ShadowPanel2.Location = new System.Drawing.Point(11, 285);
-            this.guna2ShadowPanel2.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ShadowPanel2.Location = new System.Drawing.Point(16, 438);
             this.guna2ShadowPanel2.Name = "guna2ShadowPanel2";
             this.guna2ShadowPanel2.Radius = 10;
             this.guna2ShadowPanel2.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel2.ShadowStyle = Guna.UI2.WinForms.Guna2ShadowPanel.ShadowMode.ForwardDiagonal;
-            this.guna2ShadowPanel2.Size = new System.Drawing.Size(555, 43);
+            this.guna2ShadowPanel2.Size = new System.Drawing.Size(832, 66);
             this.guna2ShadowPanel2.TabIndex = 4;
             // 
             // btnSearch
@@ -178,12 +179,13 @@ namespace Main.GUI
             this.btnSearch.HoverState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(32)))), ((int)(((byte)(43)))));
             this.btnSearch.HoverState.ForeColor = System.Drawing.Color.Transparent;
             this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
-            this.btnSearch.Location = new System.Drawing.Point(40, 3);
+            this.btnSearch.Location = new System.Drawing.Point(60, 5);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.PressedColor = System.Drawing.Color.Lime;
             this.btnSearch.PressedDepth = 10;
             this.btnSearch.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.btnSearch.Size = new System.Drawing.Size(35, 33);
+            this.btnSearch.Size = new System.Drawing.Size(52, 51);
             this.btnSearch.TabIndex = 39;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
@@ -199,13 +201,12 @@ namespace Main.GUI
             this.txtSearchMaSP.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.txtSearchMaSP.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtSearchMaSP.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtSearchMaSP.Location = new System.Drawing.Point(80, 7);
-            this.txtSearchMaSP.Margin = new System.Windows.Forms.Padding(2);
+            this.txtSearchMaSP.Location = new System.Drawing.Point(120, 11);
             this.txtSearchMaSP.Name = "txtSearchMaSP";
             this.txtSearchMaSP.PasswordChar = '\0';
             this.txtSearchMaSP.PlaceholderText = "Tìm Kiếm";
             this.txtSearchMaSP.SelectedText = "";
-            this.txtSearchMaSP.Size = new System.Drawing.Size(449, 29);
+            this.txtSearchMaSP.Size = new System.Drawing.Size(674, 45);
             this.txtSearchMaSP.TabIndex = 40;
             // 
             // guna2ShadowPanel3
@@ -213,13 +214,12 @@ namespace Main.GUI
             this.guna2ShadowPanel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2ShadowPanel3.Controls.Add(this.dgvSanPhamDoi);
             this.guna2ShadowPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(241)))), ((int)(((byte)(247)))));
-            this.guna2ShadowPanel3.Location = new System.Drawing.Point(11, 332);
-            this.guna2ShadowPanel3.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ShadowPanel3.Location = new System.Drawing.Point(16, 511);
             this.guna2ShadowPanel3.Name = "guna2ShadowPanel3";
             this.guna2ShadowPanel3.Radius = 15;
             this.guna2ShadowPanel3.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel3.ShadowShift = 1;
-            this.guna2ShadowPanel3.Size = new System.Drawing.Size(555, 270);
+            this.guna2ShadowPanel3.Size = new System.Drawing.Size(832, 415);
             this.guna2ShadowPanel3.TabIndex = 6;
             // 
             // dgvSanPhamDoi
@@ -245,10 +245,12 @@ namespace Main.GUI
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSanPhamDoi.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvSanPhamDoi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvSanPhamDoi.Location = new System.Drawing.Point(14, 10);
+            this.dgvSanPhamDoi.Location = new System.Drawing.Point(21, 15);
+            this.dgvSanPhamDoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvSanPhamDoi.Name = "dgvSanPhamDoi";
             this.dgvSanPhamDoi.RowHeadersVisible = false;
-            this.dgvSanPhamDoi.Size = new System.Drawing.Size(515, 245);
+            this.dgvSanPhamDoi.RowHeadersWidth = 62;
+            this.dgvSanPhamDoi.Size = new System.Drawing.Size(772, 377);
             this.dgvSanPhamDoi.TabIndex = 0;
             this.dgvSanPhamDoi.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSanPhamDoi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -295,10 +297,12 @@ namespace Main.GUI
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvSanPhamTra.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvSanPhamTra.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvSanPhamTra.Location = new System.Drawing.Point(14, 13);
+            this.dgvSanPhamTra.Location = new System.Drawing.Point(21, 20);
+            this.dgvSanPhamTra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvSanPhamTra.Name = "dgvSanPhamTra";
             this.dgvSanPhamTra.RowHeadersVisible = false;
-            this.dgvSanPhamTra.Size = new System.Drawing.Size(400, 176);
+            this.dgvSanPhamTra.RowHeadersWidth = 62;
+            this.dgvSanPhamTra.Size = new System.Drawing.Size(600, 271);
             this.dgvSanPhamTra.TabIndex = 55;
             this.dgvSanPhamTra.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvSanPhamTra.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -331,13 +335,12 @@ namespace Main.GUI
             this.guna2ShadowPanel5.Controls.Add(this.guna2HtmlLabel3);
             this.guna2ShadowPanel5.Controls.Add(this.dgvSanPhamTra);
             this.guna2ShadowPanel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(241)))), ((int)(((byte)(247)))));
-            this.guna2ShadowPanel5.Location = new System.Drawing.Point(620, 34);
-            this.guna2ShadowPanel5.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ShadowPanel5.Location = new System.Drawing.Point(930, 52);
             this.guna2ShadowPanel5.Name = "guna2ShadowPanel5";
             this.guna2ShadowPanel5.Radius = 15;
             this.guna2ShadowPanel5.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel5.ShadowShift = 1;
-            this.guna2ShadowPanel5.Size = new System.Drawing.Size(426, 247);
+            this.guna2ShadowPanel5.Size = new System.Drawing.Size(639, 380);
             this.guna2ShadowPanel5.TabIndex = 56;
             // 
             // txtTongTienSPTra
@@ -351,21 +354,23 @@ namespace Main.GUI
             this.txtTongTienSPTra.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTongTienSPTra.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTongTienSPTra.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTongTienSPTra.Location = new System.Drawing.Point(230, 208);
+            this.txtTongTienSPTra.Location = new System.Drawing.Point(345, 320);
+            this.txtTongTienSPTra.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtTongTienSPTra.Name = "txtTongTienSPTra";
             this.txtTongTienSPTra.PasswordChar = '\0';
             this.txtTongTienSPTra.PlaceholderText = "";
             this.txtTongTienSPTra.SelectedText = "";
-            this.txtTongTienSPTra.Size = new System.Drawing.Size(184, 27);
+            this.txtTongTienSPTra.Size = new System.Drawing.Size(276, 42);
             this.txtTongTienSPTra.TabIndex = 57;
             // 
             // guna2HtmlLabel3
             // 
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(141, 208);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(212, 320);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(83, 22);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(121, 31);
             this.guna2HtmlLabel3.TabIndex = 56;
             this.guna2HtmlLabel3.Text = "Tổng tiền:";
             // 
@@ -392,10 +397,12 @@ namespace Main.GUI
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgSanPhamDoi.DefaultCellStyle = dataGridViewCellStyle12;
             this.dgSanPhamDoi.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgSanPhamDoi.Location = new System.Drawing.Point(14, 10);
+            this.dgSanPhamDoi.Location = new System.Drawing.Point(21, 15);
+            this.dgSanPhamDoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgSanPhamDoi.Name = "dgSanPhamDoi";
             this.dgSanPhamDoi.RowHeadersVisible = false;
-            this.dgSanPhamDoi.Size = new System.Drawing.Size(400, 192);
+            this.dgSanPhamDoi.RowHeadersWidth = 62;
+            this.dgSanPhamDoi.Size = new System.Drawing.Size(600, 295);
             this.dgSanPhamDoi.TabIndex = 0;
             this.dgSanPhamDoi.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgSanPhamDoi.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -429,13 +436,12 @@ namespace Main.GUI
             this.guna2ShadowPanel4.Controls.Add(this.guna2HtmlLabel4);
             this.guna2ShadowPanel4.Controls.Add(this.dgSanPhamDoi);
             this.guna2ShadowPanel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(243)))), ((int)(((byte)(241)))), ((int)(((byte)(247)))));
-            this.guna2ShadowPanel4.Location = new System.Drawing.Point(620, 332);
-            this.guna2ShadowPanel4.Margin = new System.Windows.Forms.Padding(2);
+            this.guna2ShadowPanel4.Location = new System.Drawing.Point(930, 511);
             this.guna2ShadowPanel4.Name = "guna2ShadowPanel4";
             this.guna2ShadowPanel4.Radius = 15;
             this.guna2ShadowPanel4.ShadowColor = System.Drawing.Color.Black;
             this.guna2ShadowPanel4.ShadowShift = 1;
-            this.guna2ShadowPanel4.Size = new System.Drawing.Size(426, 255);
+            this.guna2ShadowPanel4.Size = new System.Drawing.Size(639, 392);
             this.guna2ShadowPanel4.TabIndex = 58;
             // 
             // txtTongTienSPDoi
@@ -449,21 +455,23 @@ namespace Main.GUI
             this.txtTongTienSPDoi.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtTongTienSPDoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtTongTienSPDoi.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtTongTienSPDoi.Location = new System.Drawing.Point(230, 208);
+            this.txtTongTienSPDoi.Location = new System.Drawing.Point(345, 320);
+            this.txtTongTienSPDoi.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtTongTienSPDoi.Name = "txtTongTienSPDoi";
             this.txtTongTienSPDoi.PasswordChar = '\0';
             this.txtTongTienSPDoi.PlaceholderText = "";
             this.txtTongTienSPDoi.SelectedText = "";
-            this.txtTongTienSPDoi.Size = new System.Drawing.Size(184, 27);
+            this.txtTongTienSPDoi.Size = new System.Drawing.Size(276, 42);
             this.txtTongTienSPDoi.TabIndex = 59;
             // 
             // guna2HtmlLabel4
             // 
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(141, 213);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(212, 328);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(83, 22);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(121, 31);
             this.guna2HtmlLabel4.TabIndex = 58;
             this.guna2HtmlLabel4.Text = "Tổng tiền:";
             // 
@@ -476,9 +484,10 @@ namespace Main.GUI
             this.btnChuyenSanPhamTra.FillColor = System.Drawing.Color.Black;
             this.btnChuyenSanPhamTra.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnChuyenSanPhamTra.ForeColor = System.Drawing.Color.White;
-            this.btnChuyenSanPhamTra.Location = new System.Drawing.Point(571, 99);
+            this.btnChuyenSanPhamTra.Location = new System.Drawing.Point(856, 152);
+            this.btnChuyenSanPhamTra.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChuyenSanPhamTra.Name = "btnChuyenSanPhamTra";
-            this.btnChuyenSanPhamTra.Size = new System.Drawing.Size(44, 35);
+            this.btnChuyenSanPhamTra.Size = new System.Drawing.Size(66, 54);
             this.btnChuyenSanPhamTra.TabIndex = 59;
             this.btnChuyenSanPhamTra.Text = ">>";
             this.btnChuyenSanPhamTra.Click += new System.EventHandler(this.btnChuyenSanPhamTra_Click);
@@ -493,10 +502,11 @@ namespace Main.GUI
             this.btnChuyenSanPhamDoi.FillColor = System.Drawing.Color.Black;
             this.btnChuyenSanPhamDoi.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnChuyenSanPhamDoi.ForeColor = System.Drawing.Color.White;
-            this.btnChuyenSanPhamDoi.Location = new System.Drawing.Point(571, 430);
+            this.btnChuyenSanPhamDoi.Location = new System.Drawing.Point(856, 662);
+            this.btnChuyenSanPhamDoi.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnChuyenSanPhamDoi.Name = "btnChuyenSanPhamDoi";
             this.btnChuyenSanPhamDoi.PressedColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnChuyenSanPhamDoi.Size = new System.Drawing.Size(44, 35);
+            this.btnChuyenSanPhamDoi.Size = new System.Drawing.Size(66, 54);
             this.btnChuyenSanPhamDoi.TabIndex = 60;
             this.btnChuyenSanPhamDoi.Text = ">>";
             this.btnChuyenSanPhamDoi.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -507,9 +517,10 @@ namespace Main.GUI
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(700, 3);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(1050, 5);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(268, 26);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(401, 35);
             this.guna2HtmlLabel1.TabIndex = 61;
             this.guna2HtmlLabel1.Text = "Danh sách sản phẩm cần trả";
             // 
@@ -518,17 +529,18 @@ namespace Main.GUI
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.MenuText;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(700, 302);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(1050, 465);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(275, 26);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(406, 35);
             this.guna2HtmlLabel2.TabIndex = 62;
             this.guna2HtmlLabel2.Text = "Danh sách sản phẩm cần đổi";
             // 
             // frmTaoPhieuDoiTra
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1057, 635);
+            this.ClientSize = new System.Drawing.Size(1586, 977);
             this.Controls.Add(this.guna2HtmlLabel2);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.btnChuyenSanPhamDoi);
@@ -541,8 +553,9 @@ namespace Main.GUI
             this.Controls.Add(this.guna2ShadowPanel1);
             this.Controls.Add(this.guna2ShadowPanel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmTaoPhieuDoiTra";
-            this.Text = "frmTaoPhieuDoiTra";
+            this.Text = "Tạo phiếu đổi trả";
             this.Load += new System.EventHandler(this.frmTaoPhieuDoiTra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.guna2ShadowPanel2.ResumeLayout(false);

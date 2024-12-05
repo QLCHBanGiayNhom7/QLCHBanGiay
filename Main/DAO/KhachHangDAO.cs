@@ -107,7 +107,7 @@ namespace Main.DAO
         //        return false;
         //    }
         //}
-        public bool DeleteKhachHang(int maKH)
+        public bool DeleteKhachHang(string maKH)
         {
             try
             {

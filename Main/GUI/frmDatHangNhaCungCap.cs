@@ -108,13 +108,13 @@ namespace Main.GUI
         private void LoadStaEditDDH()
         {
             btnLuuDH.Enabled = btnHuyDH.Enabled = btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = btnLoc.Enabled = btnTaiLai.Enabled = false;
+            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnLoc.Enabled = btnTaiLai.Enabled = false;
         }
         private void LoadStaViewDDH()
         {
             btnLuuDH.Enabled = btnHuyDH.Enabled = false;
             btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = btnLoc.Enabled = btnTaiLai.Enabled = true;
+            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled  = btnLoc.Enabled = btnTaiLai.Enabled = true;
         }
 
         private void LoadComponentDisDDH()

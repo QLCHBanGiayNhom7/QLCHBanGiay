@@ -14,5 +14,9 @@ namespace Main.BUS
         {
             return dangNhapDAO.KiemTraDangNhap(tenTaiKhoan, matKhau);
         }
+        public string GetChucVuByTaiKhoan(string taiKhoan)
+        {
+            return dangNhapDAO.GetChucVuByTaiKhoan(taiKhoan);
+        }
     }
 }

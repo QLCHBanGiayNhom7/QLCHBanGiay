@@ -92,13 +92,13 @@ namespace Main.GUI
         private void LoadStaEdit()
         {
             btnLuu.Enabled = btnHuy.Enabled = btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnXuatExcel.Enabled = btnThongKe.Enabled = false;
+            btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnXuatExcel.Enabled  = false;
         }
         private void LoadStaView()
         {
             btnLuu.Enabled = btnHuy.Enabled = false;
             btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnXuatExcel.Enabled = btnThongKe.Enabled = true;
+            btnThem.Enabled = btnXoa.Enabled = btnSua.Enabled = btnXuatExcel.Enabled  = true;
         }
 
         private void LoadComponentDis()

@@ -112,8 +112,6 @@
             this.guna2GradientButton2.TabIndex = 61;
             this.guna2GradientButton2.Text = "Đổi trả";
             this.guna2GradientButton2.Click += new System.EventHandler(this.guna2GradientButton2_Click);
-
-
             // 
             // _DateTimePicker
             // 
@@ -134,7 +132,7 @@
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.Location = new System.Drawing.Point(80, 15);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(100, 27);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(149, 38);
             this.guna2HtmlLabel6.TabIndex = 42;
             this.guna2HtmlLabel6.Text = "KingShoes";
             // 
@@ -266,7 +264,7 @@
             this.ClientSize = new System.Drawing.Size(948, 495);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmPhieuDoiTraHang";
-            this.Text = "frmPhieuDoiTraHang";
+            this.Text = "Phiếu đổi trả hàng";
             this.Load += new System.EventHandler(this.frmPhieuDoiTraHang_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);

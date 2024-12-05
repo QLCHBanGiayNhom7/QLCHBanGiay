@@ -30,6 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -46,7 +47,6 @@
             this.dgvBaoCaoThongKe = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaoCaoThongKe)).BeginInit();
             this.SuspendLayout();
@@ -58,7 +58,7 @@
             this.label1.Location = new System.Drawing.Point(331, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(311, 32);
+            this.label1.Size = new System.Drawing.Size(475, 51);
             this.label1.TabIndex = 0;
             this.label1.Text = "BÁO CÁO THỐNG KÊ";
             // 
@@ -87,13 +87,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin";
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.CornflowerBlue;
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.Control;
+            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.White;
+            this.dateTimePicker1.Location = new System.Drawing.Point(674, 52);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 35);
+            this.dateTimePicker1.TabIndex = 14;
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(199, 229);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(301, 28);
+            this.comboBox1.Size = new System.Drawing.Size(301, 37);
             this.comboBox1.TabIndex = 13;
             // 
             // label6
@@ -102,7 +112,7 @@
             this.label6.Location = new System.Drawing.Point(29, 242);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 20);
+            this.label6.Size = new System.Drawing.Size(48, 29);
             this.label6.TabIndex = 12;
             this.label6.Text = "Lọc";
             // 
@@ -161,7 +171,7 @@
             this.textBox4.Location = new System.Drawing.Point(199, 175);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(301, 26);
+            this.textBox4.Size = new System.Drawing.Size(301, 35);
             this.textBox4.TabIndex = 7;
             // 
             // textBox2
@@ -169,7 +179,7 @@
             this.textBox2.Location = new System.Drawing.Point(199, 117);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(301, 26);
+            this.textBox2.Size = new System.Drawing.Size(301, 35);
             this.textBox2.TabIndex = 5;
             // 
             // textBox1
@@ -177,7 +187,7 @@
             this.textBox1.Location = new System.Drawing.Point(199, 52);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(301, 26);
+            this.textBox1.Size = new System.Drawing.Size(301, 35);
             this.textBox1.TabIndex = 4;
             // 
             // label5
@@ -186,7 +196,7 @@
             this.label5.Location = new System.Drawing.Point(29, 180);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(136, 20);
+            this.label5.Size = new System.Drawing.Size(199, 29);
             this.label5.TabIndex = 3;
             this.label5.Text = "Nhân viên phụ trách :";
             // 
@@ -196,7 +206,7 @@
             this.label4.Location = new System.Drawing.Point(573, 57);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 20);
+            this.label4.Size = new System.Drawing.Size(134, 29);
             this.label4.TabIndex = 2;
             this.label4.Text = "Ngày lập HĐ :";
             // 
@@ -206,7 +216,7 @@
             this.label3.Location = new System.Drawing.Point(29, 122);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 20);
+            this.label3.Size = new System.Drawing.Size(128, 29);
             this.label3.TabIndex = 1;
             this.label3.Text = "Khách hàng :";
             // 
@@ -216,7 +226,7 @@
             this.label2.Location = new System.Drawing.Point(29, 57);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 20);
+            this.label2.Size = new System.Drawing.Size(83, 29);
             this.label2.TabIndex = 0;
             this.label2.Text = "Số HĐ :";
             // 
@@ -229,6 +239,7 @@
             this.dgvBaoCaoThongKe.Location = new System.Drawing.Point(17, 388);
             this.dgvBaoCaoThongKe.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgvBaoCaoThongKe.Name = "dgvBaoCaoThongKe";
+            this.dgvBaoCaoThongKe.RowHeadersWidth = 62;
             this.dgvBaoCaoThongKe.Size = new System.Drawing.Size(1033, 286);
             this.dgvBaoCaoThongKe.TabIndex = 2;
             // 
@@ -238,7 +249,7 @@
             this.label7.Location = new System.Drawing.Point(16, 695);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 20);
+            this.label7.Size = new System.Drawing.Size(104, 29);
             this.label7.TabIndex = 3;
             this.label7.Text = "Xin chào : ";
             // 
@@ -249,24 +260,13 @@
             this.label8.Location = new System.Drawing.Point(101, 695);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(191, 20);
+            this.label8.Size = new System.Drawing.Size(283, 29);
             this.label8.TabIndex = 4;
             this.label8.Text = "TÊN NHÂN VIÊN ĐĂNG NHẬP";
             // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CalendarForeColor = System.Drawing.Color.CornflowerBlue;
-            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.Control;
-            this.dateTimePicker1.CalendarTitleBackColor = System.Drawing.Color.White;
-            this.dateTimePicker1.Location = new System.Drawing.Point(674, 52);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 26);
-            this.dateTimePicker1.TabIndex = 14;
-            // 
             // frmBaoCaoThongKe
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.LightPink;
             this.ClientSize = new System.Drawing.Size(1067, 729);
             this.Controls.Add(this.label8);
@@ -277,7 +277,7 @@
             this.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmBaoCaoThongKe";
-            this.Text = "frmBaoCaoThongKe";
+            this.Text = "Báo cáo thống kê";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaoCaoThongKe)).EndInit();

@@ -296,7 +296,7 @@ namespace Main.GUI
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label6);
             this.Name = "frmKho";
-            this.Text = "frmKho";
+            this.Text = "Kho hàng";
             ((System.ComponentModel.ISupportInitialize)(this.dgvKho)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

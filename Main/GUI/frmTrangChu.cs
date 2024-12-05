@@ -13,76 +13,85 @@ namespace Main.GUI
 {
     public partial class frmTrangChu : UIAsideHeaderMainFrame
     {
-        private string taiKhoan = "a";
-        private string matKhau = "a";
+        private string taiKhoan;
         private DangNhapBUS dangNhapBUS;
-        public frmTrangChu(string taiKhoan, string matKhau)
+        public frmTrangChu(string taiKhoan)
         {
             InitializeComponent();
             this.taiKhoan = taiKhoan;
-            this.matKhau = matKhau;
             lblTenDangNhap.Text = taiKhoan;
             dangNhapBUS = new DangNhapBUS();
             KiemTraQuyen();
         }
         private void KiemTraQuyen()
         {
-            string chucVu = null;
+            string chucVu = dangNhapBUS.GetChucVuByTaiKhoan(taiKhoan);
+
+            if (string.IsNullOrEmpty(chucVu))
+            {
+                chucVu = "Quản lý";
+            }
 
             if (chucVu == "Nhân viên bán hàng")
             {
-               
+                int pageIndex = 2000;
+                TreeNode root = Aside.CreateNode("HÓA ĐƠN", 61451, 24, pageIndex);
+                Aside.NodeMouseClick += Aside_NodeMouseClick;
             }
-            if (chucVu == "Nhân viên quản lý hàng hóa")
+            else if (chucVu == "Nhân viên quản lý hàng hóa")
             {
-                
+                int pageIndex = 3000;
+                TreeNode root = Aside.CreateNode("KHO HÀNG", 61451, 24, pageIndex);
+                Aside.NodeMouseClick += Aside_NodeMouseClick;
             }
-            if (chucVu == "Nhân viên bảo hành và đổi trả")
+            else if (chucVu == "Nhân viên bảo hành và đổi trả")
             {
-               
+                int pageIndex = 4000;
+                TreeNode root = Aside.CreateNode("ĐỔI TRẢ", 61451, 24, pageIndex);
+                Aside.NodeMouseClick += Aside_NodeMouseClick;
             }
-            if (chucVu == "Nhân viên marketing")
+            else if (chucVu == "Nhân viên marketing")
+            {
+                int pageIndex = 5000;
+                TreeNode root = Aside.CreateNode("KHUYẾN MÃI", 61451, 24, pageIndex);
+                Aside.NodeMouseClick += Aside_NodeMouseClick;
+            }
+            else if (chucVu == "Nhân viên thống kê")
+            {
+                int pageIndex = 6000;
+                TreeNode root = Aside.CreateNode("THỐNG KÊ", 61451, 24, pageIndex);
+                Aside.NodeMouseClick += Aside_NodeMouseClick;
+            }
+            else if (chucVu == "Quản lý")
             {
                 int pageIndex = 1000;
                 TreeNode root = Aside.CreateNode("KHUYẾN MÃI", 61451, 24, pageIndex);
                 Aside.NodeMouseClick += Aside_NodeMouseClick;
-            }
-            if (chucVu == "Nhân viên thống kê")
-            {
-               
-            }
-            if (chucVu == "Quản lý" || chucVu == null)
-            {
-                int pageIndex = 1000;
-                TreeNode root = Aside.CreateNode("KHUYẾN MÃI", 61451, 24, pageIndex);
-
-                //Aside.CreateChildNode(root, AddPage(new frmDanhMuc(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmSanPham(), ++pageIndex));
 
                 pageIndex = 3000;
                 root = Aside.CreateNode("GIAO DỊCH KHÁCH HÀNG", 61451, 24, pageIndex);
-                //Aside.CreateChildNode(root, AddPage(new frmKhachHang(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmQLHoaDon(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmKhachHang(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmQLHoaDon(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmPhieuDoiTraHang(), ++pageIndex));
-
-                pageIndex = 4000;
-                //root = Aside.CreateNode("SẢN PHẨM", 61451, 24, pageIndex);
 
                 pageIndex = 5000;
                 root = Aside.CreateNode("KHO HÀNG", 61451, 24, pageIndex);
-                //Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmQLNhaCungCap(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
+
                 pageIndex = 6000;
                 root = Aside.CreateNode("NHÀ CUNG CẤP", 61451, 24, pageIndex);
+
                 pageIndex = 7000;
                 root = Aside.CreateNode("NHÂN VIÊN", 61451, 24, pageIndex);
+                Aside.NodeMouseClick += Aside_NodeMouseClick;
                 pageIndex = 9000;
                 root = Aside.CreateNode("BÁO CÁO THỐNG KÊ", 61451, 24, pageIndex);
-
-
                 Aside.NodeMouseClick += Aside_NodeMouseClick;
             }
         }
+
 
         private void Aside_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
@@ -93,13 +102,6 @@ namespace Main.GUI
                 AddPage(page, 7001);
                 SelectPage(7001);
             }
-            else if (e.Node.Text == "NHÀ CUNG CẤP")
-            {
-                var page = new frmQLNhaCungCap();
-                AddPage(page, 6001);
-                SelectPage(6001);
-            }
-            
             else if (e.Node.Text == "BÁO CÁO THỐNG KÊ")
             {
                 var page = new frmBaoCaoThongKe();

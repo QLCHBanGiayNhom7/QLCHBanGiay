@@ -40,7 +40,7 @@ namespace Main.BUS
         //    return khDAO.UpdateKhachHang(khachHangDTO);
         //}
 
-        public bool DeleteKhachHang(int maKH)
+        public bool DeleteKhachHang(string maKH)
         {
             return khDAO.DeleteKhachHang(maKH);
         }

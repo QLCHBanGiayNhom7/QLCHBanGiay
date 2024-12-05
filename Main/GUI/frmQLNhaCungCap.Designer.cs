@@ -497,7 +497,7 @@
             this.ClientSize = new System.Drawing.Size(1320, 805);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmQLNhaCungCap";
-            this.Text = "frmQLNhaCungCap";
+            this.Text = "Quản lý nhà cung cấp";
             this.Load += new System.EventHandler(this.frmQLNhaCungCap_Load);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel4.PerformLayout();

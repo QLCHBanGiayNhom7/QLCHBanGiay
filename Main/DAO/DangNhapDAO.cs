@@ -9,8 +9,8 @@ namespace Main.DAO
 {
     public class DangNhapDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_shopBanGiay;Trusted_Connection=True";
-
+        private string connectionString = "Server=ACER\\FUANG;Database=db_shopBanGiay;Trusted_Connection=True";
+        dbQLBanGiayDataContext dbQLBanGiayDataContext = new dbQLBanGiayDataContext();
         public bool KiemTraDangNhap(string tenTaiKhoan, string matKhau)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -26,5 +26,12 @@ namespace Main.DAO
                 }
             }
         }
+
+        public string GetChucVuByTaiKhoan(string taiKhoan)
+        {
+            var nhanVien = dbQLBanGiayDataContext.NhanViens.FirstOrDefault(nv => nv.IdNguoiDung == taiKhoan);
+            return nhanVien?.ChucVu;
+        }
+
     }
 }

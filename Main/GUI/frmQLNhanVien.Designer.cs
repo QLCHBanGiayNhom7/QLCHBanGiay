@@ -366,7 +366,7 @@
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1458, 56);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1458, 55);
             this.tableLayoutPanel4.TabIndex = 1;
             // 
             // tableLayoutPanel5
@@ -379,7 +379,7 @@
             this.tableLayoutPanel5.Controls.Add(this.btnTim, 2, 0);
             this.tableLayoutPanel5.Controls.Add(this.txtTim, 1, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 259);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 258);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -607,12 +607,12 @@
             this.dgvNV.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvNV.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvNV.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvNV.Location = new System.Drawing.Point(3, 314);
+            this.dgvNV.Location = new System.Drawing.Point(3, 313);
             this.dgvNV.Name = "dgvNV";
             this.dgvNV.ReadOnly = true;
             this.dgvNV.RowHeadersVisible = false;
             this.dgvNV.RowHeadersWidth = 62;
-            this.dgvNV.Size = new System.Drawing.Size(1458, 481);
+            this.dgvNV.Size = new System.Drawing.Size(1458, 482);
             this.dgvNV.TabIndex = 3;
             this.dgvNV.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvNV.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -645,7 +645,7 @@
             this.ClientSize = new System.Drawing.Size(1464, 798);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmQLNhanVien";
-            this.Text = "frmQLNhanVien";
+            this.Text = "Quản lý nhân viên";
             this.Load += new System.EventHandler(this.frmQLNhanVien_Load);
             this.tableLayoutPanel4.ResumeLayout(false);
             this.tableLayoutPanel5.ResumeLayout(false);

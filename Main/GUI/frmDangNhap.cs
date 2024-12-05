@@ -43,7 +43,7 @@ namespace Main.GUI
             MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             // Chuyển sang form chính
-            frmTrangChu formMain = new frmTrangChu("a","a");
+            frmTrangChu formMain = new frmTrangChu(tenTaiKhoan);
             formMain.Show();
             this.Hide();
         }

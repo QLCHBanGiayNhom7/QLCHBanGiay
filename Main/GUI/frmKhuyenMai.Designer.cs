@@ -80,7 +80,7 @@ namespace Main.GUI
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(732, 3);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(127, 20);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(198, 29);
             this.guna2HtmlLabel3.TabIndex = 2;
             this.guna2HtmlLabel3.Text = "Giá trị khuyến mãi";
             // 
@@ -144,7 +144,7 @@ namespace Main.GUI
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.Location = new System.Drawing.Point(732, 46);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(96, 20);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(298, 37);
             this.guna2HtmlLabel4.TabIndex = 9;
             this.guna2HtmlLabel4.Text = "Ngày kết thúc";
             // 
@@ -155,7 +155,7 @@ namespace Main.GUI
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(3, 46);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(95, 20);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(378, 37);
             this.guna2HtmlLabel2.TabIndex = 7;
             this.guna2HtmlLabel2.Text = "Ngày bắt đầu";
             // 
@@ -166,7 +166,7 @@ namespace Main.GUI
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.Location = new System.Drawing.Point(3, 3);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(107, 20);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(378, 37);
             this.guna2HtmlLabel1.TabIndex = 0;
             this.guna2HtmlLabel1.Text = "Mã khuyến mãi";
             // 
@@ -253,7 +253,7 @@ namespace Main.GUI
             this.guna2HtmlLabel5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel5.Location = new System.Drawing.Point(3, 89);
             this.guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            this.guna2HtmlLabel5.Size = new System.Drawing.Size(83, 20);
+            this.guna2HtmlLabel5.Size = new System.Drawing.Size(378, 29);
             this.guna2HtmlLabel5.TabIndex = 24;
             this.guna2HtmlLabel5.Text = "Hóa đơn từ";
             // 
@@ -264,7 +264,7 @@ namespace Main.GUI
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.Location = new System.Drawing.Point(732, 89);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(129, 20);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(298, 29);
             this.guna2HtmlLabel6.TabIndex = 25;
             this.guna2HtmlLabel6.Text = "Điều kiện áp dụng";
             // 
@@ -275,7 +275,7 @@ namespace Main.GUI
             this.guna2HtmlLabel7.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel7.Location = new System.Drawing.Point(3, 132);
             this.guna2HtmlLabel7.Name = "guna2HtmlLabel7";
-            this.guna2HtmlLabel7.Size = new System.Drawing.Size(176, 20);
+            this.guna2HtmlLabel7.Size = new System.Drawing.Size(378, 29);
             this.guna2HtmlLabel7.TabIndex = 26;
             this.guna2HtmlLabel7.Text = "Chương trình khuyến mãi";
             // 
@@ -399,7 +399,7 @@ namespace Main.GUI
             this.guna2HtmlLabel8.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel8.Location = new System.Drawing.Point(732, 132);
             this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(72, 20);
+            this.guna2HtmlLabel8.Size = new System.Drawing.Size(298, 29);
             this.guna2HtmlLabel8.TabIndex = 32;
             this.guna2HtmlLabel8.Text = "Trạng thái";
             // 
@@ -445,9 +445,9 @@ namespace Main.GUI
             this.btnSua.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnSua.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnSua.Location = new System.Drawing.Point(353, 3);
+            this.btnSua.Location = new System.Drawing.Point(347, 3);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(169, 48);
+            this.btnSua.Size = new System.Drawing.Size(166, 48);
             this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
@@ -466,9 +466,9 @@ namespace Main.GUI
             this.btnLuu.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnLuu.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLuu.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnLuu.Location = new System.Drawing.Point(528, 3);
+            this.btnLuu.Location = new System.Drawing.Point(519, 3);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(169, 48);
+            this.btnLuu.Size = new System.Drawing.Size(166, 48);
             this.btnLuu.TabIndex = 6;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
@@ -489,7 +489,7 @@ namespace Main.GUI
             this.btnThem.HoverState.ForeColor = System.Drawing.Color.White;
             this.btnThem.Location = new System.Drawing.Point(3, 3);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(169, 48);
+            this.btnThem.Size = new System.Drawing.Size(166, 48);
             this.btnThem.TabIndex = 5;
             this.btnThem.Text = "Thêm";
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
@@ -508,9 +508,9 @@ namespace Main.GUI
             this.btnXoa.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnXoa.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoa.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnXoa.Location = new System.Drawing.Point(178, 3);
+            this.btnXoa.Location = new System.Drawing.Point(175, 3);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(169, 48);
+            this.btnXoa.Size = new System.Drawing.Size(166, 48);
             this.btnXoa.TabIndex = 0;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -529,9 +529,9 @@ namespace Main.GUI
             this.btnTaiLai.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnTaiLai.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTaiLai.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnTaiLai.Location = new System.Drawing.Point(1053, 3);
+            this.btnTaiLai.Location = new System.Drawing.Point(1035, 3);
             this.btnTaiLai.Name = "btnTaiLai";
-            this.btnTaiLai.Size = new System.Drawing.Size(169, 48);
+            this.btnTaiLai.Size = new System.Drawing.Size(166, 48);
             this.btnTaiLai.TabIndex = 32;
             this.btnTaiLai.Text = "Tải lại";
             this.btnTaiLai.Click += new System.EventHandler(this.btnTaiLai_Click);
@@ -550,9 +550,9 @@ namespace Main.GUI
             this.btnThoat.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnThoat.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThoat.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnThoat.Location = new System.Drawing.Point(1228, 3);
+            this.btnThoat.Location = new System.Drawing.Point(1207, 3);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(174, 48);
+            this.btnThoat.Size = new System.Drawing.Size(170, 48);
             this.btnThoat.TabIndex = 4;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
@@ -571,9 +571,9 @@ namespace Main.GUI
             this.btnXuatExcel.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnXuatExcel.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXuatExcel.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnXuatExcel.Location = new System.Drawing.Point(878, 3);
+            this.btnXuatExcel.Location = new System.Drawing.Point(863, 3);
             this.btnXuatExcel.Name = "btnXuatExcel";
-            this.btnXuatExcel.Size = new System.Drawing.Size(169, 48);
+            this.btnXuatExcel.Size = new System.Drawing.Size(166, 48);
             this.btnXuatExcel.TabIndex = 2;
             this.btnXuatExcel.Text = "Xuất excel";
             this.btnXuatExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
@@ -593,9 +593,9 @@ namespace Main.GUI
             this.btnHuy.HoverState.FillColor = System.Drawing.Color.Black;
             this.btnHuy.HoverState.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHuy.HoverState.ForeColor = System.Drawing.Color.White;
-            this.btnHuy.Location = new System.Drawing.Point(703, 3);
+            this.btnHuy.Location = new System.Drawing.Point(691, 3);
             this.btnHuy.Name = "btnHuy";
-            this.btnHuy.Size = new System.Drawing.Size(169, 48);
+            this.btnHuy.Size = new System.Drawing.Size(166, 48);
             this.btnHuy.TabIndex = 33;
             this.btnHuy.Text = "Hủy";
             this.btnHuy.Click += new System.EventHandler(this.btnHuy_Click);
@@ -753,7 +753,7 @@ namespace Main.GUI
             this.ClientSize = new System.Drawing.Size(1386, 719);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmKhuyenMai";
-            this.Text = "KHUYẾN MÃI";
+            this.Text = "Khuyến mãi";
             this.Load += new System.EventHandler(this.frmKhuyenMai_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
