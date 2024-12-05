@@ -32,6 +32,12 @@ namespace Main.DAO
         {
             try
             {
+                var lastEmployee = dbQLBanGiayDataContext.NhaCungCaps.OrderByDescending(n => n.MaNCC).FirstOrDefault();
+                string lastCode = lastEmployee == null ? "NCC" : lastEmployee.MaNCC;
+                string numberPart = lastCode.Substring(3);
+                int newNumber = int.Parse(numberPart) + 1;
+                string newCode = "NCC" + newNumber.ToString("D2");
+                ncc.MaNCC = newCode;
                 dbQLBanGiayDataContext.NhaCungCaps.InsertOnSubmit(ncc);
                 dbQLBanGiayDataContext.SubmitChanges();
                 return true;
@@ -68,12 +74,12 @@ namespace Main.DAO
         }
 
         // 4. Xóa nhà cung cấp
-        public string DeleteNhaCC(List<int?> maNCCList)
+        public string DeleteNhaCC(List<string> maNCCList)
         {
             try
             {
                 var nccWithOrders = dbQLBanGiayDataContext.DonDatHangNCCs
-                    .Where(x => maNCCList.Contains(x.MaNCC))
+                   .Where(x => maNCCList.Contains(x.MaNCC))
                     .Select(x => x.MaNCC)
                     .ToList();
 

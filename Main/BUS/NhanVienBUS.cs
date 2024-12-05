@@ -57,7 +57,7 @@ namespace Main.BUS
         {
             try
             {
-                if (nv.MaNV <= 0)
+                if (nv.MaNV == null)
                 {
                     Console.WriteLine("Mã nhân viên không hợp lệ.");
                     return false;
@@ -73,13 +73,13 @@ namespace Main.BUS
         }
 
         // 4. Xóa nhân viên
-        public string DeleteNhanVien(List<int?> maNVList)
+        public string DeleteNhanVien(List<string> maNVList)
         {
             try
             {
                 foreach (var maNV in maNVList)
                 {
-                    var result = nhanVienDAO.DeleteNhanVien(new List<int?> { maNV });
+                    var result = nhanVienDAO.DeleteNhanVien(new List<string> { maNV });
                     if (result.Contains("Không thể xóa"))
                     {
                         return result;

@@ -35,7 +35,7 @@ namespace Main.BUS
         }
 
         // 4. Xóa nhà cung cấp
-        public string DeleteNhaCC(List<int?> maNCCList)
+        public string DeleteNhaCC(List<string> maNCCList)
         {
             return nhaCungCapDAO.DeleteNhaCC(maNCCList);
         }

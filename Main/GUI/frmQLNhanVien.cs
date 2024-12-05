@@ -132,7 +132,10 @@ namespace Main.GUI
         }
         private void btnReset_Click(object sender, EventArgs e)
         {
+            dtpNS.ValueChanged -= dtpNS_ValueChanged;
             Reset();
+            dtpNS.ValueChanged += dtpNS_ValueChanged;
+
         }
 
         private void Reset()
@@ -195,7 +198,7 @@ namespace Main.GUI
                     return;
                 }
 
-                List<int?> maNVList = new List<int?> { int.Parse(txtMaNV.Text) };
+                List<string> maNVList = new List<string> { txtMaNV.Text};
                 string result = nhanVienBUS.DeleteNhanVien(maNVList);
                 MessageBox.Show(result);
                 LoadNV();
@@ -246,6 +249,9 @@ namespace Main.GUI
             if (string.IsNullOrEmpty(txtMaNV.Text))
             {
                 MessageBox.Show("Vui lòng chọn một nhân viên để sửa!");
+                TextboxDisable();
+                btnXoa.Enabled = true;
+                btnThem.Enabled = true;
                 return;
             }
         }
@@ -274,15 +280,9 @@ namespace Main.GUI
 
                 if (!string.IsNullOrEmpty(txtMaNV.Text))
                 {
-                    if (!int.TryParse(txtMaNV.Text, out int maNV))
-                    {
-                        MessageBox.Show("Mã nhân viên phải là số.");
-                        return;
-                    }
-
                     NhanVien nv = new NhanVien()
                     {
-                        MaNV = maNV,
+                        MaNV = txtMaNV.Text,
                         TenNV = txtTenNV.Text,
                         NgaySinh = dtpNS.Value,
                         GioiTinh = rdoNam.Checked ? "Nam" : "Nữ",

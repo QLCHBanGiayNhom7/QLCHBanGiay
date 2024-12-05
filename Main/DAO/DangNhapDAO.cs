@@ -18,15 +18,15 @@ namespace Main.DAO
                     .Select(nd => nd.IdNguoiDung)
                     .FirstOrDefault();
 
-                if (idNguoiDung == 0)
-                    return null;
+                //if (idNguoiDung == 0)
+                //    return null;
 
                 var chucVu = dbQLBanGiayDataContext.NhanViens
                     .Where(nv => nv.IdNguoiDung == idNguoiDung)
                     .Select(nv => nv.ChucVu)
                     .FirstOrDefault();
 
-                return chucVu; 
+                return chucVu;
             }
             catch (Exception ex)
             {
