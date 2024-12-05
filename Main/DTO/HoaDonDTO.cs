@@ -8,12 +8,13 @@ namespace Main.DTO
 {
     internal class HoaDonDTO
     {
-        public string MaHD { get; set; }
+        public string MaHD { get; set; } 
         public DateTime NgayLapHD { get; set; }
         public decimal TongTien { get; set; }
-        public string MaKH { get; set; }
         public string MaNV { get; set; }
-        public string MaKM { get; set; }
+        public string MaKH { get; set; } 
+        public string MaKM { get; set; } 
+
 
         public HoaDonDTO() { }
 

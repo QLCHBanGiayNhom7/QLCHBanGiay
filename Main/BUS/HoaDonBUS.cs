@@ -12,31 +12,35 @@ namespace Main.BUS
     internal class HoaDonBUS
     {
         private HoaDonDAO hoaDonDAO = new HoaDonDAO();
-
-        // Lấy tất cả hóa đơn
         public List<HoaDonDTO> GetAllHoaDon()
         {
             DataTable dt = hoaDonDAO.GetAllHoaDon();
             List<HoaDonDTO> hoaDonList = new List<HoaDonDTO>();
-
-            foreach (DataRow row in dt.Rows)
+            if (dt != null && dt.Rows.Count > 0) // Kiểm tra null và số lượng dòng
             {
-                HoaDonDTO hoaDon = new HoaDonDTO
+                foreach (DataRow row in dt.Rows)
                 {
-                    MaHD = row["MaHD"].ToString(),
-                    NgayLapHD = Convert.ToDateTime(row["NgayLapHD"]),
-                    TongTien = Convert.ToDecimal(row["TongTien"]),
-                    MaKH = row["MaKH"].ToString(),
-                    MaNV = row["MaNV"].ToString(),
-                    MaKM = row["MaKM"].ToString()
-                };
-                hoaDonList.Add(hoaDon);
+                    HoaDonDTO hoaDon = new HoaDonDTO
+                    {
+                        MaHD = row["MaHD"]?.ToString() ?? string.Empty, // Kiểm tra null
+                        NgayLapHD = row["NgayLapHD"] == DBNull.Value ? DateTime.MinValue : Convert.ToDateTime(row["NgayLapHD"]),
+                        TongTien = row["TongTien"] == DBNull.Value ? 0 : Convert.ToDecimal(row["TongTien"]),
+                        MaNV = row["MaNV"]?.ToString() ?? string.Empty,
+                        MaKH = row["MaKH"]?.ToString() ?? string.Empty
+                    };
+
+                    hoaDonList.Add(hoaDon);
+                }
+            }
+            else
+            {
+                // Bạn có thể thêm thông báo nếu cần
+                Console.WriteLine("Không có dữ liệu hóa đơn để xử lý.");
             }
 
             return hoaDonList;
         }
 
-        // Tìm kiếm hóa đơn theo mã
         public HoaDonDTO SearchHoaDonByMaHD(string maHD)
         {
             DataTable dt = hoaDonDAO.SearchHoaDonByMaHD(maHD);
@@ -49,17 +53,23 @@ namespace Main.BUS
                     MaHD = row["MaHD"].ToString(),
                     NgayLapHD = Convert.ToDateTime(row["NgayLapHD"]),
                     TongTien = Convert.ToDecimal(row["TongTien"]),
-                    MaKH = row["MaKH"].ToString(),
                     MaNV = row["MaNV"].ToString(),
-                    MaKM = row["MaKM"].ToString()
+                    MaKH = row["MaKH"].ToString()
                 };
             }
+
             return null; // Không tìm thấy hóa đơn
         }
-
-        public bool CapNhatTongTien(string maHD)
+        public bool AddHoaDon(HoaDonDTO hoaDonDTO)
         {
-            return hoaDonDAO.CapNhatTongTien(maHD);
+            HoaDonDAO hoaDonDAO = new HoaDonDAO();
+            return hoaDonDAO.AddHoaDon(hoaDonDTO);
+        }
+
+        public bool UpdateHoaDon(HoaDonDTO hoaDonDTO)
+        {
+            HoaDonDAO hoaDonDAO = new HoaDonDAO();
+            return hoaDonDAO.UpdateHoaDon(hoaDonDTO);
         }
     }
 }
