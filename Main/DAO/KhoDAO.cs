@@ -10,7 +10,7 @@ namespace Main.DAO
 {
     internal class KhoDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_qlshopBanGiay;Trusted_Connection=True;";
+        private string connectionString = "Server=ACER\\Fuang;Database=db_qlshopBanGiay;Trusted_Connection=True;";
         public KhoDTO GetKho(string maSP)
         {
             KhoDTO kho = null;
@@ -51,6 +51,7 @@ namespace Main.DAO
         // Cập nhật số lượng trong kho (Khi trả hoặc đổi hàng)
         public bool CapNhatKho(string maSP, int soLuong, bool isTra)
         {
+            int maspdoi = Convert.ToInt32(maSP);
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -63,7 +64,7 @@ namespace Main.DAO
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@soLuong", soLuong);
-                        cmd.Parameters.AddWithValue("@maSP", maSP);
+                        cmd.Parameters.AddWithValue("@maSP", maspdoi);
                         cmd.ExecuteNonQuery();
                     }
                 }

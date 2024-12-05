@@ -9,10 +9,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Main.BUS;
 using Main.DTO;
+using Sunny.UI;
 
 namespace Main.GUI
 {
-    public partial class frmPhieuDoiTraHang : Form
+    public partial class frmPhieuDoiTraHang : UIPage
     {
         public frmPhieuDoiTraHang()
         {
@@ -21,6 +22,13 @@ namespace Main.GUI
 
         private void LoadHoaDonToDataGridView()
         {
+            dgvHoaDon.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
+            dgvHoaDon.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dgvHoaDon.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+            dgvHoaDon.ColumnHeadersDefaultCellStyle.BackColor = Color.PaleVioletRed;
+            dgvHoaDon.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.PaleVioletRed;
+
+
             HoaDonBUS hoaDonBUS = new HoaDonBUS();
             List<HoaDonDTO> hoaDonList = hoaDonBUS.GetAllHoaDon();
 
@@ -77,24 +85,40 @@ namespace Main.GUI
 
         private void LoadKhachHangInfo(string maKH)
         {
-            KhachHangBUS khachHangBUS = new KhachHangBUS();
-            KhachHangDTO kh = khachHangBUS.GetKhachHangByMaKH(maKH);
+            //KhachHangBUS khachHangBUS = new KhachHangBUS();
+            //KhachHangDTO kh = khachHangBUS.GetKhachHang();
 
-            if (kh != null)
-            {
-                txtMaKH.Text = kh.MaKH;
-                txtTenKH.Text = kh.TenKH;
-                txtSoDT.Text = kh.SoDienThoai;
-                txtNgaySinh.Text = kh.NgaySinh;
-                txtGioiTinh.Text = kh.GioiTinh;
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            //if (kh != null)
+            //{
+            //    txtMaKH.Text = kh.MaKH;
+            //    txtTenKH.Text = kh.TenKH;
+            //    txtSoDT.Text = kh.SoDienThoai;
+            //    txtNgaySinh.Text = kh.NgaySinh;
+            //    txtGioiTinh.Text = kh.GioiTinh;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Không tìm thấy thông tin khách hàng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //}
         }
 
         private void guna2GradientButton2_Click(object sender, EventArgs e)
+        {
+            if (dgvHoaDon.SelectedRows.Count > 0)
+            {
+                string maHD = dgvHoaDon.SelectedRows[0].Cells["MaHD"].Value.ToString();
+
+                // Mở form Đổi Trả Hàng và truyền mã hóa đơn
+                frmTaoPhieuDoiTra frmDoiTra = new frmTaoPhieuDoiTra(maHD);
+                frmDoiTra.ShowDialog(); // Mở form Đổi Trả Hàng
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một hóa đơn để đổi trả.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void guna2GradientButton2_Click_1(object sender, EventArgs e)
         {
             if (dgvHoaDon.SelectedRows.Count > 0)
             {

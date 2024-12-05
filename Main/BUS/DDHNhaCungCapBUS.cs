@@ -32,10 +32,46 @@ namespace Main.BUS
             return don.GetNhaCungCap();
         }
 
-        //public List<int> GetMaDonDatHangList()
-        //{
-        //    return don.GetMaDonDatHangList();
-        //}
+        public List<int> GetMaDonDatHangList()
+        {
+            return don.GetMaDonDatHangList();
+        }
+        public int AddDonDatHang(int maNCC)
+        {
+            return don.AddDonDatHang(maNCC);
+        }
 
+        public int AddChiTietDonDatHang(int maDDH, int maSP, int soLuong, decimal donGia, decimal thanhTien)
+
+        {
+            return don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
+        }
+
+        public int DeleteChiTietDonDatHang(int maDDH)
+        {
+            return don.DeleteChiTietDonDatHang(maDDH);
+        }
+
+        public int DeleteDonDatHang(int maDDH)
+        {
+            return don.DeleteDonDatHang(maDDH);
+        }
+
+        public int UpdateChiTietDonDatHang(int maDDH, int maSP, int soLuong, decimal donGia)
+        {
+            return don.UpdateChiTietDonDatHang(maDDH, maSP, soLuong,donGia); 
+        }
+        public bool CheckChiTietDonDatHang(int maDDH, int maSP)
+        {
+            return don.CheckChiTietDonDatHang(maDDH, maSP);
+        }
+        public List<dynamic> GetDDHByMonth(int month, int year)
+        {
+            return don.GetDDHByMonth(month, year);
+        }
+        public List<dynamic> SearchDDH(string keyword)
+        {
+            return don.SearchDDH(keyword);
+        }
     }
 }

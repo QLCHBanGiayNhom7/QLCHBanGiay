@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using Sunny.UI;
 
 namespace GUI
 {
-    public partial class frmDoiTraHang : Form
+    public partial class frmDoiTraHang : UIPage
     {
         public SqlConnection conn;
         public void Connnect()

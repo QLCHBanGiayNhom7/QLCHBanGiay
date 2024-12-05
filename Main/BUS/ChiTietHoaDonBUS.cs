@@ -35,5 +35,16 @@ namespace Main.BUS
         {
             return chiTietHoaDonDAO.ThemSanPhamDoiVaoChiTietHoaDon( maHD, maSP, soLuong, giaBan);
         }
+        public int LaySoLuongTrongHoaDon(string maHD, string maSP)
+        {
+            try
+            {
+                return chiTietHoaDonDAO.LaySoLuongTrongHoaDon(maHD, maSP);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi gọi dữ liệu số lượng từ DAO: " + ex.Message);
+            }
+        }
     }
 }

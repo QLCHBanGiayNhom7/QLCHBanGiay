@@ -10,7 +10,7 @@ namespace Main.DAO
 {
     internal class HoaDonDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_qlshopBanGiay;Trusted_Connection=True;";
+        private string connectionString = "Server=ACER\\FUANG;Database=db_qlshopBanGiay;Trusted_Connection=True;";
 
         // Lấy toàn bộ danh sách hóa đơn
         public DataTable GetAllHoaDon()

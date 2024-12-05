@@ -11,7 +11,7 @@ namespace Main.DAO
 {
     internal class SanPhamDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_qlshopBanGiay;Trusted_Connection=True;";
+        private string connectionString = "Server=ACER\\Fuang;Database=db_qlshopBanGiay;Trusted_Connection=True;";
 
         public List<SanPhamDTO> GetSanPham()
         {

@@ -13,7 +13,7 @@ using Sunny.UI;
 
 namespace Main.GUI
 {
-    public partial class frmQLNhaCungCap : Form
+    public partial class frmQLNhaCungCap : UIPage
     {
         private NhaCungCapBUS nhaCungCapBUS;
         public frmQLNhaCungCap()
@@ -42,11 +42,16 @@ namespace Main.GUI
                 dgvNCC.Columns["SoDienThoai"].HeaderText = "Số Điện Thoại";
 
                 // Tùy chỉnh giao diện tiêu đề
-                dgvNCC.ColumnHeadersHeight = 50; 
-                dgvNCC.ColumnHeadersDefaultCellStyle.BackColor = Color.LightPink;
-                dgvNCC.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-                dgvNCC.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
-                dgvNCC.EnableHeadersVisualStyles = false;
+                //dgvNCC.ColumnHeadersHeight = 50; 
+                //dgvNCC.ColumnHeadersDefaultCellStyle.BackColor = Color.LightPink;
+                //dgvNCC.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
+                //dgvNCC.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
+                //dgvNCC.EnableHeadersVisualStyles = false;
+                dgvNCC.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
+                dgvNCC.DefaultCellStyle.SelectionForeColor = Color.Black;
+                dgvNCC.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 12, FontStyle.Bold);
+                dgvNCC.ColumnHeadersDefaultCellStyle.BackColor = Color.PaleVioletRed;
+                dgvNCC.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.PaleVioletRed;
 
                 // Tùy chỉnh hover
                 //dgvNCC.DefaultCellStyle.SelectionBackColor = Color.Black;
@@ -59,6 +64,8 @@ namespace Main.GUI
             {
                 MessageBox.Show("Đã xảy ra lỗi khi tải danh sách nhà cung cấp: " + ex.Message);
             }
+
+
         }
 
         private void TextboxDisable()
@@ -316,6 +323,22 @@ namespace Main.GUI
             {
                 txtSDT.Text = txtSDT.Text.Substring(0, 11);  
                 txtSDT.SelectionStart = txtSDT.Text.Length;  
+            }
+        }
+
+        private void dgvNCC_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                if (e.RowIndex % 2 != 0)
+                {
+                    dgvNCC.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.LightPink;
+                    dgvNCC.Rows[e.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                }
+                else
+                {
+                    dgvNCC.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
+                }
             }
         }
     }
