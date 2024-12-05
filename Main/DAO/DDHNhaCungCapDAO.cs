@@ -19,10 +19,11 @@ namespace Main.DAO
                             select new
                             {
                                 MaDDH = ddh.MaDDH,
+                                MaNCC = ncc.MaNCC,
+                                TenNCC = ncc.TenNCC,
                                 NgayLapDDH = ddh.NgayLapDDH,
                                 TongTien = ddh.TongTien,
-                                MaNCC = ncc.MaNCC,
-                              // TrangThai = ddh.TrangThai
+                                TrangThai = ddh.TrangThai
                             };
 
                 return query.ToList<dynamic>();
@@ -46,6 +47,7 @@ namespace Main.DAO
                             {
                                 ct.MaDDH,
                                 ct.MaSP,
+                                sp.TenSP,
                                 ct.SoLuong,
                                 ct.DonGia,
                                 ct.ThanhTien
@@ -100,18 +102,28 @@ namespace Main.DAO
                 return new List<string>();
             }
         }
+        public string layMaDDH()
+        {
+            var lastKhuyenMai = dbQLBanGiayDataContext.DonDatHangNCCs.OrderByDescending(khuyenmai => khuyenmai.MaDDH).FirstOrDefault();
+            string lastCode = lastKhuyenMai == null ? "DDH00" : lastKhuyenMai.MaDDH;
+            string numberPart = lastCode.Substring(3);
+            int newNumber = int.Parse(numberPart) + 1;
+            string newCode = "DDH" + newNumber.ToString("D2");
+            return newCode;
+        }
 
-        public string AddDonDatHang(string maNCC)
+        public string AddDonDatHang(string maDDH, string maNCC)
         {
             try
             {
 
                 DonDatHangNCC newOrder = new DonDatHangNCC
                 {
+                    MaDDH = maDDH,
                     NgayLapDDH = DateTime.Now,
                     MaNCC = maNCC,
                     TongTien = 0,
-                    TrangThai = "Đang lên đơn"
+                    TrangThai = "Đơn nháp"
                 };
 
                 dbQLBanGiayDataContext.DonDatHangNCCs.InsertOnSubmit(newOrder);
@@ -125,7 +137,7 @@ namespace Main.DAO
                 return null;
             }
         }
-        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia, decimal thanhTien)
+        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
         {
             try
             {
@@ -135,7 +147,6 @@ namespace Main.DAO
                     MaSP = maSP,
                     SoLuong = soLuong,
                     DonGia = donGia,
-                    ThanhTien = thanhTien
                 };
 
                 dbQLBanGiayDataContext.ChiTietDonDatHangs.InsertOnSubmit(chiTiet);
@@ -145,11 +156,11 @@ namespace Main.DAO
 
                 if (donDatHang != null)
                 {
-                   
-                    donDatHang.TongTien += thanhTien;
+
+                    //donDatHang.TongTien += thanhTien;
                 }
 
-                
+
                 dbQLBanGiayDataContext.SubmitChanges();
 
                 return chiTiet.MaDDH;
@@ -215,7 +226,7 @@ namespace Main.DAO
             try
             {
                 var donDatHangToDelete = dbQLBanGiayDataContext.DonDatHangNCCs
-                    .FirstOrDefault(ddh => ddh.MaDDH == maDDH);
+                    .FirstOrDefault(ddh => ddh.MaDDH == maDDH.Trim());
 
                 if (donDatHangToDelete != null)
                 {
@@ -259,9 +270,10 @@ namespace Main.DAO
                             select new
                             {
                                 MaDDH = ddh.MaDDH,
+                                MaNCC = ncc.MaNCC,
+                                TenNCC = ncc.TenNCC,
                                 NgayLapDDH = ddh.NgayLapDDH,
                                 TongTien = ddh.TongTien,
-                                MaNCC = ncc.MaNCC,
                                 TrangThai = ddh.TrangThai
                             };
 
@@ -281,16 +293,17 @@ namespace Main.DAO
                 var query = from ddh in dbQLBanGiayDataContext.DonDatHangNCCs
                             join ncc in dbQLBanGiayDataContext.NhaCungCaps
                             on ddh.MaNCC equals ncc.MaNCC
-                            where ddh.MaDDH.ToString().Contains(keyword) 
-                                  || ncc.TenNCC.Contains(keyword)        
-                                  || ncc.MaNCC.ToString().Contains(keyword) 
+                            where ddh.MaDDH.ToString().Contains(keyword)
+                                  || ncc.TenNCC.Contains(keyword)
+                                  || ncc.MaNCC.ToString().Contains(keyword)
                                   || ddh.TrangThai.Contains(keyword)
                             select new
                             {
                                 MaDDH = ddh.MaDDH,
+                                MaNCC = ncc.MaNCC,
+                                TenNCC = ncc.TenNCC,
                                 NgayLapDDH = ddh.NgayLapDDH,
                                 TongTien = ddh.TongTien,
-                                MaNCC = ncc.MaNCC,
                                 TrangThai = ddh.TrangThai
                             };
 
@@ -318,7 +331,7 @@ namespace Main.DAO
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi cập nhật trạng thái đơn đặt hàng: {ex.Message}");
-                return -1; 
+                return -1;
             }
         }
 

@@ -36,15 +36,19 @@ namespace Main.BUS
         {
             return don.GetMaDonDatHangList();
         }
-        public string AddDonDatHang(string maNCC)
+        public string layMaKMMoi()
         {
-            return don.AddDonDatHang(maNCC);
+            return don.layMaDDH();
+        }
+        public string AddDonDatHang(string maDDH, string maNCC)
+        {
+            return don.AddDonDatHang(maDDH, maNCC);
         }
 
-        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia, decimal thanhTien)
+        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
 
         {
-            return don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
+            return don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia);
         }
 
         public int DeleteChiTietDonDatHang(string maDDH)
@@ -72,6 +76,10 @@ namespace Main.BUS
         public List<dynamic> SearchDDH(string keyword)
         {
             return don.SearchDDH(keyword);
+        }
+        public int UpdateDonDatHangStatus(string maDDH, string newStatus)
+        {
+            return don.UpdateDonDatHangStatus(maDDH, newStatus);
         }
     }
 }
