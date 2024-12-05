@@ -22,7 +22,7 @@ namespace Main.DAO
                                 NgayLapDDH = ddh.NgayLapDDH,
                                 TongTien = ddh.TongTien,
                                 MaNCC = ncc.MaNCC,
-                                TrangThai = ddh.TrangThai
+                              //  TrangThai = ddh.TrangThai
                             };
 
                 return query.ToList<dynamic>();
@@ -41,7 +41,7 @@ namespace Main.DAO
                 var query = from ct in dbQLBanGiayDataContext.ChiTietDonDatHangs
                             join sp in dbQLBanGiayDataContext.SanPhams
                             on ct.MaSP equals sp.MaSP
-                            where ct.MaDDH == maDDH
+                            //where ct.MaDDH == maDDH
                             select new
                             {
                                 ct.MaDDH,
@@ -86,20 +86,20 @@ namespace Main.DAO
             }
         }
 
-        public List<int> GetMaDonDatHangList()
-        {
-            try
-            {
-                return dbQLBanGiayDataContext.DonDatHangNCCs
-                       .Select(ddh => ddh.MaDDH)
-                       .ToList();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi khi lấy danh sách mã đơn đặt hàng: {ex.Message}");
-                return new List<int>();
-            }
-        }
+        //public List<int> GetMaDonDatHangList()
+        //{
+        //    try
+        //    {
+        //        //return dbQLBanGiayDataContext.DonDatHangNCCs
+        //        //       .Select(ddh => ddh.MaDDH)
+        //        //       .ToList();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Lỗi khi lấy danh sách mã đơn đặt hàng: {ex.Message}");
+        //        return new List<int>();
+        //    }
+        //}
 
         public int AddDonDatHang(int maNCC)
         {

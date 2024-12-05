@@ -67,7 +67,7 @@ namespace Main.DAO
             try
             {
                 var kmToDelete = dbQLBanGiayDataContext.KhuyenMais
-                    .Where(x => maKMList.Contains(x.MaKM))
+                    //.Where(x => maKMList.Contains(x.MaKM))
                     .ToList();
 
                 if (kmToDelete.Any())

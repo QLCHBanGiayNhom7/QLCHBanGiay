@@ -112,6 +112,8 @@
             this.guna2GradientButton2.TabIndex = 61;
             this.guna2GradientButton2.Text = "Đổi trả";
             this.guna2GradientButton2.Click += new System.EventHandler(this.guna2GradientButton2_Click);
+
+
             // 
             // _DateTimePicker
             // 

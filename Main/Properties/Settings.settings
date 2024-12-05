@@ -2,13 +2,13 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Main.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="db_qlShopBanGiayConnectionString1" Type="(Connection string)" Scope="Application">
+    <Setting Name="db_shopBanGiayConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=DESKTOP-A0G3GBK\SQLEXPRESS;Initial Catalog=db_qlShopBanGiay;Integrated Security=True;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;Data Source=DESKTOP-A0G3GBK\SQLEXPRESS;Initial Catalog=db_shopBanGiay;Integrated Security=True;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=DESKTOP-A0G3GBK\SQLEXPRESS;Initial Catalog=db_qlShopBanGiay;Integrated Security=True;Encrypt=False;TrustServerCertificate=True</Value>
+      <Value Profile="(Default)">Data Source=DESKTOP-A0G3GBK\SQLEXPRESS;Initial Catalog=db_shopBanGiay;Integrated Security=True;Encrypt=False;TrustServerCertificate=True</Value>
     </Setting>
     <Setting Name="db_qlshopBanGiayConnectionString" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
@@ -20,6 +20,13 @@
     </Setting>
     <Setting Name="connection" Type="System.String" Scope="User">
       <Value Profile="(Default)">Data Source=DESKTOP-AQ2QICV\SQLEXPRESS;Initial Catalog=db_shopBanGiay;Integrated Security=True</Value>
+    <Setting Name="db_shopBanGiayConnectionString1" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=ACER\FUANG;Initial Catalog=db_shopBanGiay;Integrated Security=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=ACER\FUANG;Initial Catalog=db_shopBanGiay;Integrated Security=True</Value>
     </Setting>
   </Settings>
 </SettingsFile>
