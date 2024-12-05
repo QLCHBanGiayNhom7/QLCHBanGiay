@@ -134,22 +134,22 @@ namespace Main.GUI
         {
             var khachHangDTO = new KhachHangDTO
             {
-                MaKH = int.Parse(txtKH.Text), // Giả định bạn đã nhập mã khách hàng
-                TenKH = txtTenKH.Text,
-                SoDienThoai = txt_Sdt.Text,
-                NgaySinh = dtpNgaySinh.Value,
-                GioiTinh = rdo_Nam.Checked ? "Nam" : "Nữ"
+                //MaKH = int.Parse(txtKH.Text), // Giả định bạn đã nhập mã khách hàng
+                //TenKH = txtTenKH.Text,
+                //SoDienThoai = txt_Sdt.Text,
+                //NgaySinh = dtpNgaySinh.Value,
+                //GioiTinh = rdo_Nam.Checked ? "Nam" : "Nữ"
             };
 
-            if (khBUS.UpdateKhachHang(khachHangDTO))
-            {
-                MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData(); // Cập nhật lại danh sách
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (khBUS.UpdateKhachHang(khachHangDTO))
+            //{
+            //    MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    LoadData(); // Cập nhật lại danh sách
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Cập nhật khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btn_luu_Click(object sender, EventArgs e)

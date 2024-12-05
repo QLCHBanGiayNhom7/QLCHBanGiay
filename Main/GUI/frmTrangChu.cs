@@ -27,7 +27,7 @@ namespace Main.GUI
         }
         private void KiemTraQuyen()
         {
-            string chucVu = dangNhapBUS.LayChucVuTheoDangNhap(taiKhoan, matKhau);
+            string chucVu = null;
 
             if (chucVu == "Nhân viên bán hàng")
             {
@@ -61,8 +61,8 @@ namespace Main.GUI
 
                 pageIndex = 3000;
                 root = Aside.CreateNode("GIAO DỊCH KHÁCH HÀNG", 61451, 24, pageIndex);
-                Aside.CreateChildNode(root, AddPage(new frmKhachHang(), ++pageIndex));
-                Aside.CreateChildNode(root, AddPage(new frmQLHoaDon(), ++pageIndex));
+                //Aside.CreateChildNode(root, AddPage(new frmKhachHang(), ++pageIndex));
+                //Aside.CreateChildNode(root, AddPage(new frmQLHoaDon(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmPhieuDoiTraHang(), ++pageIndex));
 
                 pageIndex = 4000;
@@ -70,8 +70,8 @@ namespace Main.GUI
 
                 pageIndex = 5000;
                 root = Aside.CreateNode("KHO HÀNG", 61451, 24, pageIndex);
-                Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
-                Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
+                //Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
+                //Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
                 pageIndex = 6000;
                 root = Aside.CreateNode("NHÀ CUNG CẤP", 61451, 24, pageIndex);
                 pageIndex = 7000;
