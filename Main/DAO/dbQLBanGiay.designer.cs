@@ -2212,7 +2212,7 @@ namespace Main.DAO
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaTriGiamGia", DbType="Decimal(5,2)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GiaTriGiamGia", DbType="Decimal(10,2)")]
 		public System.Nullable<decimal> GiaTriGiamGia
 		{
 			get

@@ -14,6 +14,7 @@ namespace Main.BUS
         {
             khDAO = new KhachHangDAO(); 
         }
+
         public List<KhachHangDTO> GetKhachHang()
         {
             return khDAO.GetAllKhachHang();
@@ -38,6 +39,7 @@ namespace Main.BUS
         //{
         //    return khDAO.UpdateKhachHang(khachHangDTO);
         //}
+
         public bool DeleteKhachHang(int maKH)
         {
             return khDAO.DeleteKhachHang(maKH);

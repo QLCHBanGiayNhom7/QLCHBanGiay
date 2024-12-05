@@ -15,7 +15,7 @@ namespace Main.BUS
         {
             don = new DDHNhaCungCapDAO();
         }
-        public List<dynamic> GetChiTietDonDH(int maDDH)
+        public List<dynamic> GetChiTietDonDH(string maDDH)
         {
             return don.GetChiTietDonDH(maDDH);
         }
@@ -32,36 +32,40 @@ namespace Main.BUS
             return don.GetNhaCungCap();
         }
 
-        public List<int> GetMaDonDatHangList()
+        public List<string> GetMaDonDatHangList()
         {
             return don.GetMaDonDatHangList();
         }
-        public int AddDonDatHang(int maNCC)
+        public string layMaKMMoi()
         {
-            return don.AddDonDatHang(maNCC);
+            return don.layMaDDH();
+        }
+        public string AddDonDatHang(string maDDH, string maNCC)
+        {
+            return don.AddDonDatHang(maDDH, maNCC);
         }
 
-        public int AddChiTietDonDatHang(int maDDH, int maSP, int soLuong, decimal donGia, decimal thanhTien)
+        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
 
         {
-            return don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
+            return don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia);
         }
 
-        public int DeleteChiTietDonDatHang(int maDDH)
+        public int DeleteChiTietDonDatHang(string maDDH)
         {
             return don.DeleteChiTietDonDatHang(maDDH);
         }
 
-        public int DeleteDonDatHang(int maDDH)
+        public int DeleteDonDatHang(string maDDH)
         {
             return don.DeleteDonDatHang(maDDH);
         }
 
-        public int UpdateChiTietDonDatHang(int maDDH, int maSP, int soLuong, decimal donGia)
+        public string UpdateChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
         {
             return don.UpdateChiTietDonDatHang(maDDH, maSP, soLuong,donGia); 
         }
-        public bool CheckChiTietDonDatHang(int maDDH, int maSP)
+        public bool CheckChiTietDonDatHang(string maDDH, string maSP)
         {
             return don.CheckChiTietDonDatHang(maDDH, maSP);
         }
@@ -72,6 +76,10 @@ namespace Main.BUS
         public List<dynamic> SearchDDH(string keyword)
         {
             return don.SearchDDH(keyword);
+        }
+        public int UpdateDonDatHangStatus(string maDDH, string newStatus)
+        {
+            return don.UpdateDonDatHangStatus(maDDH, newStatus);
         }
     }
 }
