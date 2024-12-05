@@ -27,6 +27,7 @@ namespace Main.DAO
             {
                 dbQLBanGiayDataContext.KhuyenMais.InsertOnSubmit(km);
                 dbQLBanGiayDataContext.SubmitChanges();
+
                 return true;
             }
             catch (Exception ex)
@@ -35,6 +36,17 @@ namespace Main.DAO
                 return false;
             }
         }
+        public string layMaKMMoi()
+        {
+            var lastKhuyenMai = dbQLBanGiayDataContext.KhuyenMais.OrderByDescending(khuyenmai => khuyenmai.MaKM).FirstOrDefault();
+            string lastCode = lastKhuyenMai == null ? "KM01" : lastKhuyenMai.MaKM;
+
+            string numberPart = lastCode.Substring(2);
+            int newNumber = int.Parse(numberPart) + 1;
+            string newCode = "KM" + newNumber.ToString("D2");
+            return newCode;
+        }
+
 
         public bool UpdateKhuyenMai(KhuyenMai km)
         {
@@ -49,7 +61,7 @@ namespace Main.DAO
                     existingKM.NgayKetThuc = km.NgayKetThuc;
                     existingKM.HoaDonTu = km.HoaDonTu;
                     existingKM.DieuKienPhu = km.DieuKienPhu;
-                    existingKM.TrangThai = km.NgayKetThuc < DateTime.Now ? "Hết Hạn" : "Còn Hạn";
+                    existingKM.TrangThai = km.TrangThai;
 
                     dbQLBanGiayDataContext.SubmitChanges(); 
                     return true;
@@ -62,7 +74,7 @@ namespace Main.DAO
             }
         }
 
-        public bool DeleteKhuyenMai(List<int> maKMList)
+        public bool DeleteKhuyenMai(List<string> maKMList)
         {
             try
             {

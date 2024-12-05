@@ -26,13 +26,17 @@ namespace Main.BUS
         {
             return khuyenMaiDAO.UpdateKhuyenMai(km);
         }
-        public bool DeleteKhuyenMai(List<int> maKMList)
+        public bool DeleteKhuyenMai(List<string> maKMList)
         {
             return khuyenMaiDAO.DeleteKhuyenMai(maKMList);
         }
         public List<KhuyenMai> SearchKhuyenMai(string keyword)
         {
             return khuyenMaiDAO.SearchKhuyenMai(keyword);
+        }
+        public string layMaKMMoi()
+        {
+            return khuyenMaiDAO.layMaKMMoi();
         }
     }
 }

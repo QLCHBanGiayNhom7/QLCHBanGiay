@@ -10,7 +10,7 @@ namespace Main.DAO
 {
     internal class ChiTietHoaDonDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_qlshopBanGiay;Trusted_Connection=True;";
+        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_shopBanGiay;Trusted_Connection=True";
 
         public List<ChiTietHoaDonDTO> GetSanPhamByMaHD(string maHD)
         {
@@ -78,6 +78,8 @@ namespace Main.DAO
 
         public bool ThemSanPhamDoiVaoChiTietHoaDon(string maHD, string maSPDoi, int soLuongDoi, decimal giaBan)
         {
+            int mahd= Convert.ToInt32(maHD);
+            int maspdoi = Convert.ToInt32(maSPDoi);
             try
             {
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -88,8 +90,8 @@ namespace Main.DAO
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@MaHD", maHD);
-                        cmd.Parameters.AddWithValue("@MaSP", maSPDoi);
+                        cmd.Parameters.AddWithValue("@MaHD", mahd);
+                        cmd.Parameters.AddWithValue("@MaSP", maspdoi);
                         cmd.Parameters.AddWithValue("@SoLuong", soLuongDoi);
                         cmd.Parameters.AddWithValue("@GiaBan", giaBan);
 
@@ -118,6 +120,32 @@ namespace Main.DAO
                 int rowsAffected = cmd.ExecuteNonQuery();
                 return rowsAffected > 0;
             }
+        }
+        public int LaySoLuongTrongHoaDon(string maHD, string maSP)
+        {
+            try
+            {
+                string query = "SELECT SoLuong FROM ChiTietHoaDon WHERE MaHD = @MaHD AND MaSP = @MaSP";
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MaHD", maHD);
+                        cmd.Parameters.AddWithValue("@MaSP", maSP);
+
+                        object result = cmd.ExecuteScalar();
+                        if (result != null)
+                            return Convert.ToInt32(result);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi khi lấy số lượng trong hóa đơn: " + ex.Message);
+            }
+
+            return 0; // Trả về 0 nếu không tìm thấy hoặc có lỗi
         }
     }
 }

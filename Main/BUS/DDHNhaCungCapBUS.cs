@@ -15,7 +15,7 @@ namespace Main.BUS
         {
             don = new DDHNhaCungCapDAO();
         }
-        public List<dynamic> GetChiTietDonDH(int maDDH)
+        public List<dynamic> GetChiTietDonDH(string maDDH)
         {
             return don.GetChiTietDonDH(maDDH);
         }
@@ -32,14 +32,54 @@ namespace Main.BUS
             return don.GetNhaCungCap();
         }
 
-        public List<int> GetMaDonDatHangList()
+        public List<string> GetMaDonDatHangList()
         {
             return don.GetMaDonDatHangList();
         }
-        public int AddDonDatHang(int maNCC)
+        public string layMaKMMoi()
         {
-            return don.AddDonDatHang(maNCC);
+            return don.layMaDDH();
+        }
+        public string AddDonDatHang(string maDDH, string maNCC)
+        {
+            return don.AddDonDatHang(maDDH, maNCC);
         }
 
+        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
+
+        {
+            return don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia);
+        }
+
+        public int DeleteChiTietDonDatHang(string maDDH)
+        {
+            return don.DeleteChiTietDonDatHang(maDDH);
+        }
+
+        public int DeleteDonDatHang(string maDDH)
+        {
+            return don.DeleteDonDatHang(maDDH);
+        }
+
+        public string UpdateChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
+        {
+            return don.UpdateChiTietDonDatHang(maDDH, maSP, soLuong,donGia); 
+        }
+        public bool CheckChiTietDonDatHang(string maDDH, string maSP)
+        {
+            return don.CheckChiTietDonDatHang(maDDH, maSP);
+        }
+        public List<dynamic> GetDDHByMonth(int month, int year)
+        {
+            return don.GetDDHByMonth(month, year);
+        }
+        public List<dynamic> SearchDDH(string keyword)
+        {
+            return don.SearchDDH(keyword);
+        }
+        public int UpdateDonDatHangStatus(string maDDH, string newStatus)
+        {
+            return don.UpdateDonDatHangStatus(maDDH, newStatus);
+        }
     }
 }
