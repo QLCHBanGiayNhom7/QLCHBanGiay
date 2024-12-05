@@ -178,7 +178,7 @@ namespace Main.GUI
         private void LoadComponentDisCTDDH()
         {
 
-            btnLuuCT.Enabled = btnHuyCT.Enabled = false;
+            btnThemCT.Enabled = btnXoaCT.Enabled = btnLuuCT.Enabled = btnHuyCT.Enabled = false;
             cbSanPham.Enabled = txtDonGia.Enabled = numbericSoLuong.Enabled = numbericSoLuong.Enabled =
                 txtThanhTien.Enabled = false;
         }
@@ -332,7 +332,7 @@ namespace Main.GUI
 
             if (string.IsNullOrEmpty(trangThai) || trangThai == "Đơn nháp")
             {
-                btnThemCT.Enabled = btnXoaCT.Enabled = btnLuuCT.Enabled = btnHuyCT.Enabled = true;
+                btnThemCT.Enabled = btnXoaCT.Enabled = btnLuuCT.Enabled = btnHuyCT.Enabled = false;
                 cbSanPham.Enabled = txtDonGia.Enabled = numbericSoLuong.Enabled = true;
                 suact = true;
             }
@@ -535,14 +535,14 @@ namespace Main.GUI
                         string result = don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia);
                         don.UpdateDonDatHangStatus(maDDH, "Đơn nháp");
 
-                        if (result != null)
+                        if (result == null)
                         {
                             MessageBox.Show($"Không thể thêm chi tiết cho sản phẩm mã {maSP}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
                         }
                     }
 
-                    MessageBox.Show("Đã lưu chi tiết đơn đặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
 
 
                     LoadDataDDH();
@@ -562,7 +562,7 @@ namespace Main.GUI
 
 
                     dgvDonDatHang.Enabled = true;
-
+                    MessageBox.Show("Thêm chi tiết thành công", "Thông báo", MessageBoxButtons.OK);
                 }
                 catch (Exception ex)
                 {
@@ -676,6 +676,11 @@ namespace Main.GUI
             locdh = true;
             LoadStaEditDDH();
             dtpNgayDatHang.Enabled = true;
+        }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnTim_Click(object sender, EventArgs e)
