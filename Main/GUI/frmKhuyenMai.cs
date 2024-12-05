@@ -43,6 +43,13 @@ namespace Main.GUI
             }
         }
 
+        private string formatGiaGiam(decimal? gt, string dk)
+        {
+            return dk == "Giảm Trực Tiếp"
+                ? gt?.ToString("#,##0 VNĐ")
+                : gt?.ToString("#0.##") + "%";
+        }
+
         private void LoadData()
         {
             dgvKhuyenMai.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
@@ -54,7 +61,18 @@ namespace Main.GUI
 
             dgvKhuyenMai.DataSource = null;
             var khuyenMaiList = khuyenMaiBUS.GetKhuyenMai();
-            dgvKhuyenMai.DataSource = khuyenMaiList;
+            var formattedList = khuyenMaiList.Select(km => new
+            {
+                MaKM = km.MaKM,
+                TenChuongTrinh = km.TenChuongTrinh,
+                GiaTriGiamGia = formatGiaGiam(km.GiaTriGiamGia, km.DieuKienPhu),
+                NgayBatDau = km.NgayBatDau,
+                NgayKetThuc = km.NgayKetThuc,
+                HoaDonTu = km.HoaDonTu,
+                DieuKienPhu = km.DieuKienPhu,
+                TrangThai = km.TrangThai
+            }).ToList();
+            dgvKhuyenMai.DataSource = formattedList;
 
             foreach (DataGridViewRow row in dgvKhuyenMai.Rows)
             {
@@ -88,7 +106,7 @@ namespace Main.GUI
             cbDieuKienApDung.SelectedIndex = 0;
             txtMaKM.Enabled = false;
             txtGiaTriKM.Enabled = dtpNgayBD.Enabled = dtpNgayKT.Enabled = txtHoaDonTu.Enabled =
-                cbDieuKienApDung.Enabled = txtChuongTrinh.Enabled  = false;
+                cbDieuKienApDung.Enabled = txtChuongTrinh.Enabled = false;
             btnLuu.Enabled = false;
         }
 
@@ -119,6 +137,7 @@ namespace Main.GUI
                 cbDieuKienApDung.Enabled = txtChuongTrinh.Enabled = true;
             them = true;
             sua = false;
+            txtMaKM.Text = khuyenMaiBUS.layMaKMMoi();
             LoadStaEdit();
         }
 
@@ -130,11 +149,11 @@ namespace Main.GUI
 
                 if (result == DialogResult.Yes)
                 {
-                    List<int> maKMList = new List<int>();
+                    List<string> maKMList = new List<string>();
 
                     foreach (DataGridViewRow row in dgvKhuyenMai.SelectedRows)
                     {
-                        int maKM = Convert.ToInt32(row.Cells["MaKM"].Value);
+                        string maKM = row.Cells["MaKM"].Value.ToString();
                         maKMList.Add(maKM);
                     }
 
@@ -160,8 +179,8 @@ namespace Main.GUI
         private void btnSua_Click(object sender, EventArgs e)
         {
             txtGiaTriKM.Enabled = dtpNgayBD.Enabled = dtpNgayKT.Enabled = txtHoaDonTu.Enabled =
-                cbDieuKienApDung.Enabled = txtChuongTrinh.Enabled = txtTrangThai.Enabled = true;
-            sua=true;
+                cbDieuKienApDung.Enabled = txtChuongTrinh.Enabled = true;
+            sua = true;
             them = false;
             LoadStaEdit();
 
@@ -171,13 +190,55 @@ namespace Main.GUI
         {
             if (CheckValid())
             {
+                string trangThai = "";
+                if (dtpNgayBD.Value <= DateTime.Now && dtpNgayKT.Value >= DateTime.Now)
+                {
+                    trangThai = "Đang diễn ra";
+                }
+                else if (dtpNgayBD.Value >= DateTime.Now)
+                {
+                    trangThai = "Chưa diễn ra";
+                }
+                else
+                {
+                    trangThai = "Đã kết thúc";
+                }
+
+                decimal giaTriKM;
+                if (cbDieuKienApDung.SelectedItem.ToString() == "Giảm Trực Tiếp")
+                {
+                    if (txtGiaTriKM.Text.Contains("%"))
+                    {
+                        giaTriKM = decimal.Parse(txtGiaTriKM.Text.Replace("%", "").Trim());
+                        txtGiaTriKM.Text = giaTriKM.ToString("#,##0 VNĐ");
+                    }
+                    else
+                    {
+                        giaTriKM = decimal.Parse(txtGiaTriKM.Text.Replace("VNĐ", "").Replace(",", "").Trim());
+                    }
+                }
+                else
+                {
+                    if (txtGiaTriKM.Text.Contains("VNĐ"))
+                    {
+                      
+                        giaTriKM = decimal.Parse(txtGiaTriKM.Text.Replace("VNĐ", "").Replace(",", "").Trim());
+                        txtGiaTriKM.Text = giaTriKM.ToString("#0.##") + "%";
+                    }
+                    else
+                    {
+                        giaTriKM = decimal.Parse(txtGiaTriKM.Text.Replace("%", "").Trim());
+                    }
+                }
                 KhuyenMai km = new KhuyenMai
                 {
+                    MaKM = txtMaKM.Text,
                     TenChuongTrinh = txtChuongTrinh.Text,
-                    GiaTriGiamGia = decimal.Parse(txtGiaTriKM.Text),
+                    GiaTriGiamGia = giaTriKM,
                     NgayBatDau = dtpNgayBD.Value,
                     NgayKetThuc = dtpNgayKT.Value,
                     HoaDonTu = int.Parse(txtHoaDonTu.Text),
+                    TrangThai = trangThai
                 };
                 if (cbDieuKienApDung.SelectedItem.ToString() == "Giảm Trực Tiếp")
                 {
@@ -189,23 +250,48 @@ namespace Main.GUI
                 }
                 if (them)
                 {
-                    bool result = khuyenMaiBUS.AddKhuyenMai(km);
-                    if (result)
+                    if (dtpNgayBD.Value < DateTime.Now)
                     {
-                        MessageBox.Show("Thêm khuyến mãi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadComponentDis();
-                        LoadStaView();
-                        them = false;
-                        LoadData();
+                        DialogResult kq = MessageBox.Show("Ngày bắt đầu của chương trình khuyến mãi này đã qua, bạn có muốn tạo khuyến mãi này không?", "Thông báo", MessageBoxButtons.OKCancel);
+                        if (kq == DialogResult.OK)
+                        {
+                            bool result = khuyenMaiBUS.AddKhuyenMai(km);
+                            if (result)
+                            {
+                                MessageBox.Show("Thêm khuyến mãi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadComponentDis();
+                                LoadStaView();
+                                them = false;
+                                LoadData();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Thêm khuyến mãi thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                     else
                     {
-                        MessageBox.Show("Thêm khuyến mãi thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        bool result = khuyenMaiBUS.AddKhuyenMai(km);
+                        if (result)
+                        {
+                            MessageBox.Show("Thêm khuyến mãi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadComponentDis();
+                            LoadStaView();
+                            them = false;
+                            LoadData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Thêm khuyến mãi thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
+
                 }
                 else if (sua)
                 {
-                    km.MaKM = int.Parse(txtMaKM.Text);
+                    km.MaKM = txtMaKM.Text;
+                    km.TrangThai = trangThai;
                     bool result = khuyenMaiBUS.UpdateKhuyenMai(km);
                     if (result)
                     {
@@ -299,8 +385,9 @@ namespace Main.GUI
         private void btnTaiLai_Click(object sender, EventArgs e)
         {
             LoadStaView();
-            dgvKhuyenMai.Rows[0].Selected = true;
             LoadData();
+            dgvKhuyenMai.Rows[0].Selected = true;
+
         }
 
         private void btnTim_Click(object sender, EventArgs e)
@@ -333,9 +420,46 @@ namespace Main.GUI
                 string dieuKienPhu = selectedRow.Cells["DieuKienPhu"].Value.ToString();
                 cbDieuKienApDung.SelectedItem = dieuKienPhu == "Giảm Trực Tiếp" ? "Giảm Trực Tiếp" : "Giảm Phần Trăm";
 
-                txtTrangThai.Text = selectedRow.Cells["TrangThai"].Value.ToString();
+                txtTrangThai.Text = selectedRow.Cells["TrangThai"].Value?.ToString() ?? "";
             }
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            LoadStaView();
+            LoadComponentDis();
+            LoadData();
+        }
+
+        private void txtGiaTriKM_Leave(object sender, EventArgs e)
+        {
+            FormatDiscountValue();
+        }
+
+        private void FormatDiscountValue()
+        {
+            if (string.IsNullOrWhiteSpace(txtGiaTriKM.Text)) return;
+
+            try
+            {
+                decimal value = decimal.Parse(txtGiaTriKM.Text.Replace(",", "").Replace("VNĐ", "").Replace("%", "").Trim());
+
+                if (cbDieuKienApDung.SelectedItem.ToString() == "Giảm Trực Tiếp")
+                {
+                    txtGiaTriKM.Text = value.ToString("#,##0 VNĐ");
+                }
+                else
+                {
+                    txtGiaTriKM.Text = value.ToString("#0.##") + "%";
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Giá trị không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtGiaTriKM.Focus();
+            }
+        }
+
 
         private void frmKhuyenMai_Load(object sender, EventArgs e)
         {

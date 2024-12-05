@@ -1,4 +1,6 @@
+
 ﻿using OfficeOpenXml;
+﻿using Sunny.UI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,7 +18,7 @@ using Sunny.UI;
 
 namespace Main.GUI
 {
-    public partial class frmQLHoaDon : Form
+    public partial class frmQLHoaDon : UIPage
     {
         HoaDon HoaDonBUS;
         bool them, sua = false;

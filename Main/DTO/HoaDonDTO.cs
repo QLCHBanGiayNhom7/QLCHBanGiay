@@ -15,6 +15,7 @@ namespace Main.DTO
         public string MaKH { get; set; } 
         public string MaKM { get; set; } 
 
+
         public HoaDonDTO() { }
 
         public HoaDonDTO(string maHD, DateTime ngayLapHD, decimal tongTien, string maKH, string maNV, string maKM)

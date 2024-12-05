@@ -27,7 +27,7 @@ namespace Main.GUI
         }
         private void KiemTraQuyen()
         {
-            string chucVu = dangNhapBUS.LayChucVuTheoDangNhap(taiKhoan, matKhau);
+            string chucVu = null;
 
             if (chucVu == "Nhân viên bán hàng")
             {
@@ -59,31 +59,26 @@ namespace Main.GUI
                 //Aside.CreateChildNode(root, AddPage(new frmDanhMuc(), ++pageIndex));
                 //Aside.CreateChildNode(root, AddPage(new frmSanPham(), ++pageIndex));
 
-                pageIndex = 2000;
-                root = Aside.CreateNode("QUẢN LÝ KHÁCH HÀNG", 61451, 24, pageIndex);
-
                 pageIndex = 3000;
-                root = Aside.CreateNode("QUẢN LÝ GIAO DỊCH", 61451, 24, pageIndex);
-                //Aside.CreateChildNode(root, AddPage(new frmBanHang(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmNhapHang(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmTraHang(), ++pageIndex));
-                //Aside.CreateChildNode(root, AddPage(new frmYeuCauBaoHanh(), ++pageIndex));
+                root = Aside.CreateNode("GIAO DỊCH KHÁCH HÀNG", 61451, 24, pageIndex);
+                //Aside.CreateChildNode(root, AddPage(new frmKhachHang(), ++pageIndex));
+                //Aside.CreateChildNode(root, AddPage(new frmQLHoaDon(), ++pageIndex));
+                Aside.CreateChildNode(root, AddPage(new frmPhieuDoiTraHang(), ++pageIndex));
 
                 pageIndex = 4000;
-                root = Aside.CreateNode("SẢN PHẨM", 61451, 24, pageIndex);
+                //root = Aside.CreateNode("SẢN PHẨM", 61451, 24, pageIndex);
 
                 pageIndex = 5000;
                 root = Aside.CreateNode("KHO HÀNG", 61451, 24, pageIndex);
-
-
+                //Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
+                //Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
+                pageIndex = 6000;
+                root = Aside.CreateNode("NHÀ CUNG CẤP", 61451, 24, pageIndex);
                 pageIndex = 7000;
                 root = Aside.CreateNode("NHÂN VIÊN", 61451, 24, pageIndex);
-
-                pageIndex = 8000;
-                root = Aside.CreateNode("BÁO CÁO DOANH THU", 61451, 24, pageIndex);
-
                 pageIndex = 9000;
-                root = Aside.CreateNode("QUẢN LÝ GIAO HÀNG", 61451, 24, pageIndex);
+                root = Aside.CreateNode("BÁO CÁO THỐNG KÊ", 61451, 24, pageIndex);
+
 
                 Aside.NodeMouseClick += Aside_NodeMouseClick;
             }
@@ -94,39 +89,28 @@ namespace Main.GUI
             if (e.Node.Text == "NHÂN VIÊN")
             {
 
-                //var page = new frmNhanVien();
-                //AddPage(page, 7000);
-                //SelectPage(7000);
+                var page = new frmQLNhanVien();
+                AddPage(page, 7001);
+                SelectPage(7001);
             }
-            else if (e.Node.Text == "QUẢN LÝ KHÁCH HÀNG")
+            else if (e.Node.Text == "NHÀ CUNG CẤP")
             {
-                //var page = new frmThongTinKhachHang();
-                //AddPage(page, 2000);
-                //SelectPage(2000);
+                var page = new frmQLNhaCungCap();
+                AddPage(page, 6001);
+                SelectPage(6001);
             }
-            else if (e.Node.Text == "QUẢN LÝ GIAO HÀNG")
+            
+            else if (e.Node.Text == "BÁO CÁO THỐNG KÊ")
             {
-                //var page = new frmGiaoHang();
-                //AddPage(page, 9000);
-                //SelectPage(9000);
-            }
-            else if (e.Node.Text == "KHO HÀNG")
-            {
-                var page = new frmDatHangNhaCungCap();
-                AddPage(page, 5000);
-                SelectPage(5000);
-            }
-            else if (e.Node.Text == "BÁO CÁO DOANH THU")
-            {
-                //var page = new frmBaoCaoDoanhThu();
-                //AddPage(page, 8000);
-                //SelectPage(8000);
+                var page = new frmBaoCaoThongKe();
+                AddPage(page, 9001);
+                SelectPage(9001);
             }
             else if (e.Node.Text == "KHUYẾN MÃI")
             {
                 var page = new frmKhuyenMai();
-                AddPage(page, 1000);
-                SelectPage(1000);
+                AddPage(page, 1001);
+                SelectPage(1001);
             }
         }
 

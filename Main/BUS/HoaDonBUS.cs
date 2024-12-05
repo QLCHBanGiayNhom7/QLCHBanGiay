@@ -12,12 +12,10 @@ namespace Main.BUS
     internal class HoaDonBUS
     {
         private HoaDonDAO hoaDonDAO = new HoaDonDAO();
-
         public List<HoaDonDTO> GetAllHoaDon()
         {
             DataTable dt = hoaDonDAO.GetAllHoaDon();
             List<HoaDonDTO> hoaDonList = new List<HoaDonDTO>();
-
             if (dt != null && dt.Rows.Count > 0) // Kiểm tra null và số lượng dòng
             {
                 foreach (DataRow row in dt.Rows)
