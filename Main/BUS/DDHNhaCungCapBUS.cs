@@ -32,10 +32,10 @@ namespace Main.BUS
             return don.GetNhaCungCap();
         }
 
-        public List<int> GetMaDonDatHangList()
-        {
-            return don.GetMaDonDatHangList();
-        }
+        //public List<int> GetMaDonDatHangList()
+        //{
+        //    return don.GetMaDonDatHangList();
+        //}
 
     }
 }

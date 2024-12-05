@@ -203,7 +203,7 @@ namespace Main.GUI
         {
             var maNCCList = dgvNCC.SelectedRows
                     .Cast<DataGridViewRow>()
-                    .Select(r => (int?)int.Parse(r.Cells["MaNCC"].Value.ToString())) 
+                    .Select(r => r.Cells["MaNCC"].Value.ToString()) 
                     .ToList();
             string result = nhaCungCapBUS.DeleteNhaCC(maNCCList);
             if (result == "Xóa nhà cung cấp thành công!")
@@ -283,7 +283,7 @@ namespace Main.GUI
             {
                 var ncc = new NhaCungCap
                 {
-                    MaNCC = int.Parse(txtMaNCC.Text),
+                    MaNCC = txtMaNCC.Text,
                     TenNCC = tenNCC,
                     DiaChi = diaChi,
                     SoDienThoai = soDienThoai

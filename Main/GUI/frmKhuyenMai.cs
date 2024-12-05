@@ -205,7 +205,7 @@ namespace Main.GUI
                 }
                 else if (sua)
                 {
-                    km.MaKM = int.Parse(txtMaKM.Text);
+                   // km.MaKM = int.Parse(txtMaKM.Text);
                     bool result = khuyenMaiBUS.UpdateKhuyenMai(km);
                     if (result)
                     {

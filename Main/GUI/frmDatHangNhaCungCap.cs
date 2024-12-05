@@ -20,7 +20,7 @@ namespace Main.GUI
         {
             InitializeComponent();
             don = new DDHNhaCungCapBUS();
-            loadMaDatHang();
+            //loadMaDatHang();
             loadNhaCungCap();
             loadSanPham();
             LoadDataDDH();
@@ -28,30 +28,30 @@ namespace Main.GUI
             LoadComponentDisCTDDH();
         }
 
-        private void loadMaDatHang()
-        {
-            try
-            {
-                var maDDHList = don.GetMaDonDatHangList()
-                  .Select(ma => new { MaDDH = ma })
-                  .ToList();
+        //private void loadMaDatHang()
+        //{
+        //    try
+        //    {
+        //        var maDDHList = don.GetMaDonDatHangList()
+        //          .Select(ma => new { MaDDH = ma })
+        //          .ToList();
 
-                if (maDDHList.Count > 0)
-                {
-                    cbMaDatHang.DataSource = maDDHList;
-                    cbMaDatHang.ValueMember = "MaDDH";
-                    cbMaDatHang.DisplayMember = "MaDDH";
-                }
-                else
-                {
-                    MessageBox.Show("Không có mã đơn đặt hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        //        if (maDDHList.Count > 0)
+        //        {
+        //            cbMaDatHang.DataSource = maDDHList;
+        //            cbMaDatHang.ValueMember = "MaDDH";
+        //            cbMaDatHang.DisplayMember = "MaDDH";
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Không có mã đơn đặt hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //    }
+        //}
         private void loadNhaCungCap()
         {
             cbNhaCungCap.DataSource = null;

@@ -30,6 +30,12 @@ namespace Main.DAO
         {
             try
             {
+                var lastEmployee = dbQLBanGiayDataContext.NhanViens.OrderByDescending(n => n.MaNV).FirstOrDefault();
+                string lastCode = lastEmployee == null ? "NV" : lastEmployee.MaNV;
+                string numberPart = lastCode.Substring(2);
+                int newNumber = int.Parse(numberPart) + 1;
+                string newCode = "NV" + newNumber.ToString("D2");
+                nv.MaNV = newCode;
                 dbQLBanGiayDataContext.NhanViens.InsertOnSubmit(nv);
                 dbQLBanGiayDataContext.SubmitChanges();
                 return true;
@@ -46,7 +52,14 @@ namespace Main.DAO
         {
             try
             {
+                if (nv == null || string.IsNullOrEmpty(nv.MaNV))
+                {
+                    Console.WriteLine("Nhân viên hoặc Mã Nhân Viên không hợp lệ.");
+                    return false;
+                }
+
                 var existingNV = dbQLBanGiayDataContext.NhanViens.FirstOrDefault(x => x.MaNV == nv.MaNV);
+
                 if (existingNV != null)
                 {
                     existingNV.TenNV = nv.TenNV;
@@ -60,17 +73,21 @@ namespace Main.DAO
                     dbQLBanGiayDataContext.SubmitChanges();
                     return true;
                 }
-                return false;
+                else
+                {
+                    Console.WriteLine($"Không tìm thấy nhân viên với Mã NV: {nv.MaNV}");
+                    return false;
+                }
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                Console.WriteLine($"Lỗi khi cập nhật nhân viên: {ex.Message}");
                 return false;
             }
         }
 
         // 4. Xóa nhân viên
-        public string DeleteNhanVien(List<int?> maNVList)
+        public string DeleteNhanVien(List<string> maNVList)
         {
             try
             {
