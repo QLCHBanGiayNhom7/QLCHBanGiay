@@ -32,30 +32,30 @@ namespace Main.GUI
             LoadComponentDisCTDDH();
         }
 
-        //private void loadMaDatHang()
-        //{
-        //    try
-        //    {
-        //        var maDDHList = don.GetMaDonDatHangList()
-        //          .Select(ma => new { MaDDH = ma })
-        //          .ToList();
+        private void loadMaDatHang()
+        {
+            try
+            {
+                var maDDHList = don.GetMaDonDatHangList()
+                  .Select(ma => new { MaDDH = ma })
+                  .ToList();
 
-        //        if (maDDHList.Count > 0)
-        //        {
-        //            cbMaDatHang.DataSource = maDDHList;
-        //            cbMaDatHang.ValueMember = "MaDDH";
-        //            cbMaDatHang.DisplayMember = "MaDDH";
-        //        }
-        //        else
-        //        {
-        //            MessageBox.Show("Không có mã đơn đặt hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //    }
-        //}
+                if (maDDHList.Count > 0)
+                {
+                    cbMaDatHang.DataSource = maDDHList;
+                    cbMaDatHang.ValueMember = "MaDDH";
+                    cbMaDatHang.DisplayMember = "MaDDH";
+                }
+                else
+                {
+                    MessageBox.Show("Không có mã đơn đặt hàng nào!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi load dữ liệu: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void loadNhaCungCap()
         {
             cbNhaCungCap.DataSource = null;
@@ -93,18 +93,21 @@ namespace Main.GUI
                 row.Selected = false;
             }
 
-            dgvDonDatHang.Columns["MaDDH"].HeaderText = "Mã Đơn Đặt Hàng";
-            dgvDonDatHang.Columns["NgayLapDDH"].HeaderText = "Ngày Lập";
-            dgvDonDatHang.Columns["MaNCC"].HeaderText = "Mã Nhà Cung Cấp";
-            dgvDonDatHang.Columns["TongTien"].HeaderText = "Tổng Tiền";
-            dgvDonDatHang.Columns["TrangThai"].HeaderText = "Trạng Thái";
+            if (dgvDonDatHang.Rows.Count > 0)
+            {
+                dgvDonDatHang.Columns["MaDDH"].HeaderText = "Mã Đơn Đặt Hàng";
+                dgvDonDatHang.Columns["NgayLapDDH"].HeaderText = "Ngày Lập";
+                dgvDonDatHang.Columns["MaNCC"].HeaderText = "Mã Nhà Cung Cấp";
+                dgvDonDatHang.Columns["TongTien"].HeaderText = "Tổng Tiền";
+                dgvDonDatHang.Columns["TrangThai"].HeaderText = "Trạng Thái";
+            }
 
 
         }
         private void LoadStaEditDDH()
         {
             btnLuuDH.Enabled = btnHuyDH.Enabled = btnThoat.Enabled = btnTaiLai.Enabled = true;
-            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = btnLoc.Enabled = btnTaiLai.Enabled =false;
+            btnThemDH.Enabled = btnXoaDH.Enabled = btnSuaDH.Enabled = btnIn.Enabled = btnLoc.Enabled = btnTaiLai.Enabled = false;
         }
         private void LoadStaViewDDH()
         {
@@ -121,7 +124,7 @@ namespace Main.GUI
                 dtpNgayDatHang.Enabled = txtTongTien.Enabled = false;
         }
 
-        private void LoadDataCTDDH(int maddh)
+        private void LoadDataCTDDH(string maddh)
         {
             dgvChiTiet.DefaultCellStyle.SelectionBackColor = Color.Gainsboro;
             dgvChiTiet.DefaultCellStyle.SelectionForeColor = Color.Black;
@@ -208,7 +211,7 @@ namespace Main.GUI
                 txtTongTien.Text = selectedRow.Cells["TongTien"].Value?.ToString() ?? "";
 
 
-                int maDDH = Convert.ToInt32(selectedRow.Cells["MaDDH"].Value);
+                string maDDH = selectedRow.Cells["MaDDH"].Value.ToString();
                 LoadDataCTDDH(maDDH);
             }
         }
@@ -263,7 +266,7 @@ namespace Main.GUI
             try
             {
                 // Get the selected order's details
-                int maDDH = Convert.ToInt32(dgvDonDatHang.SelectedRows[0].Cells["MaDDH"].Value);
+                string maDDH = dgvDonDatHang.SelectedRows[0].Cells["MaDDH"].Value.ToString();
                 string trangThai = dgvDonDatHang.SelectedRows[0].Cells["TrangThai"].Value?.ToString() ?? "";
 
                 // Check if the order can be deleted
@@ -433,14 +436,14 @@ namespace Main.GUI
 
                             if (result == DialogResult.OK)
                             {
-          
+
                                 DataRow[] rowsToDelete = dtChiTiet.Select($"MaSP = {maSP}");
                                 if (rowsToDelete.Length > 0)
                                 {
                                     dtChiTiet.Rows.Remove(rowsToDelete[0]);
                                 }
 
-                             
+
                                 decimal tongTien = dtChiTiet.Rows.Count > 0
                                     ? dtChiTiet.AsEnumerable()
                                         .Sum(row => Convert.ToDecimal(row["ThanhTien"]))
@@ -458,14 +461,14 @@ namespace Main.GUI
                     }
                     else
                     {
-      
+
                         DataRow[] rowsToDelete = dtChiTiet.Select($"MaSP = {maSP}");
                         if (rowsToDelete.Length > 0)
                         {
                             dtChiTiet.Rows.Remove(rowsToDelete[0]);
                         }
 
-               
+
                         decimal tongTien = dtChiTiet.Rows.Count > 0
                             ? dtChiTiet.AsEnumerable()
                                 .Sum(row => Convert.ToDecimal(row["ThanhTien"]))
@@ -503,19 +506,19 @@ namespace Main.GUI
 
                 try
                 {
-                    int maDDH = Convert.ToInt32(cbMaDatHang.SelectedValue);
+                    string maDDH = cbMaDatHang.SelectedValue.ToString();
 
                     foreach (DataRow row in dtChiTiet.Rows)
                     {
-                        int maSP = Convert.ToInt32(row["MaSP"]);
+                        string maSP = row["MaSP"].ToString();
                         int soLuong = Convert.ToInt32(row["SoLuong"]);
                         decimal donGia = Convert.ToDecimal(row["DonGia"]);
                         decimal thanhTien = Convert.ToDecimal(row["ThanhTien"]);
 
-                       
-                        int result = don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
 
-                        if (result <= 0)
+                        string result = don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
+
+                        if (result != null)
                         {
                             MessageBox.Show($"Không thể thêm chi tiết cho sản phẩm mã {maSP}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             return;
@@ -524,23 +527,23 @@ namespace Main.GUI
 
                     MessageBox.Show("Đã lưu chi tiết đơn đặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-       
+
                     LoadDataDDH();
                     LoadDataCTDDH(maDDH);
 
-     
+
                     themct = false;
                     LoadComponentDisCTDDH();
                     LoadStaViewDDH();
 
 
-    
+
                     cbSanPham.SelectedIndex = 0;
                     numbericSoLuong.Value = 1;
                     txtDonGia.Clear();
                     txtThanhTien.Clear();
 
-      
+
                     dgvDonDatHang.Enabled = true;
 
                 }
@@ -553,25 +556,25 @@ namespace Main.GUI
             {
                 try
                 {
-                    int maDDH = Convert.ToInt32(cbMaDatHang.SelectedValue);
+                    string maDDH = cbMaDatHang.SelectedValue.ToString();
 
-             
+
                     foreach (DataRow row in dtChiTiet.Rows)
                     {
-                        int maSP = Convert.ToInt32(row["MaSP"]);
+                        string maSP = row["MaSP"].ToString();
                         int soLuong = Convert.ToInt32(row["SoLuong"]);
                         decimal donGia = Convert.ToDecimal(row["DonGia"]);
                         decimal thanhTien = Convert.ToDecimal(row["ThanhTien"]);
 
-     
+
                         bool chiTietTonTai = don.CheckChiTietDonDatHang(maDDH, maSP);
 
                         if (chiTietTonTai)
                         {
- 
-                            int result = don.UpdateChiTietDonDatHang(maDDH, maSP, soLuong, donGia);
 
-                            if (result <= 0)
+                            string result = don.UpdateChiTietDonDatHang(maDDH, maSP, soLuong, donGia);
+
+                            if (result != null)
                             {
                                 MessageBox.Show($"Không thể sửa chi tiết cho sản phẩm mã {maSP}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -579,10 +582,10 @@ namespace Main.GUI
                         }
                         else
                         {
-            
-                            int result = don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
 
-                            if (result <= 0)
+                            string result = don.AddChiTietDonDatHang(maDDH, maSP, soLuong, donGia, thanhTien);
+
+                            if (result != null)
                             {
                                 MessageBox.Show($"Không thể thêm chi tiết mới cho sản phẩm mã {maSP}!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 return;
@@ -592,11 +595,11 @@ namespace Main.GUI
 
                     MessageBox.Show("Đã cập nhật chi tiết đơn đặt hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-     
+
                     LoadDataDDH();
                     LoadDataCTDDH(maDDH);
 
- 
+
                     suact = false;
                     LoadComponentDisCTDDH();
 
@@ -607,7 +610,7 @@ namespace Main.GUI
                     txtDonGia.Clear();
                     txtThanhTien.Clear();
 
-      
+
                     dgvDonDatHang.Enabled = true;
 
                     btnThemCT.Enabled = btnXoaCT.Enabled = false;
@@ -622,7 +625,7 @@ namespace Main.GUI
 
         private void btnHuyCT_Click(object sender, EventArgs e)
         {
-            int ma = Convert.ToInt32(cbMaDatHang.Text.ToString());
+            string ma = cbMaDatHang.Text.ToString();
             LoadDataCTDDH(ma);
         }
 
@@ -703,9 +706,9 @@ namespace Main.GUI
                 DialogResult kq = MessageBox.Show("Bạn có chắc chắn đặt hàng từ nhà cung cấp " + cbNhaCungCap.Text + " không?", "Thông báo", MessageBoxButtons.OKCancel);
                 if (kq == DialogResult.OK)
                 {
-                    int mancc = Convert.ToInt32(cbNhaCungCap.SelectedValue.ToString());
-                    int result = don.AddDonDatHang(mancc);
-                    if (result > 0)
+                    string mancc = cbNhaCungCap.SelectedValue.ToString();
+                    string result = don.AddDonDatHang(mancc);
+                    if (result != null)
                     {
                         MessageBox.Show("Đã thêm đơn đặt hàng thành công. Vui lòng chọn sản phẩm cần đặt hàng!", "Thông báo", MessageBoxButtons.OK);
                         LoadDataDDH();
@@ -741,10 +744,10 @@ namespace Main.GUI
                     if (dgvDonDatHang.CurrentRow != null)
                     {
 
-                        int maDDH = Convert.ToInt32(dgvDonDatHang.CurrentRow.Cells["MaDDH"].Value);
+                        string maDDH = dgvDonDatHang.CurrentRow.Cells["MaDDH"].Value.ToString();
 
-                   
-                        string newStatus = cbTrangThai.Text; 
+
+                        string newStatus = cbTrangThai.Text;
 
                         if (!string.IsNullOrEmpty(newStatus))
                         {
@@ -777,7 +780,7 @@ namespace Main.GUI
                     MessageBox.Show($"Lỗi khi cập nhật trạng thái: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else if(locdh)
+            else if (locdh)
             {
                 try
                 {

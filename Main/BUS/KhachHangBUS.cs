@@ -14,22 +14,22 @@ namespace Main.BUS
         {
             khDAO = new KhachHangDAO(); 
         }
-        public List<KhachHangDTO> GetKhachHang()
-        {
-            return khDAO.GetAllKhachHang();
-        }
+        //public List<KhachHangDTO> GetKhachHang()
+        //{
+        //    return khDAO.GetAllKhachHang();
+        //}
         public bool AddKhachHang(KhachHangDTO khachHangDTO)
         {
             return khDAO.AddKhachHang(khachHangDTO);
         }
-        public bool UpdateKhachHang(KhachHangDTO khachHangDTO)
-        {
-            return khDAO.UpdateKhachHang(khachHangDTO);
-        }
-        public bool DeleteKhachHang(int maKH)
-        {
-            return khDAO.DeleteKhachHang(maKH);
-        }
+        //public bool UpdateKhachHang(KhachHangDTO khachHangDTO)
+        //{
+        //    return khDAO.UpdateKhachHang(khachHangDTO);
+        //}
+        //public bool DeleteKhachHang(int maKH)
+        //{
+        //    return khDAO.DeleteKhachHang(maKH);
+        //}
 
     }
 }

@@ -28,28 +28,28 @@ namespace Main.GUI
 
         private void LoadData()
         {
-            try
-            {
-                // Lấy danh sách khách hàng từ BUS
-                List<KhachHangDTO> dsKhachHang = khBUS.GetKhachHang();
-                // Kiểm tra nếu có dữ liệu thì hiển thị lên DataGridView
-                if (dsKhachHang != null && dsKhachHang.Count > 0)
-                {
-                    dgv_kh.DataSource = dsKhachHang; // Gán dữ liệu cho DataGridView
-                }
-                else
-                {
-                    MessageBox.Show("Không có dữ liệu khách hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi tải dữ liệu khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            dgv_kh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgv_kh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_kh.Columns[0].Frozen = true;
-            dgv_kh.ReadOnly = true;
+            //try
+            //{
+            //    // Lấy danh sách khách hàng từ BUS
+            //    List<KhachHangDTO> dsKhachHang = khBUS.GetKhachHang();
+            //    // Kiểm tra nếu có dữ liệu thì hiển thị lên DataGridView
+            //    if (dsKhachHang != null && dsKhachHang.Count > 0)
+            //    {
+            //        dgv_kh.DataSource = dsKhachHang; // Gán dữ liệu cho DataGridView
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Không có dữ liệu khách hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("Lỗi khi tải dữ liệu khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+            //dgv_kh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            //dgv_kh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            //dgv_kh.Columns[0].Frozen = true;
+            //dgv_kh.ReadOnly = true;
         }
 
 
@@ -141,15 +141,15 @@ namespace Main.GUI
                 GioiTinh = rdo_Nam.Checked ? "Nam" : "Nữ"
             };
 
-            if (khBUS.UpdateKhachHang(khachHangDTO))
-            {
-                MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData(); // Cập nhật lại danh sách
-            }
-            else
-            {
-                MessageBox.Show("Cập nhật khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //if (khBUS.UpdateKhachHang(khachHangDTO))
+            //{
+            //    MessageBox.Show("Cập nhật khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //    LoadData(); // Cập nhật lại danh sách
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Cập nhật khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
         }
 
         private void btn_luu_Click(object sender, EventArgs e)
@@ -163,15 +163,15 @@ namespace Main.GUI
         {
             if (int.TryParse(txtKH.Text, out int maKH))
             {
-                if (khBUS.DeleteKhachHang(maKH))
-                {
-                    MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData(); // Cập nhật lại danh sách
-                }
-                else
-                {
-                    MessageBox.Show("Xóa khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                //if (khBUS.DeleteKhachHang(maKH))
+                //{
+                //    MessageBox.Show("Xóa khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //    LoadData(); // Cập nhật lại danh sách
+                //}
+                //else
+                //{
+                //    MessageBox.Show("Xóa khách hàng thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //}
             }
             else
             {
@@ -186,20 +186,20 @@ namespace Main.GUI
         }
         private void SearchData(string keyword)
         {
-            if (!string.IsNullOrEmpty(keyword))
-            {
-                var filteredData = khBUS.GetKhachHang()
-                       .Where(kh => kh.MaKH.ToString().Contains(keyword) ||
-                                     kh.TenKH.Contains(keyword) ||
-                                     kh.SoDienThoai.Contains(keyword))
-                       .ToList();
+            //if (!string.IsNullOrEmpty(keyword))
+            //{
+            //    var filteredData = khBUS.GetKhachHang()
+            //           .Where(kh => kh.MaKH.ToString().Contains(keyword) ||
+            //                         kh.TenKH.Contains(keyword) ||
+            //                         kh.SoDienThoai.Contains(keyword))
+            //           .ToList();
 
-                dgv_kh.DataSource = filteredData;
-            }
-            else
-            {
-                LoadData();
-            }
+            //    dgv_kh.DataSource = filteredData;
+            //}
+            //else
+            //{
+            //    LoadData();
+            //}
         }
 
         private void btn_reset_Click(object sender, EventArgs e)

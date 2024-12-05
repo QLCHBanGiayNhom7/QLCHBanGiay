@@ -22,7 +22,7 @@ namespace Main.DAO
                                 NgayLapDDH = ddh.NgayLapDDH,
                                 TongTien = ddh.TongTien,
                                 MaNCC = ncc.MaNCC,
-                              //  TrangThai = ddh.TrangThai
+                              // TrangThai = ddh.TrangThai
                             };
 
                 return query.ToList<dynamic>();
@@ -34,14 +34,14 @@ namespace Main.DAO
             }
         }
 
-        public List<dynamic> GetChiTietDonDH(int maDDH)
+        public List<dynamic> GetChiTietDonDH(string maDDH)
         {
             try
             {
                 var query = from ct in dbQLBanGiayDataContext.ChiTietDonDatHangs
                             join sp in dbQLBanGiayDataContext.SanPhams
                             on ct.MaSP equals sp.MaSP
-                            //where ct.MaDDH == maDDH
+                            where ct.MaDDH == maDDH
                             select new
                             {
                                 ct.MaDDH,
@@ -86,25 +86,26 @@ namespace Main.DAO
             }
         }
 
-        //public List<int> GetMaDonDatHangList()
-        //{
-        //    try
-        //    {
-        //        //return dbQLBanGiayDataContext.DonDatHangNCCs
-        //        //       .Select(ddh => ddh.MaDDH)
-        //        //       .ToList();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Lỗi khi lấy danh sách mã đơn đặt hàng: {ex.Message}");
-        //        return new List<int>();
-        //    }
-        //}
-
-        public int AddDonDatHang(int maNCC)
+        public List<string> GetMaDonDatHangList()
         {
             try
             {
+                return dbQLBanGiayDataContext.DonDatHangNCCs
+                       .Select(ddh => ddh.MaDDH)
+                       .ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Lỗi khi lấy danh sách mã đơn đặt hàng: {ex.Message}");
+                return new List<string>();
+            }
+        }
+
+        public string AddDonDatHang(string maNCC)
+        {
+            try
+            {
+
                 DonDatHangNCC newOrder = new DonDatHangNCC
                 {
                     NgayLapDDH = DateTime.Now,
@@ -121,10 +122,10 @@ namespace Main.DAO
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi thêm đơn đặt hàng: {ex.Message}");
-                return -1;
+                return null;
             }
         }
-        public int AddChiTietDonDatHang(int maDDH, int maSP, int soLuong, decimal donGia, decimal thanhTien)
+        public string AddChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia, decimal thanhTien)
         {
             try
             {
@@ -156,11 +157,11 @@ namespace Main.DAO
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi thêm chi tiết đơn đặt hàng: {ex.Message}");
-                return -1;
+                return null;
             }
         }
 
-        public int UpdateChiTietDonDatHang(int maDDH, int maSP, int soLuong, decimal donGia)
+        public string UpdateChiTietDonDatHang(string maDDH, string maSP, int soLuong, decimal donGia)
         {
             try
             {
@@ -169,7 +170,7 @@ namespace Main.DAO
 
                 if (chiTiet == null)
                 {
-                    return -1; // Không tìm thấy chi tiết đơn đặt hàng
+                    return null; // Không tìm thấy chi tiết đơn đặt hàng
                 }
 
                 // Cập nhật các giá trị cần thiết
@@ -185,12 +186,12 @@ namespace Main.DAO
             catch (Exception ex)
             {
                 Console.WriteLine($"Lỗi khi cập nhật chi tiết đơn đặt hàng: {ex.Message}");
-                return -1;
+                return null;
             }
         }
 
 
-        public int DeleteChiTietDonDatHang(int maDDH)
+        public int DeleteChiTietDonDatHang(string maDDH)
         {
             try
             {
@@ -209,7 +210,7 @@ namespace Main.DAO
             }
         }
 
-        public int DeleteDonDatHang(int maDDH)
+        public int DeleteDonDatHang(string maDDH)
         {
             try
             {
@@ -231,7 +232,7 @@ namespace Main.DAO
                 return -1;
             }
         }
-        public bool CheckChiTietDonDatHang(int maDDH, int maSP)
+        public bool CheckChiTietDonDatHang(string maDDH, string maSP)
         {
             try
             {
@@ -301,7 +302,7 @@ namespace Main.DAO
                 return null;
             }
         }
-        public int UpdateDonDatHangStatus(int maDDH, string newStatus)
+        public int UpdateDonDatHangStatus(string maDDH, string newStatus)
         {
             try
             {

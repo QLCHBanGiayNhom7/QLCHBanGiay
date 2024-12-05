@@ -95,7 +95,7 @@
     <Type Name="KhuyenMai">
       <Column Name="MaKM" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="TenChuongTrinh" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="GiaTriGiamGia" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="GiaTriGiamGia" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Column Name="NgayBatDau" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="NgayKetThuc" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="HoaDonTu" Type="System.Int32" DbType="Int" CanBeNull="true" />
