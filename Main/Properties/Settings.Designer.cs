@@ -43,5 +43,15 @@ namespace Main.Properties {
                 return ((string)(this["db_qlshopBanGiayConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=ACER\\FUANG;Initial Catalog=db_shopBanGiay;Integrated Security=True")]
+        public string db_shopBanGiayConnectionString1 {
+            get {
+                return ((string)(this["db_shopBanGiayConnectionString1"]));
+            }
+        }
     }
 }
