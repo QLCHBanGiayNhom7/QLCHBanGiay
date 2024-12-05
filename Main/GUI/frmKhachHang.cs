@@ -134,11 +134,11 @@ namespace Main.GUI
         {
             var khachHangDTO = new KhachHangDTO
             {
-                MaKH = int.Parse(txtKH.Text), // Giả định bạn đã nhập mã khách hàng
-                TenKH = txtTenKH.Text,
-                SoDienThoai = txt_Sdt.Text,
-                NgaySinh = dtpNgaySinh.Value,
-                GioiTinh = rdo_Nam.Checked ? "Nam" : "Nữ"
+                //MaKH = int.Parse(txtKH.Text), // Giả định bạn đã nhập mã khách hàng
+                //TenKH = txtTenKH.Text,
+                //SoDienThoai = txt_Sdt.Text,
+                //NgaySinh = dtpNgaySinh.Value,
+                //GioiTinh = rdo_Nam.Checked ? "Nam" : "Nữ"
             };
 
             //if (khBUS.UpdateKhachHang(khachHangDTO))

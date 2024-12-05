@@ -8,7 +8,7 @@ namespace Main.DTO
 {
     public class KhachHangDTO
     {
-        public int MaKH { get; set; }
+        public string  MaKH { get; set; }
         public string TenKH { get; set; }
         public string SoDienThoai { get; set; }
         public DateTime NgaySinh { get; set; }

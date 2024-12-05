@@ -14,10 +14,23 @@ namespace Main.BUS
         {
             khDAO = new KhachHangDAO(); 
         }
-        //public List<KhachHangDTO> GetKhachHang()
-        //{
-        //    return khDAO.GetAllKhachHang();
-        //}
+
+        public List<KhachHangDTO> GetKhachHang()
+        {
+            return khDAO.GetAllKhachHang();
+        }
+        public KhachHangDTO GetKhachHangByMaHD(string maHD)
+        {
+            try
+            {
+                return khDAO.GetKhachHangByMaHD(maHD);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi lấy thông tin khách hàng từ BUS: " + ex.Message);
+                return null;
+            }
+        }
         public bool AddKhachHang(KhachHangDTO khachHangDTO)
         {
             return khDAO.AddKhachHang(khachHangDTO);
@@ -26,10 +39,11 @@ namespace Main.BUS
         //{
         //    return khDAO.UpdateKhachHang(khachHangDTO);
         //}
-        //public bool DeleteKhachHang(int maKH)
-        //{
-        //    return khDAO.DeleteKhachHang(maKH);
-        //}
+
+        public bool DeleteKhachHang(int maKH)
+        {
+            return khDAO.DeleteKhachHang(maKH);
+        }
 
     }
 }

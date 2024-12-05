@@ -111,7 +111,9 @@
             this.guna2GradientButton2.Size = new System.Drawing.Size(73, 31);
             this.guna2GradientButton2.TabIndex = 61;
             this.guna2GradientButton2.Text = "Đổi trả";
-            this.guna2GradientButton2.Click += new System.EventHandler(this.guna2GradientButton2_Click_1);
+            this.guna2GradientButton2.Click += new System.EventHandler(this.guna2GradientButton2_Click);
+
+
             // 
             // _DateTimePicker
             // 
@@ -132,7 +134,7 @@
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel6.Location = new System.Drawing.Point(80, 15);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(149, 38);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(100, 27);
             this.guna2HtmlLabel6.TabIndex = 42;
             this.guna2HtmlLabel6.Text = "KingShoes";
             // 
@@ -202,7 +204,7 @@
             this.dgvHoaDon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.PaleVioletRed;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("SimSun", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.PaleVioletRed;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;

@@ -12,16 +12,12 @@ using iText.Layout.Element;
 using Main.BUS;
 using Main.DTO;
 using Sunny.UI;
-using iText.Kernel.Pdf;
-using iText.Kernel.Font;
-using iText.Layout;
-using iText.Layout.Element;
-using iText.Layout.Properties;
-using iText.Kernel.Colors;
-using System.Collections.Generic;
-using iText.IO.Font.Constants;
 using System.IO;
-
+using System.Diagnostics;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
+using Main.DAO;
+using iText.Kernel.Font;
 namespace Main.GUI
 {
     public partial class frmTaoPhieuDoiTra : Form
@@ -31,14 +27,18 @@ namespace Main.GUI
         private SanPhamBUS sanPhamBUS = new SanPhamBUS();
         private HoaDonBUS hoaDonBUS = new HoaDonBUS();
         private KhoBUS khoBUS = new KhoBUS();
+        private DoiTraHangBUS doiTraHangBUS = new DoiTraHangBUS();
         public int soluongsp;
-
+        public KhachHangDTO kh = new KhachHangDTO();
         public frmTaoPhieuDoiTra(string maHD)
         {
             InitializeComponent();
             this.maHD = maHD;
             dgSanPhamDoi.CellValueChanged += new DataGridViewCellEventHandler(dgSanPhamDoi_CellValueChanged);
             dgvSanPhamTra.CellValueChanged += new DataGridViewCellEventHandler(dgvSanPhamTra_CellValueChanged);
+            KhachHangBUS khachHangBUS = new KhachHangBUS();
+            KhachHangDTO khs = khachHangBUS.GetKhachHangByMaHD(maHD);
+            kh = khs;
         }
 
         private void frmTaoPhieuDoiTra_Load(object sender, EventArgs e)
@@ -100,48 +100,10 @@ namespace Main.GUI
         {
             try
             {
-                bool isReturn = true; // Mặc định là trả hàng
-                bool hasDoiSanPham = dgvSanPhamDoi.Rows.Count > 0; // Kiểm tra bảng dgvSanPhamDoi có dữ liệu không
+                decimal tongTienTra = 0; // Tổng tiền của các sản phẩm trả
+                decimal tongTienDoi = 0; // Tổng tiền của các sản phẩm đổi
 
-                if (hasDoiSanPham) // Nếu có dữ liệu trong dgvSanPhamDoi thì coi là đổi hàng
-                {
-                    isReturn = false;
-                }
-                 if (!isReturn) // Nếu không phải trả hàng (nghĩa là đổi hàng)
-                {
-                    string DoiSanPham = dgSanPhamDoi.Rows.Count.ToString();
-                    int i = Convert.ToInt32(DoiSanPham);
-                    foreach (DataGridViewRow r in dgSanPhamDoi.Rows)
-                        {
-                            if (i<=1)
-                            {
-                                break;
-                            }
-                            string maSPMoi = r.Cells["MaSP"].Value.ToString(); // Giả sử bạn có mã sản phẩm mới để đổi
-                            int soLuongMoi = Convert.ToInt32(r.Cells["SoLuong"].Value);
-                            decimal giaBanMoi = Convert.ToDecimal(r.Cells["GiaBan"].Value);
-
-                            // Thêm sản phẩm mới vào chi tiết hóa đơn
-                            bool isAddedCTHD = chiTietHoaDonBUS.ThemChiTietHoaDon(maHD, maSPMoi, soLuongMoi, giaBanMoi);
-                            if (!isAddedCTHD)
-                            {
-                                MessageBox.Show($"Thêm sản phẩm mới {maSPMoi} vào chi tiết hóa đơn thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-
-                            // Cập nhật lại kho sản phẩm mới
-                            bool isUpdatedKhoMoi = khoBUS.CapNhatKho(maSPMoi, soLuongMoi, false); // false: thêm vào kho sản phẩm mới
-                            if (!isUpdatedKhoMoi)
-                            {
-                                MessageBox.Show($"Cập nhật kho thất bại cho sản phẩm {maSPMoi}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                return;
-                            }
-                        i--;
-
-                    }
-                   
-                }
-                // Lặp qua từng sản phẩm trong bảng "Trả hàng" hoặc "Đổi hàng"
+                // Lưu thông tin trả hàng vào database
                 foreach (DataGridViewRow row in dgvSanPhamTra.Rows)
                 {
                     if (row.Cells["MaSP"].Value == null || row.Cells["SoLuong"].Value == null)
@@ -149,66 +111,103 @@ namespace Main.GUI
 
                     string maSP = row.Cells["MaSP"].Value.ToString();
                     int soLuongTra = Convert.ToInt32(row.Cells["SoLuong"].Value);
-                    decimal giaBan = Convert.ToDecimal(row.Cells["GiaBan"].Value);
+                    decimal giaBanTra = Convert.ToDecimal(row.Cells["GiaBan"].Value);
+                    string lyDo = "Sản phẩm trả";
 
-                    if (soLuongTra <= 0)
+                    // Tính tổng tiền sản phẩm trả
+                    tongTienTra += soLuongTra * giaBanTra;
+
+                    // Cập nhật kho: Thêm lại số lượng sản phẩm trả
+                    bool isKhoUpdated = khoBUS.CapNhatKho(maSP, soLuongTra, true); // true: thêm lại vào kho
+                    if (!isKhoUpdated)
                     {
-                        MessageBox.Show($"Số lượng trả của sản phẩm {maSP} phải lớn hơn 0.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Cập nhật kho thất bại cho sản phẩm {maSP}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    // Kiểm tra số lượng trả có vượt quá số lượng trong hóa đơn
-                    int soLuongMax = chiTietHoaDonBUS.LaySoLuongTrongHoaDon(maHD, maSP); // Lấy số lượng gốc từ hóa đơn
-                    if (soLuongTra > soLuongMax)
+                    // Tạo đối tượng DoiTraHangDTO cho sản phẩm trả
+                    DoiTraHangDTO doiTraHang = new DoiTraHangDTO(
+                        maHDDT: maHD,       // Mã hóa đơn
+                        maHD: maHD,         // Mã hóa đơn
+                        maSP: maSP,         // Mã sản phẩm
+                        soLuong: soLuongTra, // Số lượng sản phẩm trả
+                        lyDo: lyDo,         // Lý do
+                        isTra: true          // Đánh dấu là trả hàng
+                    );
+
+                    // Lưu thông tin sản phẩm trả vào bảng DoiTraHang
+                    bool isDoiTraInserted = doiTraHangBUS.ThemDoiTraHang(doiTraHang);
+                    if (!isDoiTraInserted)
                     {
-                        MessageBox.Show($"Số lượng trả không được vượt quá {soLuongMax} cho sản phẩm {maSP}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show($"Lưu thông tin trả hàng thất bại cho sản phẩm {maSP}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
-                    }
-
-                    // Nếu là trả hàng, cập nhật lại kho (thêm số lượng sản phẩm trả lại kho)
-                    
-
-                    // Cập nhật số lượng trả vào chi tiết hóa đơn
-                    bool isUpdatedCTHDTra = chiTietHoaDonBUS.CapNhatSoLuongTra(maHD, maSP, soLuongTra);
-                    if (!isUpdatedCTHDTra)
-                    {
-                        MessageBox.Show($"Cập nhật trả hàng thất bại cho sản phẩm {maSP}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
-                    }
-
-                    // Nếu sản phẩm trả hết số lượng, xóa khỏi chi tiết hóa đơn
-                    if (soLuongTra == soLuongMax)
-                    {
-                        bool isRemovedCTHD = chiTietHoaDonBUS.XoaChiTietHoaDon(maHD, maSP);
-                        if (!isRemovedCTHD)
-                        {
-                            MessageBox.Show($"Xóa sản phẩm {maSP} khỏi chi tiết hóa đơn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            return;
-                        }
                     }
                 }
 
-                // Cập nhật lại tổng tiền hóa đơn sau khi trả hàng hoặc đổi hàng
-                bool isUpdatedHoaDon = hoaDonBUS.CapNhatTongTien(maHD);
-                if (!isUpdatedHoaDon)
+                // Xử lý sản phẩm đổi (nếu có)
+                foreach (DataGridViewRow row in dgSanPhamDoi.Rows)
                 {
-                    MessageBox.Show("Cập nhật tổng tiền hóa đơn thất bại!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    if (row.Cells["MaSP"].Value == null || row.Cells["SoLuong"].Value == null)
+                        continue; // Bỏ qua nếu dòng không hợp lệ
+
+                    string maSP = row.Cells["MaSP"].Value.ToString();
+                    int soLuongDoi = Convert.ToInt32(row.Cells["SoLuong"].Value);
+                    decimal giaBanDoi = Convert.ToDecimal(row.Cells["GiaBan"].Value);
+
+                    // Tính tổng tiền sản phẩm đổi
+                    tongTienDoi += soLuongDoi * giaBanDoi;
+
+                    // Cập nhật kho: Giảm số lượng sản phẩm đổi
+                    bool isKhoUpdated = khoBUS.CapNhatKho(maSP, soLuongDoi, false); // false: giảm số lượng trong kho
+                    if (!isKhoUpdated)
+                    {
+                        MessageBox.Show($"Cập nhật kho thất bại cho sản phẩm {maSP}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Tạo đối tượng DoiTraHangDTO cho sản phẩm đổi
+                    DoiTraHangDTO doiTraHang = new DoiTraHangDTO(
+                        maHDDT: maHD,       // Mã hóa đơn
+                        maHD: maHD,         // Mã hóa đơn
+                        maSP: maSP,         // Mã sản phẩm
+                        soLuong: soLuongDoi, // Số lượng sản phẩm đổi
+                        lyDo: "Sản phẩm đổi", // Lý do
+                        isTra: false         // Đánh dấu là đổi hàng
+                    );
+
+                    // Lưu thông tin sản phẩm đổi vào bảng DoiTraHang
+                    bool isDoiTraInserted = doiTraHangBUS.ThemDoiTraHang(doiTraHang);
+                    if (!isDoiTraInserted)
+                    {
+                        MessageBox.Show($"Lưu thông tin đổi hàng thất bại cho sản phẩm {maSP}.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
                 }
 
-                MessageBox.Show(isReturn ? "Trả hàng thành công!" : "Đổi hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Tính tiền chênh lệch
+                decimal tienChenhLech = tongTienDoi - tongTienTra;
 
-                // Cập nhật lại giao diện
+                // Xuất phiếu đổi trả
+                string phieuDoiTra = $"Phiếu đổi trả hàng\n" +
+                                     $"Mã hóa đơn: {maHD}\n" +
+                                     $"Tổng tiền trả: {tongTienTra:C}\n" +
+                                     $"Tổng tiền đổi: {tongTienDoi:C}\n" +
+                                     $"Chênh lệch: {(tienChenhLech > 0 ? "Khách cần trả thêm" : "Cần trả lại khách")}: {Math.Abs(tienChenhLech):C}\n";
+
+                MessageBox.Show(phieuDoiTra, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Cập nhật giao diện
+                GeneratePdf("C:/Users/ASUS/Documents/HoaDonDoi.pdf", maHD, kh.TenKH, dgvSanPhamTra, dgSanPhamDoi, kh.SoDienThoai, tongTienTra, tongTienDoi);
+                dgvSanPhamTra.Rows.Clear();
+                dgSanPhamDoi.Rows.Clear();
                 LoadSanPham();
-                dgvSanPhamTra.Rows.Clear(); // Xóa sản phẩm đã trả hoặc đổi khỏi bảng
-                dgSanPhamDoi.Rows.Clear(); // Xóa sản phẩm đã đổi khỏi bảng
-                ExportInvoice();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
 
 
 
@@ -472,7 +471,7 @@ namespace Main.GUI
             if (e.ColumnIndex != -1 && (e.RowIndex >= 0))
             {
                 // Tính lại tổng tiền mỗi khi có thay đổi trong dgvSanPhamDoi
-                decimal tongTienDoi = TinhTongTien(dgvSanPhamDoi);
+                decimal tongTienDoi = TinhTongTien(dgSanPhamDoi);
                 decimal tongTienTra = TinhTongTien(dgvSanPhamTra);
 
                 // Cập nhật tổng tiền vào TextBox và disable nó
@@ -533,133 +532,134 @@ namespace Main.GUI
             txtTongTienSPTra.Text = totalAmount.ToString("C"); // Định dạng hiển thị theo tiền tệ
         }
 
-        private void ExportInvoice()
+
+        public void GeneratePdf(string filePath, string maHoaDon, string tenKhachHang, DataGridView dgvSanPhamTra, DataGridView dgvSanPhamDoi, string sdt, decimal tongTienTra, decimal tongTienDoi)
         {
-            // Tạo PDF Writer và Document
-            string folderPath = @"D:\app hoc";  // Đường dẫn đến thư mục muốn lưu tệp
-                                                // Kiểm tra nếu thư mục không tồn tại, tạo mới
-            if (!Directory.Exists(folderPath))
+            try
             {
-                Directory.CreateDirectory(folderPath);
-            }
-            string filePath = Path.Combine(folderPath, "HoaDon_DoiTra_" + DateTime.Now.ToString("yyyyMMdd_HHmmss") + ".pdf");
-            // Tạo PdfFont cho bold
-            PdfFont boldFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA_BOLD);
-            PdfFont regularFont = PdfFontFactory.CreateFont(StandardFonts.HELVETICA);
+                // Tạo tài liệu PDF
+                PdfSharp.Pdf.PdfDocument pdfDocument = new PdfSharp.Pdf.PdfDocument();
+                pdfDocument.Info.Title = "Hóa Đơn Đổi Trả";
 
-            using (var writer = new PdfWriter(filePath))
+                // Tạo trang mới trong PDF
+                PdfSharp.Pdf.PdfPage pdfPage = pdfDocument.AddPage();
+                XGraphics gfx = XGraphics.FromPdfPage(pdfPage);
+
+                // Định nghĩa các font chữ
+                XFont fontTitle = new XFont("Arial", 16, XFontStyleEx.Bold);
+                XFont fontHeader = new XFont("Arial", 12, XFontStyleEx.Bold);
+                XFont fontContent = new XFont("Arial", 10, XFontStyleEx.Bold);
+                XFont fontSmall = new XFont("Arial", 9);
+
+                // Bố cục lề
+                int margin = 20;
+                int pageWidth = (int)pdfPage.Width - 2 * margin;
+                int y = margin;
+
+                // Tiêu đề
+                gfx.DrawString("HÓA ĐƠN ĐỔI TRẢ", fontTitle, XBrushes.Black, new XRect(margin, y, pageWidth, 20), XStringFormats.TopCenter);
+                y += 30;
+                gfx.DrawLine(XPens.Black, margin, y, pageWidth + margin, y);
+                y += 20;
+                // Thông tin hóa đơn
+                gfx.DrawString($"Mã hóa đơn: {maHoaDon}", fontContent, XBrushes.Black, margin, y);
+                y += 15;
+                gfx.DrawString($"Tên khách hàng: {tenKhachHang}", fontContent, XBrushes.Black, margin, y);
+                y += 15;
+                gfx.DrawString($"SĐT: {sdt}", fontContent, XBrushes.Black, margin, y);
+                y += 20;
+
+                // Đường phân cách
+                gfx.DrawLine(XPens.Black, margin, y, pageWidth + margin, y);
+                y += 20;
+
+                // Bảng sản phẩm trả
+                y = DrawProductTable(gfx, "Sản phẩm trả", dgvSanPhamTra, margin, y, fontHeader, fontContent, ref tongTienTra);
+
+                // Khoảng cách giữa hai bảng
+                y += 20;
+
+                // Bảng sản phẩm đổi
+                y = DrawProductTable(gfx, "Sản phẩm đổi", dgvSanPhamDoi, margin, y, fontHeader, fontContent, ref tongTienDoi);
+
+                // Tổng tiền
+                decimal tienChenhLech = tongTienDoi - tongTienTra;
+                y += 30;
+                gfx.DrawString($"Tổng tiền trả: {tongTienTra:C}", fontHeader, XBrushes.Black, margin, y);
+                y += 15;
+                gfx.DrawString($"Tổng tiền đổi: {tongTienDoi:C}", fontHeader, XBrushes.Black, margin, y);
+                y += 15;
+                gfx.DrawString($"Chênh lệch: {(tienChenhLech > 0 ? "Khách cần trả thêm" : "Cần trả lại khách")} {Math.Abs(tienChenhLech):C}", fontHeader, XBrushes.Black, margin, y);
+
+                // Cảm ơn khách hàng
+                y += 20;
+                gfx.DrawLine(XPens.Black, margin, y, pageWidth + margin, y);
+                y += 10;
+                gfx.DrawString("Cảm ơn quý khách!", fontContent, XBrushes.Black, new XRect(margin, y, pageWidth, 20), XStringFormats.TopCenter);
+
+                // Lưu file PDF
+                pdfDocument.Save(filePath);
+                MessageBox.Show($"Hóa đơn đã được xuất ra: {filePath}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
             {
-                using (var pdf = new PdfDocument(writer))
-                {
-                    var document = new Document(pdf);
-
-                    // Tiêu đề hóa đơn
-                    document.Add(new Paragraph("Hóa Đơn Đổi/Trả Hàng")
-                        .SetFont(boldFont)  // Áp dụng font bold
-                        .SetFontSize(20)
-                        .SetTextAlignment(TextAlignment.CENTER));
-
-                    // Thông tin khách hàng và ngày tháng
-                    document.Add(new Paragraph($"Ngày: {DateTime.Now.ToString("dd/MM/yyyy")}")
-                        .SetFont(regularFont)
-                        .SetFontSize(12)
-                        .SetTextAlignment(TextAlignment.LEFT));
-
-                    // Thông tin hóa đơn (Có thể thêm các thông tin khác như mã hóa đơn, thông tin khách hàng)
-                    document.Add(new Paragraph($"Mã Hóa Đơn: {maHD}")
-                        .SetFont(regularFont)
-                        .SetFontSize(12)
-                        .SetTextAlignment(TextAlignment.LEFT));
-
-                    // Tạo bảng cho sản phẩm trả
-                    var tableTra = new Table(UnitValue.CreatePercentArray(new float[] { 2, 4, 3, 3 }))
-                        .UseAllAvailableWidth();
-
-                    tableTra.AddCell(new Cell().Add(new Paragraph("Mã Sản Phẩm").SetFont(boldFont)));
-                    tableTra.AddCell(new Cell().Add(new Paragraph("Tên Sản Phẩm").SetFont(boldFont)));
-                    tableTra.AddCell(new Cell().Add(new Paragraph("Số Lượng").SetFont(boldFont)));
-                    tableTra.AddCell(new Cell().Add(new Paragraph("Giá").SetFont(boldFont)));
-
-                    decimal totalReturn = 0;
-
-                    foreach (DataGridViewRow row in dgvSanPhamTra.Rows)
-                    {
-                        if (row.Cells["MaSP"].Value != null && row.Cells["SoLuong"].Value != null)
-                        {
-                            string maSP = row.Cells["MaSP"].Value.ToString();
-                            string tenSP = row.Cells["TenSP"].Value.ToString(); // Lấy tên sản phẩm (có thể điều chỉnh theo tên cột)
-                            int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
-                            decimal giaBan = Convert.ToDecimal(row.Cells["GiaBan"].Value);
-
-                            tableTra.AddCell(new Cell().Add(new Paragraph(maSP).SetFont(regularFont)));
-                            tableTra.AddCell(new Cell().Add(new Paragraph(tenSP).SetFont(regularFont)));
-                            tableTra.AddCell(new Cell().Add(new Paragraph(soLuong.ToString()).SetFont(regularFont)));
-                            tableTra.AddCell(new Cell().Add(new Paragraph(giaBan.ToString("C")).SetFont(regularFont)));
-
-                            totalReturn += giaBan * soLuong;
-                        }
-                    }
-
-                    // Thêm bảng sản phẩm trả vào tài liệu
-                    document.Add(new Paragraph("Sản Phẩm Trả").SetFont(boldFont));
-                    document.Add(tableTra);
-
-                    // Tạo bảng cho sản phẩm đổi
-                    var tableDoi = new Table(UnitValue.CreatePercentArray(new float[] { 2, 4, 3, 3 }))
-                        .UseAllAvailableWidth();
-
-                    tableDoi.AddCell(new Cell().Add(new Paragraph("Mã Sản Phẩm").SetFont(boldFont)));
-                    tableDoi.AddCell(new Cell().Add(new Paragraph("Tên Sản Phẩm").SetFont(boldFont)));
-                    tableDoi.AddCell(new Cell().Add(new Paragraph("Số Lượng").SetFont(boldFont)));
-                    tableDoi.AddCell(new Cell().Add(new Paragraph("Giá").SetFont(boldFont)));
-
-                    decimal totalExchange = 0;
-
-                    foreach (DataGridViewRow row in dgvSanPhamDoi.Rows)
-                    {
-                        if (row.Cells["MaSP"].Value != null && row.Cells["SoLuong"].Value != null)
-                        {
-                            string maSP = row.Cells["MaSP"].Value.ToString();
-                            string tenSP = row.Cells["TenSP"].Value.ToString(); // Lấy tên sản phẩm (có thể điều chỉnh theo tên cột)
-                            int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
-                            decimal giaBan = Convert.ToDecimal(row.Cells["GiaBan"].Value);
-
-                            tableDoi.AddCell(new Cell().Add(new Paragraph(maSP).SetFont(regularFont)));
-                            tableDoi.AddCell(new Cell().Add(new Paragraph(tenSP).SetFont(regularFont)));
-                            tableDoi.AddCell(new Cell().Add(new Paragraph(soLuong.ToString()).SetFont(regularFont)));
-                            tableDoi.AddCell(new Cell().Add(new Paragraph(giaBan.ToString("C")).SetFont(regularFont)));
-
-                            totalExchange += giaBan * soLuong;
-                        }
-                    }
-
-                    // Thêm bảng sản phẩm đổi vào tài liệu
-                    document.Add(new Paragraph("Sản Phẩm Đổi").SetFont(boldFont));
-                    document.Add(tableDoi);
-
-                    // Tính tổng số tiền cần thanh toán
-                    decimal totalAmount = totalExchange - totalReturn;
-
-                    // Thêm thông tin tổng tiền
-                    document.Add(new Paragraph($"Tổng Tiền Trả: {totalReturn.ToString("C")}")
-                        .SetFont(regularFont)
-                        .SetFontSize(12)
-                        .SetTextAlignment(TextAlignment.LEFT));
-                    document.Add(new Paragraph($"Tổng Tiền Đổi: {totalExchange.ToString("C")}")
-                        .SetFont(regularFont)
-                        .SetFontSize(12)
-                        .SetTextAlignment(TextAlignment.LEFT));
-                    document.Add(new Paragraph($"Tổng Tiền Khách Cần Thanh Toán: {totalAmount.ToString("C")}")
-                        .SetFont(boldFont)
-                        .SetFontSize(14)
-                        .SetTextAlignment(TextAlignment.LEFT));
-
-                    document.Close(); // Đóng document và ghi vào file PDF
-                }
+                MessageBox.Show($"Đã xảy ra lỗi khi xuất hóa đơn: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Hiển thị thông báo đã xuất hóa đơn
-            MessageBox.Show("Hóa đơn đổi trả đã được xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private int DrawProductTable(XGraphics gfx, string tableTitle, DataGridView dgv, int x, int y, XFont fontHeader, XFont fontContent, ref decimal totalAmount)
+        {
+            int cellHeight = 25;
+            int[] columnWidths = { 80, 200, 80, 100 }; // Cột: Mã SP, Tên SP, Số lượng, Giá
+
+            // Tiêu đề bảng
+            gfx.DrawString(tableTitle, fontHeader, XBrushes.Black, x, y);
+            y += 20;
+
+            // Vẽ tiêu đề cột
+            int currentX = x;
+            string[] headers = { "Mã SP", "Tên SP", "Số lượng", "Giá" };
+            foreach (var header in headers)
+            {
+                gfx.DrawRectangle(XPens.Black, currentX, y, columnWidths[Array.IndexOf(headers, header)], cellHeight);
+                gfx.DrawString(header, fontHeader, XBrushes.Black, new XRect(currentX + 5, y + 5, columnWidths[Array.IndexOf(headers, header)] - 10, cellHeight), XStringFormats.TopLeft);
+                currentX += columnWidths[Array.IndexOf(headers, header)];
+            }
+            y += cellHeight;
+
+            // Vẽ dữ liệu
+            foreach (DataGridViewRow row in dgv.Rows)
+            {
+                if (row.Cells["MaSP"].Value == null || row.Cells["SoLuong"].Value == null)
+                    continue;
+
+                string maSP = row.Cells["MaSP"].Value.ToString();
+                string tenSP = row.Cells["TenSP"].Value.ToString();
+                int soLuong = Convert.ToInt32(row.Cells["SoLuong"].Value);
+                decimal gia = Convert.ToDecimal(row.Cells["GiaBan"].Value);
+
+                currentX = x;
+                gfx.DrawRectangle(XPens.Black, currentX, y, columnWidths[0], cellHeight);
+                gfx.DrawString(maSP, fontContent, XBrushes.Black, new XRect(currentX + 5, y + 5, columnWidths[0] - 10, cellHeight), XStringFormats.TopLeft);
+
+                currentX += columnWidths[0];
+                gfx.DrawRectangle(XPens.Black, currentX, y, columnWidths[1], cellHeight);
+                gfx.DrawString(tenSP, fontContent, XBrushes.Black, new XRect(currentX + 5, y + 5, columnWidths[1] - 10, cellHeight), XStringFormats.TopLeft);
+
+                currentX += columnWidths[1];
+                gfx.DrawRectangle(XPens.Black, currentX, y, columnWidths[2], cellHeight);
+                gfx.DrawString(soLuong.ToString(), fontContent, XBrushes.Black, new XRect(currentX + 5, y + 5, columnWidths[2] - 10, cellHeight), XStringFormats.TopLeft);
+
+                currentX += columnWidths[2];
+                gfx.DrawRectangle(XPens.Black, currentX, y, columnWidths[3], cellHeight);
+                gfx.DrawString(gia.ToString("C"), fontContent, XBrushes.Black, new XRect(currentX + 5, y + 5, columnWidths[3] - 10, cellHeight), XStringFormats.TopLeft);
+
+                totalAmount += soLuong * gia;
+                y += cellHeight;
+            }
+
+            return y;
+        }
+
     }
 }
