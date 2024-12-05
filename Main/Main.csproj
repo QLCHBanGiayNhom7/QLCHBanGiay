@@ -97,6 +97,7 @@
   <ItemGroup>
     <Compile Include="BUS\DangNhapBUS.cs" />
     <Compile Include="BUS\DDHNhaCungCapBUS.cs" />
+    <Compile Include="BUS\HoaDonBUS.cs" />
     <Compile Include="BUS\KhuyenMaiBUS.cs" />
     <Compile Include="DAO\DangNhapDAO.cs" />
     <Compile Include="DAO\dbQLBanGiay.designer.cs">
@@ -105,9 +106,11 @@
       <DependentUpon>dbQLBanGiay.dbml</DependentUpon>
     </Compile>
     <Compile Include="DAO\DDHNhaCungCapDAO.cs" />
+    <Compile Include="DAO\HoaDonDAO.cs" />
     <Compile Include="DAO\KhuyenMaiDAO.cs" />
     <Compile Include="DBC\SQLConnect.cs" />
     <Compile Include="DTO\DangNhapDTO.cs" />
+    <Compile Include="DTO\HoaDonDTO.cs" />
     <Compile Include="DTO\KhuyenMaiDTO.cs" />
     <Compile Include="GUI\frmBaoCaoThongKe.cs">
       <SubType>Form</SubType>
