@@ -12,7 +12,7 @@ namespace Main.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.12.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -41,6 +41,19 @@ namespace Main.Properties {
         public string db_qlshopBanGiayConnectionString {
             get {
                 return ((string)(this["db_qlshopBanGiayConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-AQ2QICV\\SQLEXPRESS;Initial Catalog=db_shopBanGiay;Integrated " +
+            "Security=True")]
+        public string connection {
+            get {
+                return ((string)(this["connection"]));
+            }
+            set {
+                this["connection"] = value;
             }
         }
     }
