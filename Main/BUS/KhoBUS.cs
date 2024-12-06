@@ -28,5 +28,9 @@ namespace Main.BUS
         {
             return khoDAO.GetKho(maSP);
         }
+        public List<Kho> GetAllKho()
+        {
+            return khoDAO.GetAllKho();
+        }
     }
 }

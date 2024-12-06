@@ -75,5 +75,24 @@ namespace Main.DAO
                 return false;
             }
         }
+        private dbQLBanGiayDataContext db;
+
+        public KhoDAO()
+        {
+            db = new dbQLBanGiayDataContext();
+        }
+
+        public List<Kho> GetAllKho()
+        {
+            try
+            {
+                return db.Khos.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
     }
 }

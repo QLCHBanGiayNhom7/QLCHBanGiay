@@ -207,6 +207,7 @@
     <Compile Include="BUS\KhachHangBUS.cs" />
     <Compile Include="BUS\KhoBUS.cs" />
     <Compile Include="BUS\KhuyenMaiBUS.cs" />
+    <Compile Include="BUS\LoaiSanPhamBUS.cs" />
     <Compile Include="BUS\NhaCungCapBUS.cs" />
     <Compile Include="BUS\NhanVienBUS.cs" />
     <Compile Include="BUS\SanPhamBUS.cs" />
@@ -223,6 +224,7 @@
     <Compile Include="DAO\KhachHangDAO.cs" />
     <Compile Include="DAO\KhoDAO.cs" />
     <Compile Include="DAO\KhuyenMaiDAO.cs" />
+    <Compile Include="DAO\LoaiSanPhamDAO.cs" />
     <Compile Include="DAO\NhaCungCapDAO.cs" />
     <Compile Include="DAO\NhanVienDAO.cs" />
     <Compile Include="DAO\SanPhamDAO.cs" />
@@ -253,6 +255,12 @@
     <Compile Include="GUI\frmDatHangNhaCungCap.Designer.cs">
       <DependentUpon>frmDatHangNhaCungCap.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmKho.Designer.cs">
+      <DependentUpon>frmKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\frmKhuyenMai.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -277,15 +285,12 @@
     <EmbeddedResource Include="GUI\frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="GUI\frmKho.cs">
+    <Compile Include="GUI\frmLoaiSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUI\frmKho.Designer.cs">
-      <DependentUpon>frmKho.cs</DependentUpon>
+    <Compile Include="GUI\frmLoaiSanPham.Designer.cs">
+      <DependentUpon>frmLoaiSanPham.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GUI\frmKho.resx">
-      <DependentUpon>frmKho.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="GUI\frmQLHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +309,12 @@
     <Compile Include="GUI\frmQLNhanVien.Designer.cs">
       <DependentUpon>frmQLNhanVien.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="GUI\frmKho.resx">
+      <DependentUpon>frmKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmLoaiSanPham.resx">
+      <DependentUpon>frmLoaiSanPham.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\frmQLHoaDon.resx">
       <DependentUpon>frmQLHoaDon.cs</DependentUpon>
       <SubType>Designer</SubType>

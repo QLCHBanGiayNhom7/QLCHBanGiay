@@ -44,6 +44,7 @@ namespace Main.GUI
             {
                 int pageIndex = 3000;
                 TreeNode root = Aside.CreateNode("KHO HÀNG", 61451, 24, pageIndex);
+                Aside.CreateChildNode(root, AddPage(new frmLoaiSanPham(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmQLNhaCungCap(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
@@ -80,6 +81,7 @@ namespace Main.GUI
 
                 pageIndex = 5000;
                 root = Aside.CreateNode("KHO HÀNG", 61451, 24, pageIndex);
+                Aside.CreateChildNode(root, AddPage(new frmLoaiSanPham(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmKho(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmQLNhaCungCap(), ++pageIndex));
                 Aside.CreateChildNode(root, AddPage(new frmDatHangNhaCungCap(), ++pageIndex));
