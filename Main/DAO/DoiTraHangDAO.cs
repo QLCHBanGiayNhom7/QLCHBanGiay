@@ -10,7 +10,7 @@ namespace Main.DAO
 {
     public class DoiTraHangDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_shopBanGiay;Trusted_Connection=True";
+        private string connectionString = "Server=ACER\\FUANG;Database=db_shopBanGiay;Trusted_Connection=True";
 
         // Lấy danh sách đổi trả hàng
         public List<DoiTraHangDTO> LayDanhSachDoiTraHang()

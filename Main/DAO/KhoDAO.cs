@@ -10,7 +10,7 @@ namespace Main.DAO
 {
     internal class KhoDAO
     {
-        private string connectionString = "Server=DESKTOP-AQ2QICV\\SQLEXPRESS;Database=db_shopBanGiay;Trusted_Connection=True";
+        private string connectionString = "Server=ACER\\FUANG;Database=db_shopBanGiay;Trusted_Connection=True";
         public KhoDTO GetKho(string maSP)
         {
             KhoDTO kho = null;

@@ -11,7 +11,7 @@ namespace Main.DAO
 {
     internal class HoaDonDAO
     {
-        private string connectionString = "Server=HUY-PC;Database=db_ShopBanGiay;Trusted_Connection=True;";
+        private string connectionString = "Server=ACER\\FUANG;Database=db_ShopBanGiay;Trusted_Connection=True;";
 
         public DataTable GetAllHoaDon()
         {
